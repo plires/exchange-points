@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback');
+
+@import "../../../node_modules/admin-lte/dist/css/adminlte.css";
+@import "../../../node_modules/admin-lte/plugins/fontawesome-free/css/all.min.css";
+@import "../../../node_modules/admin-lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css";
+@import "../../../node_modules/admin-lte/plugins/sweetalert2/sweetalert2.css";
+@import "../../../node_modules/admin-lte/plugins/select2/css/select2.css";
+@import "../../../node_modules/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.css";
+
+:root {
+  --primary-color: rgb(128,190,55, 0.5);
+}
+
+ul {
+	margin: 0;
+}
+
+/* ADMIN */
+.content_btn_actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content_btn_actions .btn:nth-child(1),
+.content_btn_actions .btn:nth-child(2) {
+  margin-right: 10px;
+}
+
+/* Spinner */
+.show_spinner {
+	display: flex!important;
+}
+.content_lds-facebook {
+	position: absolute;
+	z-index: 99;
+	display: none;
+	width: 100%;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+.lds-facebook {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-facebook div {
+	z-index: 1040;
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: var(--primary-color);
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+/* Spinner end */
+
+/* Puntos */
+.points .content_btn_actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0.5rem!important;
+}
+/* Puntos end */
+/* ADMIN END */
