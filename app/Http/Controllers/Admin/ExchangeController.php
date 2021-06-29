@@ -155,19 +155,19 @@ class ExchangeController extends Controller
             });
 
             // Enviar email
-            $to_name = 'Carlos Castro';
-            $to_email = 'carlos.castro.1975.2@gmail.com';
+            // $to_name = 'Carlos Castro';
+            // $to_email = 'carlos.castro.1975.2@gmail.com';
             
-            $data = array(
-                'name'      => $pointsUserToUpdate->name, 
-                'points'    => $pointsUserToUpdate->points, 
-            );
+            // $data = array(
+            //     'name'      => $pointsUserToUpdate->name, 
+            //     'points'    => $pointsUserToUpdate->points, 
+            // );
 
-            Mail::send('emails.new-exchange-manual', $data, function($message) use ($to_name, $to_email) {
-            $message->to($to_email, $to_name)
-            ->subject('Laravel Test Mail');
-            $message->from('pepe@algo.com','Test Mail');
-            });
+            // Mail::send('emails.new-exchange-manual', $data, function($message) use ($to_name, $to_email) {
+            // $message->to($to_email, $to_name)
+            // ->subject('Laravel Test Mail');
+            // $message->from('pepe@algo.com','Test Mail');
+            // });
 
             // Mail::to('pablo@librecomunicacion.net')->queue(new NewExchangeManual($pointsUserToUpdate));
 
