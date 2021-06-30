@@ -109,9 +109,14 @@ class UserController extends Controller
 
                 $user = $user->fill( $data );
 
-                $user->points = $user->points + (int)$user->points_old; // actualizamos la posicion "points" con los puntos enviados
-
-                $user->points < 0 ? $user->points = 0 : $user->points;
+                // si la cantidad a descontar (en caso de que vengan valores negativos en el excel)
+                // es mayor a la que el cliente tiene
+                if ( (int)$user->points < (int)$user->points_old ) { 
+                    $pointsToAssign = 0 - (int)$user->points_old; // en tabla PointsAssigned se graban los puntos que tenia hasta ese momento
+                    $user->points = 0;
+                } else {
+                    $user->points = (int)$user->points + (int)$user->points_old; // actualizamos la posicion "points" con los puntos enviados
+                }
 
                 unset($user->points_old); // Elimino la posicion points_old para actualizar la fila
 
@@ -121,7 +126,7 @@ class UserController extends Controller
 
                     PointAssigned::create([
                         'user_id'   => $data['id'],
-                        'quantity'  => $data['points'],
+                        'quantity'  => isset($pointsToAssign) ? $pointsToAssign : (int)$data['points'],
                         'author'    => Auth::user()->name,
                     ]);
 
@@ -219,14 +224,22 @@ class UserController extends Controller
             DB::transaction(function () use($row) { //Si falla alguna ejecucion de la base de datos se retrotrae al punto original
                 $user = User::findOrFail($row[0]); // Cargamos el usuario con cada id del excel
 
-                $user->points = $user->points + (int)$row[3]; // actualizamos la posicion "points" sumando los puntos del excel
+                // si la cantidad a descontar (en caso de que vengan valores negativos en el excel)
+                // es mayor a la que el cliente tiene
+                if ( (int)$row[3] < $user->points  ) { 
+                    $pointsToAssign = 0 - $user->points;
+                    $user->points = 0;
+                } else {
+                    $user->points = $user->points + (int)$row[3]; // actualizamos la posicion "points" sumando los puntos del excel
+                }
+
                 $userUpdated = $user->update();
 
                 if ($userUpdated) {
 
                     PointAssigned::create([
                         'user_id'   => $user['id'],
-                        'quantity'  => $row[3],
+                        'quantity'  => isset($pointsToAssign) ? $pointsToAssign : $row[3],
                         'author'    => Auth::user()->name,
                     ]);
 
