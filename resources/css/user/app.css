@@ -3,14 +3,17 @@
 @import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 
 :root {
-  --primary-color: rgb(128,190,55, 0.5);
+  --primary-color: rgb(152,191,19);
+}
+
+.transition{
+  -webkit-transition: all ease-in-out .3s; /* Safari */
+  transition: all ease-in-out .3s;
 }
 
 ul {
 	margin: 0;
 }
-
-/* USER */
 
 /* Spinner */
 .show_spinner {
@@ -65,5 +68,118 @@ ul {
 }
 /* Spinner end */
 
+/* Login */
+html {
+  height: 100vh!important;
+  background: black;
+  background: url('/img/login/fondo.jpg')!important;
+  background-position: 50% 50%!important;
+  background-repeat: repeat-y!important;
+}
 
-/* USER END */
+body {
+  background: none;
+  height: 100%!important;
+}
+
+#app > .login {
+  height: 100vh!important;
+}
+
+.login,
+.login .container,
+.login .row {
+  height: 100%;
+}
+
+.login .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column!important;
+  height: 100%;
+}
+
+.login .logo {
+  margin-bottom: 30px; 
+  text-align: center;
+  max-width: 70%;
+}
+
+.login .formulario h1 {
+  color: var(--primary-color);
+  font-size: 1.75rem;
+  margin-bottom: 15px;
+}
+
+.login .formulario .form-control {
+  border: 1px solid white;
+  background: black;
+  color: white;
+}
+
+.login .formulario input::placeholder {
+  color: rgb(210, 210, 210);
+}
+
+.login .formulario label {
+  font-size: 0.85rem;
+  color: rgb(210, 210, 210);
+}
+
+.login .formulario .btn-primary {
+  margin-top: 20px;
+  background: var(--primary-color);
+  border: none;
+  margin-bottom: 10px;
+}
+
+.login .formulario .btn-primary:hover {
+  background: white;
+  color: var(--primary-color);
+}
+
+.login .formulario a {
+  color: var(--primary-color);
+  font-size: 0.85rem;
+}
+
+/* Login end */
+
+/* MEDIA QUERIES */
+@media (min-width: 576px) {
+
+  /* Login */
+  .login .row {
+    flex-direction: row!important;
+  }  
+  /* Login end */
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+  /* Login */
+  .login .logo {
+    max-width: 50%;
+  }
+  /* Login end */
+
+}
+
+@media (min-width: 1200px) {
+  /* Login */
+  .login .logo {
+    max-width: 40%;
+  }
+  /* Login end */
+}
+
+@media (min-width: 1400px) {
+
+}
+

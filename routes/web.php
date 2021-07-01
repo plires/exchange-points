@@ -6,6 +6,8 @@ use App\Imports\UsersImport;
 use Illuminate\Support\Facades\Route;
 use \Illuminate\Database\Eloquent\SoftDeletes;
 
+Route::get('/', 'HomeController@index')->name('home');
+
 Route::prefix('admin')->name('admin.')->group(function () {
   Route::resource('users', Admin\UserController::class);
 	Route::resource('products', Admin\ProductController::class);

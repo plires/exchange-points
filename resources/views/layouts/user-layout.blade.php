@@ -28,7 +28,7 @@
     
 <!-- js -->
 
-<script src="js/user/app.js" defer></script>
+{{-- <script src="js/user/app.js" defer></script> --}}
 
 @yield('js')
 </body>
