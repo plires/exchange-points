@@ -9,7 +9,7 @@
 
   <div class="row categories">
 
-    <div class="col-10 m-auto">
+    <div class="col-12 col-md-10 m-auto">
 
       <h1 class="mb-5 mt-3 text-center">Listado de Categorías</h1>
 
@@ -59,7 +59,6 @@
                   </a>
                 </td>
                 <td class="d-flex justify-content-end content_btn_actions">
-                  <button @click="showModalProducts(category.id)" type="button" class="btn btn-outline-success btn-sm">Ver Productos</button>
                   <button @click="showFormCategoryEdit(category.id)" type="button" class="btn btn-outline-warning btn-sm">Editar</button>
                   <button @click="deleteCategory(category.id)" type="button" class="btn btn-outline-danger btn-sm">Eliminar</button>
                 </td>

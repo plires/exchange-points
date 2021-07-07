@@ -6,7 +6,7 @@
   
   <div class="row users">
 
-    <div class="col-10 m-auto">
+    <div class="col-12 col-md-10 m-auto">
 
       <h1 class="mb-5 mt-3 text-center">Visualizacion de Puntos Asignados</h1>
 

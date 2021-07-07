@@ -170,10 +170,6 @@ const app = new Vue({
       }
     },
 
-    showModalProducts(category_id){
-      console.log(category_id);
-    },
-
     resetCategoryForm() {
 
       this.setEditCategoryForm(false)

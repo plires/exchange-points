@@ -6,7 +6,7 @@
   
   <div class="row points">
 
-    <div class="col-6 m-auto">
+    <div class="col-12 col-md-6 m-auto">
 
       <h1 class="mb-5 mt-3 text-center">Importación de Plantilla</h1>
 

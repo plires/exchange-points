@@ -1,8 +1,6 @@
-<footer class="main-footer">
-  <!-- To the right -->
-  <div class="float-right d-none d-sm-inline">
-    Anything you want
+<footer class="main-footer d-flex justify-content-between align-items-center">
+  <strong>Copyright &copy; <?= date('Y') ?> Monster Miles.</strong> 
+  <div class="text-right d-none d-sm-inline">
+    <img class="img-fluid" src="{{ asset('img/admin/logo-footer-admin.png') }}" alt="logo monster miles footer" style="opacity: .8">
   </div>
-  <!-- Default to the left -->
-  <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
 </footer>

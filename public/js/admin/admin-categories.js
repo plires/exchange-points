@@ -64908,9 +64908,6 @@ var app = new Vue({
         this.modeCategoryEdit = false;
       }
     },
-    showModalProducts: function showModalProducts(category_id) {
-      console.log(category_id);
-    },
     resetCategoryForm: function resetCategoryForm() {
       this.setEditCategoryForm(false);
       this.cleanErrors();
