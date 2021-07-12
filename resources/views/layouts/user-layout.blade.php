@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 
-<html lang="{{ app()->getLocale() }}">
+@if(isset($current))
+  <html class="{{ $current }}" lang="{{ app()->getLocale() }}">
+@else
+  <html lang="{{ app()->getLocale() }}">
+@endif
+
 <head>
 
   <!-- CSRF Token -->
@@ -13,7 +18,7 @@
   @yield('css')
 
   <!-- Css -->
-  <link rel="stylesheet" href="{{ asset('css/user/app.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/app/app.css') }}">
 
 </head>
 <body>

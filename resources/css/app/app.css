@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import "../../../node_modules/admin-lte/plugins/fontawesome-free/css/all.min.css";
+@import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "../../../node_modules/slick-carousel/slick/slick.css";
+@import "../../../node_modules/slick-carousel/slick/slick-theme.css";
+
+@import "comunes.css";
+@import "login.css";
+@import "cart.css";
+@import "products-featured.css";
+@import "modal-product-catalog.css";
+@import "catalog.css";

@@ -160,8 +160,11 @@ class ProductController extends Controller
     {
 
         $image = Image::make(Storage::get($imageToOptimize))
-            ->widen(800)
-            ->limitColors(255)
+            // ->widen(400)
+            // ->limitColors(255)
+            ->resize(400, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })
             ->encode();
 
         Storage::put($imageToOptimize, (string) $image);

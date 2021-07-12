@@ -57,11 +57,11 @@ class LoginController extends Controller
              return redirect('/admin/users');
              break;
           case 'Usuario':
-             return redirect('/exchange');
+             return redirect('/');
              break; 
 
           default:
-             return redirect('/exchange'); 
+             return redirect('/'); 
              break;
         }
 

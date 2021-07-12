@@ -117,9 +117,9 @@ const app = new Vue({
 
     sendUser() {
 
-      let checked = this.checkFormUser()
+      // let checked = this.checkFormUser()
 
-      if (checked) {
+      if (true) {
         this.saveUser(this.formUser)
       }
 
@@ -160,7 +160,7 @@ const app = new Vue({
       })
       .catch(errorsLaravel => {
 
-        msgError = errorsLaravel.response.data
+        let msgError = errorsLaravel.response.data
       	this.laravelErrorHandling(errorsLaravel.response.data, msgError)
         this.loading()
         

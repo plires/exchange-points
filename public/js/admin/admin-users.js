@@ -52668,7 +52668,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
- * Vue.js v2.6.13
+ * Vue.js v2.6.14
  * (c) 2014-2021 Evan You
  * Released under the MIT License.
  */
@@ -55281,7 +55281,7 @@ function normalizeScopedSlot(normalSlots, key, fn) {
     var vnode = res && res[0];
     return res && (
       !vnode ||
-      (vnode.isComment && !isAsyncPlaceholder(vnode)) // #9658, #10391
+      (res.length === 1 && vnode.isComment && !isAsyncPlaceholder(vnode)) // #9658, #10391
     ) ? undefined
       : res
   };
@@ -58152,7 +58152,7 @@ Object.defineProperty(Vue, 'FunctionalRenderContext', {
   value: FunctionalRenderContext
 });
 
-Vue.version = '2.6.13';
+Vue.version = '2.6.14';
 
 /*  */
 
@@ -64755,10 +64755,10 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/css/user/app.css":
-/*!************************************!*\
-  !*** ./resources/css/user/app.css ***!
-  \************************************/
+/***/ "./resources/css/app/app.css":
+/*!***********************************!*\
+  !*** ./resources/css/app/app.css ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -64940,9 +64940,8 @@ var app = new Vue({
       return re.test(email);
     },
     sendUser: function sendUser() {
-      var checked = this.checkFormUser();
-
-      if (checked) {
+      // let checked = this.checkFormUser()
+      if (true) {
         this.saveUser(this.formUser);
       }
     },
@@ -64973,7 +64972,7 @@ var app = new Vue({
 
         _this3.loading();
       })["catch"](function (errorsLaravel) {
-        msgError = errorsLaravel.response.data;
+        var msgError = errorsLaravel.response.data;
 
         _this3.laravelErrorHandling(errorsLaravel.response.data, msgError);
 
@@ -65234,16 +65233,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /***/ }),
 
 /***/ 0:
-/*!**************************************************************************************************************************************!*\
-  !*** multi ./resources/js/admin/admin-users.js ./resources/sass/app.scss ./resources/css/admin/app.css ./resources/css/user/app.css ***!
-  \**************************************************************************************************************************************/
+/*!*************************************************************************************************************************************!*\
+  !*** multi ./resources/js/admin/admin-users.js ./resources/sass/app.scss ./resources/css/admin/app.css ./resources/css/app/app.css ***!
+  \*************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Users/admin/Dropbox/Proyectos/monster/resources/js/admin/admin-users.js */"./resources/js/admin/admin-users.js");
 __webpack_require__(/*! /Users/admin/Dropbox/Proyectos/monster/resources/sass/app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! /Users/admin/Dropbox/Proyectos/monster/resources/css/admin/app.css */"./resources/css/admin/app.css");
-module.exports = __webpack_require__(/*! /Users/admin/Dropbox/Proyectos/monster/resources/css/user/app.css */"./resources/css/user/app.css");
+module.exports = __webpack_require__(/*! /Users/admin/Dropbox/Proyectos/monster/resources/css/app/app.css */"./resources/css/app/app.css");
 
 
 /***/ })

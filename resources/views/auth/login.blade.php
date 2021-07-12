@@ -9,7 +9,7 @@
         <div class="row">
 
             <div class="col-md-12 text-center">
-                <img class="img-fluid logo" src="{{ asset('/img/login/logo-monster.png') }}" alt="logo monster">
+                <img class="img-fluid logo" src="{{ asset('/img/login/logo-principal.png') }}" alt="logo monster">
             </div>
 
 
@@ -95,7 +95,7 @@
 
     </div>
 
-</loginn>
+</section>
 
 @endsection
 

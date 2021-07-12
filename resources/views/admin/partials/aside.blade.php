@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="index3.html" class="brand-link">
+  <a target="_blank" rel="noopener noreferrer" href="/" class="brand-link">
     <img src="{{ asset('img/admin/logo-admin.png') }}" alt="logo monster miles" style="opacity: .8">
     <span class="brand-text font-weight-light">Monster Miles</span>
   </a>

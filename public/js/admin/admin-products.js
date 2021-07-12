@@ -52666,7 +52666,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
- * Vue.js v2.6.13
+ * Vue.js v2.6.14
  * (c) 2014-2021 Evan You
  * Released under the MIT License.
  */
@@ -55279,7 +55279,7 @@ function normalizeScopedSlot(normalSlots, key, fn) {
     var vnode = res && res[0];
     return res && (
       !vnode ||
-      (vnode.isComment && !isAsyncPlaceholder(vnode)) // #9658, #10391
+      (res.length === 1 && vnode.isComment && !isAsyncPlaceholder(vnode)) // #9658, #10391
     ) ? undefined
       : res
   };
@@ -58150,7 +58150,7 @@ Object.defineProperty(Vue, 'FunctionalRenderContext', {
   value: FunctionalRenderContext
 });
 
-Vue.version = '2.6.13';
+Vue.version = '2.6.14';
 
 /*  */
 
@@ -64904,9 +64904,8 @@ var app = new Vue({
       return false;
     },
     sendProduct: function sendProduct() {
-      var checked = this.checkFormProduct();
-
-      if (checked) {
+      // let checked = this.checkFormProduct()
+      if (true) {
         this.saveProduct(this.formProduct);
       }
     },
@@ -64933,12 +64932,12 @@ var app = new Vue({
         formData.append('_method', 'PUT');
         var url = '/admin/products/' + formProduct.id;
         var verb = 'editado';
-        var _msgError = "Error al editar este producto.";
+        var msgError = "Error al editar este producto.";
       } else {
         formData.append('_method', 'POST');
         var axiosMethod = axios.post;
         var url = '/admin/products/';
-        var _msgError2 = "Error al agregar este producto.";
+        var _msgError = "Error al agregar este producto.";
         var verb2 = 'editar';
       }
 
@@ -64962,7 +64961,11 @@ var app = new Vue({
 
         _this3.loading();
       })["catch"](function (errorsLaravel) {
+        var msgError = errorsLaravel.response.data;
+
         _this3.laravelErrorHandling(errorsLaravel.response.data, msgError);
+
+        _this3.loading();
       });
     },
     showImage: function showImage(image) {

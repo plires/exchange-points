@@ -103,9 +103,9 @@ const app = new Vue({
 
     sendProduct() {
 
-      let checked = this.checkFormProduct()
+      // let checked = this.checkFormProduct()
 
-      if (checked) { 
+      if (true) { 
         this.saveProduct(this.formProduct)
       }
 
@@ -171,7 +171,9 @@ const app = new Vue({
       })
       .catch(errorsLaravel => {
 
+        let msgError = errorsLaravel.response.data
       	this.laravelErrorHandling(errorsLaravel.response.data, msgError)
+        this.loading()
         
       })
 

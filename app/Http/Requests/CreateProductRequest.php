@@ -33,7 +33,7 @@ class CreateProductRequest extends FormRequest
                 'max:255',
                 $this->route('product') ? Rule::unique('products')->ignore($this->route('product')->id) : 'unique:products'
             ],
-            'image'             => ['max:2000', 'image'],
+            'image'             => ['max:2000', 'image', 'mimes:jpeg,png,jpg,gif'],
             'name'              => ['required', 'string', 'max:255'],
             'price'             => ['required', 'numeric', 'min:0'],
             'description'       => ['string', 'nullable'],
@@ -64,7 +64,8 @@ class CreateProductRequest extends FormRequest
             'category_id.min'       => 'La categoría seleccionada no es válida', 
             'category_id.not_in'    => 'La categoría seleccionada no es válida', 
             'image.image'           => 'Subí una imágen válida', 
-            'image.max'             => 'La imágen no puede superar los 2MB'
+            'image.max'             => 'La imágen no puede superar los 2MB',
+            'image.mimes'           => 'La imágen debe ser: jpeg, png, jpg, gif'
         ];
     }
 

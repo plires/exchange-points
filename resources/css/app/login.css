@@ -1,0 +1,105 @@
+/* Login */
+html {
+  height: 100vh!important;
+  background: black;
+  background: url('/img/login/fondo.jpg')!important;
+  background-position: center!important;
+  background-repeat: repeat-y!important;
+  background-size: cover!important;
+}
+
+body {
+  background: none;
+  height: 100%!important;
+}
+
+#app > .login {
+  height: 100vh!important;
+}
+
+.login,
+.login .container,
+.login .row {
+  height: 100%;
+}
+
+.login .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column!important;
+  height: 100%;
+}
+
+.login .logo {
+  margin-bottom: 30px; 
+  text-align: center;
+}
+
+.login .formulario h1 {
+  color: var(--primary-color);
+  font-size: 1.75rem;
+  margin-bottom: 15px;
+}
+
+.login .formulario .form-control {
+  border: 1px solid white;
+  background: black;
+  color: white;
+}
+
+.login .formulario input::placeholder {
+  color: rgb(210, 210, 210);
+}
+
+.login .formulario label {
+  font-size: 0.85rem;
+  color: rgb(210, 210, 210);
+}
+
+.login .formulario .btn-primary {
+  margin-top: 20px;
+  background: var(--primary-color);
+  border: none;
+  margin-bottom: 10px;
+}
+
+.login .formulario .btn-primary:hover {
+  background: white;
+  color: var(--primary-color);
+}
+
+.login .formulario a {
+  color: var(--primary-color);
+  font-size: 0.85rem;
+}
+/* Login end */
+
+
+/* MEDIA QUERIES */
+@media (min-width: 576px) {
+
+  /* Login */
+  .login .row {
+    flex-direction: row!important;
+  }  
+  /* Login end */
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1400px) {
+
+}
+
