@@ -38,6 +38,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::get('/', 'App\ProductsFeaturedController@catalog')->name('catalog');
 Route::get('/products-featured', 'App\ProductsFeaturedController@productFeatured')->name('product-featured');
 Route::get('exchange/get_user_auth', 'App\ProductsFeaturedController@getUserAuth')->name('get-user-auth');
+Route::get('exchange/get_products', 'App\ProductsFeaturedController@getProducts')->name('get-products');
 
 Auth::routes();
 
