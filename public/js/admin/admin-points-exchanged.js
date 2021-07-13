@@ -64785,6 +64785,8 @@ var app = new Vue({
     products: [],
     usersNews: [],
     exchanges: [],
+    totalExchangesDetail: [],
+    exchangesDetail: [],
     user_id: 0,
     new_user_id: 1,
     product_id: 1,
@@ -64793,6 +64795,8 @@ var app = new Vue({
     subtotal_amount: 0,
     paginate: ['exchanges'],
     authUser: {},
+    total_amount: 0,
+    items: 0,
     errors: []
   },
   mixins: [_functions_js__WEBPACK_IMPORTED_MODULE_2__["default"]],
@@ -64860,7 +64864,7 @@ var app = new Vue({
         }, _callee2);
       }))();
     },
-    getProducts: function getProducts() {
+    getExchangedDetail: function getExchangedDetail() {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
@@ -64872,11 +64876,11 @@ var app = new Vue({
                 _this3.loading();
 
                 _context3.next = 3;
-                return axios.get('/admin/get_products');
+                return axios.get('/admin/get_exchanges_details');
 
               case 3:
                 response = _context3.sent;
-                _this3.products = response.data.sort().sort(function (a, b) {
+                _this3.totalExchangesDetail = response.data.sort().sort(function (a, b) {
                   return b.id - a.id;
                 });
 
@@ -64890,11 +64894,68 @@ var app = new Vue({
         }, _callee3);
       }))();
     },
+    getProducts: function getProducts() {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _this4.loading();
+
+                _context4.next = 3;
+                return axios.get('/admin/get_products');
+
+              case 3:
+                response = _context4.sent;
+                _this4.products = response.data.sort().sort(function (a, b) {
+                  return b.id - a.id;
+                });
+
+                _this4.loading();
+
+              case 6:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    },
     getNameUser: function getNameUser(user_id) {
       var user = this.users.filter(function (user) {
         return user.id == user_id;
       });
       return user[0].name;
+    },
+    getNameProduct: function getNameProduct(product_id) {
+      var product = this.products.filter(function (product) {
+        return product.id == product_id;
+      });
+      return product[0].name;
+    },
+    showImage: function showImage(product_id) {
+      var image = this.products.filter(function (product) {
+        return product.id == product_id;
+      });
+
+      if (!image[0].image) {
+        return '/img/no-image.gif';
+      } else if (image[0].image.includes('http')) {
+        return image[0].image;
+      } else {
+        return '/storage/' + image[0].image;
+      }
+    },
+    viewDetailExchange: function viewDetailExchange(id) {
+      var exchange = this.exchanges.filter(function (exchange) {
+        return exchange.id == id;
+      });
+      this.exchangesDetail = this.totalExchangesDetail.filter(function (exchangeDetail) {
+        return exchangeDetail.exchange_id == id;
+      });
     },
     createAlert: function createAlert(title, text, icon, btnTxt) {
       _node_modules_admin_lte_plugins_sweetalert2_sweetalert2_all_js__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
@@ -64965,7 +65026,7 @@ var app = new Vue({
       return hh + ':' + min;
     },
     deleteExchange: function deleteExchange(exchange_id) {
-      var _this4 = this;
+      var _this5 = this;
 
       _node_modules_admin_lte_plugins_sweetalert2_sweetalert2_all_js__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
         title: 'Estas seguro?',
@@ -64977,35 +65038,38 @@ var app = new Vue({
         confirmButtonText: 'Si, eliminar!'
       }).then(function (result) {
         if (result.isConfirmed) {
-          _this4.loading();
+          _this5.loading();
 
           axios.post('/admin/points-exchanged/' + exchange_id, {
             _method: 'DELETE'
           }).then(function (response) {
             _node_modules_admin_lte_plugins_sweetalert2_sweetalert2_all_js__WEBPACK_IMPORTED_MODULE_1___default.a.fire('Eliminado!', 'El canje de ' + response.data.exchanged_deleted.points_quantity + ' puntos ha sido eliminado.', 'success');
 
-            _this4.getPointsExchanged();
+            _this5.getPointsExchanged();
 
-            _this4.loading();
+            _this5.getExchangedDetail();
+
+            _this5.loading();
           })["catch"](function (errorsLaravel) {
             var msgError = "La operación no pudo ser eliminada.";
 
-            _this4.laravelErrorHandling(errorsLaravel.response.data, msgError);
+            _this5.laravelErrorHandling(errorsLaravel.response.data, msgError);
           });
         }
       });
     },
     checkFormExchange: function checkFormExchange() {
-      var user = this.userObject;
+      var name = this.userObject.name;
+      var points = this.userObject.points;
       var products = this.productsCart;
 
-      if (Object.keys(user).length > 0 && Object.keys(products).length > 0 && this.subtotal_amount <= user.points) {
+      if (name && Object.keys(products).length > 0 && this.subtotal_amount <= points) {
         return true;
       }
 
       this.cleanErrors();
 
-      if (Object.keys(user).length === 0) {
+      if (name == undefined) {
         this.errors.push('Falta cargar el usuario.');
       }
 
@@ -65013,14 +65077,14 @@ var app = new Vue({
         this.errors.push('No hay ningún Producto seleccionado.');
       }
 
-      if (this.subtotal_amount > user.points) {
+      if (this.subtotal_amount > points) {
         this.errors.push('El usuario no tiene los puntos suficientes para este canje.');
       }
 
       return false;
     },
     sendExchanged: function sendExchanged() {
-      var _this5 = this;
+      var _this6 = this;
 
       var checked = this.checkFormExchange();
 
@@ -65036,17 +65100,19 @@ var app = new Vue({
         axios.post('/admin/points-exchanged/', formData).then(function (response) {
           $('#modal-exchanged').modal("hide");
 
-          _this5.getUsers();
+          _this6.getUsers();
 
-          _this5.getPointsExchanged();
+          _this6.getPointsExchanged();
 
-          _this5.getProducts();
+          _this6.getExchangedDetail();
 
-          _this5.createAlert('Éxito', response.data.exchanged_created, 'success', 'Cerrar');
+          _this6.getProducts();
+
+          _this6.createAlert('Éxito', response.data.exchanged_created, 'success', 'Cerrar');
         })["catch"](function (errorsLaravel) {
           var msgError = "La operación no pudo completarse.";
 
-          _this5.laravelErrorHandling(errorsLaravel.response.data, msgError);
+          _this6.laravelErrorHandling(errorsLaravel.response.data, msgError);
         });
       }
     },
@@ -65069,12 +65135,36 @@ var app = new Vue({
       }
 
       return this.subtotal_amount;
+    },
+    total: function total() {
+      this.total_amount = 0;
+
+      if (this.exchangesDetail.length > 0) {
+        for (var product in this.exchangesDetail) {
+          this.total_amount += this.exchangesDetail[product].price * this.exchangesDetail[product].quantity;
+        }
+      }
+
+      return this.total_amount;
+    },
+    countItems: function countItems() {
+      this.items = 0;
+
+      if (this.exchangesDetail.length > 0) {
+        for (var product in this.exchangesDetail) {
+          console.log(product);
+          this.items += this.exchangesDetail[product].quantity;
+        }
+      }
+
+      return this.items;
     }
   },
   created: function created() {
     this.getUsers();
     this.getAuthUser();
     this.getPointsExchanged();
+    this.getExchangedDetail();
     this.getProducts();
   }
 }); //Initialize Select2 Elements

@@ -17,6 +17,8 @@ const app = new Vue({
     products: [],
     usersNews: [],
     exchanges: [],
+    totalExchangesDetail: [],
+    exchangesDetail: [],
     user_id: 0,
     new_user_id: 1,
     product_id: 1,
@@ -25,6 +27,8 @@ const app = new Vue({
     subtotal_amount : 0,
     paginate: ['exchanges'],
     authUser: {},
+    total_amount: 0,
+    items: 0,
     errors: []
   },
 
@@ -47,6 +51,13 @@ const app = new Vue({
       this.loading()
     },
 
+    async getExchangedDetail() {
+      this.loading()
+      let response = await axios.get('/admin/get_exchanges_details')
+      this.totalExchangesDetail = response.data.sort().sort((a, b) => b.id - a.id)
+      this.loading()
+    },
+
     async getProducts() {
       this.loading()
       let response = await axios.get('/admin/get_products')
@@ -56,7 +67,32 @@ const app = new Vue({
 
     getNameUser(user_id) {
       let user = this.users.filter( (user) => user.id == user_id )
-      return user[0].name
+      return user[0].name 
+    },
+
+    getNameProduct(product_id) {
+      let product = this.products.filter( (product) => product.id == product_id )
+      return product[0].name 
+    },
+
+    showImage(product_id) {
+      let image = this.products.filter( (product) => product.id == product_id )
+
+      if (!image[0].image) {
+        return '/img/no-image.gif'
+      } else if ( image[0].image.includes('http') ) {
+        return image[0].image
+      } else {
+        return '/storage/' + image[0].image
+      }
+
+    },
+
+    viewDetailExchange(id) {
+
+      let exchange = this.exchanges.filter( (exchange) => exchange.id == id )
+      this.exchangesDetail = this.totalExchangesDetail.filter( (exchangeDetail) => exchangeDetail.exchange_id == id )
+
     },
 
     createAlert(title, text, icon, btnTxt) {
@@ -158,6 +194,7 @@ const app = new Vue({
             )
 
             this.getPointsExchanged()
+            this.getExchangedDetail()
 
             this.loading()
 
@@ -176,16 +213,17 @@ const app = new Vue({
 
     checkFormExchange: function () {
 
-      let user =  this.userObject
+      let name =  this.userObject.name
+      let points =  this.userObject.points
       let products =  this.productsCart
 
-      if ( Object.keys(user).length > 0 && Object.keys(products).length > 0 && this.subtotal_amount <= user.points  ) {
+      if ( name && Object.keys(products).length > 0 && this.subtotal_amount <= points  ) {
         return true
       } 
 
       this.cleanErrors()
 
-      if (Object.keys(user).length === 0) {
+      if (name == undefined) {
         this.errors.push('Falta cargar el usuario.')
       }
 
@@ -193,7 +231,7 @@ const app = new Vue({
         this.errors.push('No hay ningún Producto seleccionado.');
       }
 
-      if (this.subtotal_amount > user.points) {
+      if (this.subtotal_amount > points) {
         this.errors.push('El usuario no tiene los puntos suficientes para este canje.');
       }
 
@@ -223,6 +261,7 @@ const app = new Vue({
           $('#modal-exchanged').modal("hide")
           this.getUsers()
           this.getPointsExchanged()
+          this.getExchangedDetail()
           this.getProducts()
 
           this.createAlert(
@@ -265,7 +304,40 @@ const app = new Vue({
         this.subtotal_amount += (parseInt(this.productsCart[product].price) * parseInt(this.productsCart[product].quantity));
       }
       return this.subtotal_amount;
-    }
+    },
+
+    total: function() {
+
+      this.total_amount = 0
+
+      if (this.exchangesDetail.length > 0) {
+
+        for (let product in this.exchangesDetail) {
+          this.total_amount += this.exchangesDetail[product].price * this.exchangesDetail[product].quantity
+        }
+
+      }
+
+      return this.total_amount
+
+    },
+
+    countItems: function() {
+
+      this.items = 0
+
+      if (this.exchangesDetail.length > 0) {
+
+        for (let product in this.exchangesDetail) {
+          console.log(product)
+          this.items += this.exchangesDetail[product].quantity
+        }
+
+      }
+
+      return this.items
+
+    },
 
   },
 
@@ -273,6 +345,7 @@ const app = new Vue({
     this.getUsers()
     this.getAuthUser()
     this.getPointsExchanged()
+    this.getExchangedDetail()
     this.getProducts()
   }
 

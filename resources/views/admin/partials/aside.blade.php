@@ -73,15 +73,6 @@
         </li>
         {{-- Puntos end --}}
 
-        {{-- Visualizacion de Canjes --}}
-        <li class="nav-item">
-          <a href="{{ route('admin.points-exchanged.index') }}" class="nav-link">
-            <i class="fas fa-exchange-alt mr-1"></i>
-            CANJES REALIZADOS
-          </a>
-        </li>
-        {{-- Visualizacion de Canjes --}}
-
         {{-- Puntos Asignados --}}
         <li class="nav-item">
           <a href="{{ route('admin.points-assigned.index') }}" class="nav-link">
@@ -90,6 +81,15 @@
           </a>
         </li>
         {{-- Puntos Asignados --}}
+
+        {{-- Visualizacion de Canjes --}}
+        <li class="nav-item">
+          <a href="{{ route('admin.points-exchanged.index') }}" class="nav-link">
+            <i class="fas fa-exchange-alt mr-1"></i>
+            CANJES REALIZADOS
+          </a>
+        </li>
+        {{-- Visualizacion de Canjes --}}
 
         {{-- Productos --}}
         <li class="nav-item">

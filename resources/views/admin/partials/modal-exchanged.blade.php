@@ -4,7 +4,7 @@
 
     <div class="modal-content">
 
-      <div class="bg-warning modal-header">
+      <div class="bg-primary modal-header">
         <h4 class="modal-title">Agregar Canje Manualmente</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -77,19 +77,17 @@
                         <input disabled type="text" class="form-control" :value="product.price">
                       </div>
 
-                      <div class="form-group col-md-2 d-flex justify-content-end align-items-center">
-                        <button @click="removeProduct(product)" type="button" class="btn btn-danger btn-sm">-</button>
-                        <span class="badge badge-primary product_name_cart"> 
-                          <span class="badge badge-success product_quantity_cart">@{{ product.quantity }}</span> 
-                        </span>
-                        <button @click="addProduct(product.id)" type="button" class="btn btn-success btn-sm">+</button>
+                      <div class="form-group col-md-2 content_buttons">
+                        <button @click="removeProduct(product)" type="button" class="btn btn-primary btn-sm">-</button>
+                        <span class="product_quantity_cart">@{{ product.quantity }}</span> 
+                        <button @click="addProduct(product.id)" type="button" class="btn btn-primary btn-sm">+</button>
                       </div>
                     </li>
                     
                   </ul>
 
-                  <div class="w-100 d-flex justify-content-end">
-                    <p>Total del Canje: $ @{{ subtotal }}</p>
+                  <div class="w-100 d-flex justify-content-end align-items-center mt-5">
+                    <p class="total">Total del Canje: $ @{{ subtotal }}</p>
                   </div>
 
                 </div>
@@ -103,7 +101,7 @@
 
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="button" type="submit" @click.prevent="sendExchanged" name="send" class="btn btn-warning">Guardar Canje</button>
+          <button type="button" type="submit" @click.prevent="sendExchanged" name="send" class="btn btn-primary">Guardar Canje</button>
         </div>
       </form>
 

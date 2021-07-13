@@ -22,6 +22,7 @@ const app = new Vue({
       email:'',
       phone:'',
       points_old: '',
+      points_bdd: '',
       points: '',
     },
     paginate: ['users'],
@@ -50,21 +51,28 @@ const app = new Vue({
     checkformPoints: function () {
 
       this.cleanErrors()
-      let points = parseFloat(this.formPoints.points)
 
-      if ( points && Number.isInteger(points) ) {
+      let pointsNew = parseFloat(this.formPoints.points)
+      let pointsBdd = parseFloat(this.formPoints.points_bdd)
+      let pointsOld = parseFloat(this.formPoints.points_old)
+
+      if ( pointsNew && Number.isInteger(pointsNew) && pointsBdd === pointsOld  ) {
         return true
       }
 
-      if (!points) {
+      if (pointsBdd !== pointsOld) {
+        this.errors.push('Se modificó el valor de puntos manualmente. Refresca la página.')
+      }
+
+      if (!pointsNew) {
         this.errors.push('Debe incluir los puntos a sumar o restar.')
       }
 
-      if (points == 0) {
+      if (pointsNew == 0) {
         this.errors.push('Ingrersá un valor de puntos diferente a 0.')
       }
 
-      if (!Number.isInteger(points)) {
+      if (!Number.isInteger(pointsNew)) {
         this.errors.push('Sólo se aceptan valores enteros.')
       }
 
@@ -76,7 +84,7 @@ const app = new Vue({
 
       let checked = this.checkformPoints()
 
-      if (checked) { //CAMBIARRRRR //CAMBIARRRRR //CAMBIARRRRR //CAMBIARRRRR //CAMBIARRRRR //CAMBIARRRRR //CAMBIARRRRR //CAMBIARRRRR //CAMBIARRRRR 
+      if (checked) { 
         this.savePoints(this.formPoints) 
       }
 
@@ -120,6 +128,7 @@ const app = new Vue({
 
         let msgError = "La operación no pudo completarse.."
       	this.laravelErrorHandling(errorsLaravel.response.data, msgError)
+        loading()
         
       })
 
@@ -138,13 +147,12 @@ const app = new Vue({
 
       this.formPoints = {
         id: userPoints[0].id,
-        points_old: userPoints[0].points
+        name: userPoints[0].name,
+        email: userPoints[0].email,
+        points_old: userPoints[0].points,
+        points_bdd: userPoints[0].points
       }
 
-      $("#name").val(userPoints[0].name)[0].dispatchEvent(new Event('input'))
-      $("#email").val(userPoints[0].email)[0].dispatchEvent(new Event('input'))
-      $("#points_old").val(userPoints[0].points)[0].dispatchEvent(new Event('input'))
-    	
     },
 
     createAlert(title, text, icon, btnTxt) {

@@ -89,4 +89,11 @@ class ExchangeDetailController extends Controller
     {
         //
     }
+
+    public function getExchangesDetails()
+    {   
+        return ExchangeDetail::get();
+    }
+
+
 }

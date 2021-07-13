@@ -54793,4 +54793,47 @@ ul {
   padding-right: 0.5rem!important;
 }
 /* Puntos end */
+
+/* Modal Exchanged */
+#modal-exchanged .content_buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#modal-exchanged .product_quantity_cart {
+  width: 100%;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #cccdd2;
+  height: 38px;
+}
+
+#modal-exchanged .btn-primary {
+  height: 38px;
+  min-width: 30px;
+}
+
+#modal-exchanged .total {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+#modal-exchangedDetail .col-1 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#modal-exchangedDetail .image_list {
+  width: 38px;
+  max-width: 38px;
+  height: 38px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/* Modal Exchanged end */
+
 /* ADMIN END */

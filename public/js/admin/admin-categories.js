@@ -64824,8 +64824,9 @@ var app = new Vue({
       return false;
     },
     sendCategory: function sendCategory() {
-      // let checked = this.checkformCategories()
-      if (true) {
+      var checked = this.checkformCategories();
+
+      if (checked) {
         this.saveCategory(this.formCategories);
       }
     },
@@ -64835,12 +64836,12 @@ var app = new Vue({
       if (this.modeCategoryEdit) {
         var axiosMethod = axios.put;
         var url = '/admin/categories/' + formCategory.id;
-        var _msgError = "Error al editar esta categoría.";
+        var msgError = "Error al editar esta categoría.";
         var verb = 'editada';
       } else {
         var axiosMethod = axios.post;
         var url = '/admin/categories';
-        var _msgError2 = "Error al crear esta categoría.";
+        var _msgError = "Error al crear esta categoría.";
         var verb = 'agregada';
       }
 
@@ -64858,7 +64859,11 @@ var app = new Vue({
 
         _this2.loading();
       })["catch"](function (errorsLaravel) {
+        var msgError = errorsLaravel.response.data;
+
         _this2.laravelErrorHandling(errorsLaravel.response.data, msgError);
+
+        _this2.loading();
       });
     },
     deleteCategory: function deleteCategory(id) {

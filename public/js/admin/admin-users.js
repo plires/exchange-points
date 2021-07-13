@@ -64811,6 +64811,7 @@ var app = new Vue({
       name: '',
       role_id: 2,
       email: '',
+      points: '',
       birthday: '',
       phone: '',
       street: '',
@@ -64940,8 +64941,9 @@ var app = new Vue({
       return re.test(email);
     },
     sendUser: function sendUser() {
-      // let checked = this.checkFormUser()
-      if (true) {
+      var checked = this.checkFormUser();
+
+      if (checked) {
         this.saveUser(this.formUser);
       }
     },
@@ -65029,25 +65031,24 @@ var app = new Vue({
       }
     },
     fillInputsFormUser: function fillInputsFormUser(id) {
-      var idTemp, roleTemp;
-      this.users.forEach(function (user) {
-        if (user.id == id) {
-          idTemp = user.id;
-          $("#name").val(user.name)[0].dispatchEvent(new Event('input'));
-          $("#email").val(user.email)[0].dispatchEvent(new Event('input'));
-          $("#birthday_input").val(user.birthday)[0].dispatchEvent(new Event('input'));
-          $("#phone").val(user.phone)[0].dispatchEvent(new Event('input'));
-          $("#street").val(user.street)[0].dispatchEvent(new Event('input'));
-          $("#street_number").val(user.street_number)[0].dispatchEvent(new Event('input'));
-          $("#city").val(user.city)[0].dispatchEvent(new Event('input'));
-          $("#province").val(user.province)[0].dispatchEvent(new Event('input'));
-          $("#postal_code").val(user.postal_code)[0].dispatchEvent(new Event('input'));
-          $("#country").val(user.country)[0].dispatchEvent(new Event('input'));
-          roleTemp = user.role_id;
-        }
+      var user = this.users.filter(function (user) {
+        return user.id == id;
       });
-      this.formUser.id = idTemp;
-      this.formUser.role_id = roleTemp;
+      this.formUser = {
+        id: user[0].id,
+        name: user[0].name,
+        role_id: user[0].role_id,
+        email: user[0].email,
+        points: user[0].points,
+        birthday: user[0].birthday,
+        phone: user[0].phone,
+        street: user[0].street,
+        street_number: user[0].street_number,
+        city: user[0].city,
+        province: user[0].province,
+        country: user[0].country,
+        postal_code: user[0].postal_code
+      };
     },
     createAlert: function createAlert(title, text, icon, btnTxt) {
       _node_modules_admin_lte_plugins_sweetalert2_sweetalert2_all_js__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
@@ -65065,6 +65066,7 @@ var app = new Vue({
         name: '',
         role_id: 2,
         email: '',
+        points: '',
         birthday: '',
         phone: '',
         street: '',

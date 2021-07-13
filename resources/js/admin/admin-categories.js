@@ -56,9 +56,9 @@ const app = new Vue({
 
     sendCategory() {
 
-      // let checked = this.checkformCategories()
+      let checked = this.checkformCategories()
 
-      if (true) { 
+      if (checked) { 
         this.saveCategory(this.formCategories) 
       }
 
@@ -100,7 +100,9 @@ const app = new Vue({
       })
       .catch(errorsLaravel => {
 
+        let msgError = errorsLaravel.response.data
         this.laravelErrorHandling(errorsLaravel.response.data, msgError)
+        this.loading()
         
       })
 

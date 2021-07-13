@@ -64791,6 +64791,7 @@ var app = new Vue({
       email: '',
       phone: '',
       points_old: '',
+      points_bdd: '',
       points: ''
     },
     paginate: ['users'],
@@ -64859,21 +64860,27 @@ var app = new Vue({
     },
     checkformPoints: function checkformPoints() {
       this.cleanErrors();
-      var points = parseFloat(this.formPoints.points);
+      var pointsNew = parseFloat(this.formPoints.points);
+      var pointsBdd = parseFloat(this.formPoints.points_bdd);
+      var pointsOld = parseFloat(this.formPoints.points_old);
 
-      if (points && Number.isInteger(points)) {
+      if (pointsNew && Number.isInteger(pointsNew) && pointsBdd === pointsOld) {
         return true;
       }
 
-      if (!points) {
+      if (pointsBdd !== pointsOld) {
+        this.errors.push('Se modificó el valor de puntos manualmente. Refresca la página.');
+      }
+
+      if (!pointsNew) {
         this.errors.push('Debe incluir los puntos a sumar o restar.');
       }
 
-      if (points == 0) {
+      if (pointsNew == 0) {
         this.errors.push('Ingrersá un valor de puntos diferente a 0.');
       }
 
-      if (!Number.isInteger(points)) {
+      if (!Number.isInteger(pointsNew)) {
         this.errors.push('Sólo se aceptan valores enteros.');
       }
 
@@ -64883,7 +64890,6 @@ var app = new Vue({
       var checked = this.checkformPoints();
 
       if (checked) {
-        //CAMBIARRRRR //CAMBIARRRRR //CAMBIARRRRR //CAMBIARRRRR //CAMBIARRRRR //CAMBIARRRRR //CAMBIARRRRR //CAMBIARRRRR //CAMBIARRRRR 
         this.savePoints(this.formPoints);
       }
     },
@@ -64917,6 +64923,8 @@ var app = new Vue({
         var msgError = "La operación no pudo completarse..";
 
         _this3.laravelErrorHandling(errorsLaravel.response.data, msgError);
+
+        loading();
       });
     },
     resetPointsForm: function resetPointsForm() {
@@ -64930,11 +64938,11 @@ var app = new Vue({
       });
       this.formPoints = {
         id: userPoints[0].id,
-        points_old: userPoints[0].points
+        name: userPoints[0].name,
+        email: userPoints[0].email,
+        points_old: userPoints[0].points,
+        points_bdd: userPoints[0].points
       };
-      $("#name").val(userPoints[0].name)[0].dispatchEvent(new Event('input'));
-      $("#email").val(userPoints[0].email)[0].dispatchEvent(new Event('input'));
-      $("#points_old").val(userPoints[0].points)[0].dispatchEvent(new Event('input'));
     },
     createAlert: function createAlert(title, text, icon, btnTxt) {
       _node_modules_admin_lte_plugins_sweetalert2_sweetalert2_all_js__WEBPACK_IMPORTED_MODULE_1___default.a.fire({

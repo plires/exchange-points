@@ -6,6 +6,7 @@
 
   {{-- Modal Exchanged --}}
   @include('admin.partials.modal-exchanged')
+  @include('admin.partials.modal-exchangedDetails')
   
   <div class="row exchanged">
 
@@ -63,7 +64,18 @@
                 <td class="text-center">@{{ getDateFormated(exchange.created_at) }}</td>
                 <td class="text-center">@{{ getTimeFormated(exchange.created_at) }}</td>
                 <td class="text-center">
-                  <button @click="deleteExchange(exchange.id)" type="button" class="btn btn-outline-danger btn-sm">Eliminar</button>
+                  <button 
+                  type="button" 
+                  data-toggle="modal" 
+                  data-target="#modal-exchangedDetail"
+                  @click="viewDetailExchange(exchange.id)"
+                  class="btn btn-outline-success btn-sm">Ver
+                  </button>
+                  <button 
+                  @click="deleteExchange(exchange.id)" 
+                  type="button" 
+                  class="btn btn-outline-danger btn-sm">Eliminar
+                  </button>
                 </td>
               </tr>
 

@@ -109,14 +109,12 @@ class UserController extends Controller
 
                 $user = $user->fill( $data );
 
-                // si la cantidad a descontar (en caso de que vengan valores negativos en el excel)
-                // es mayor a la que el cliente tiene
-                if ( (int)$user->points < (int)$user->points_old ) { 
-                    $pointsToAssign = 0 - (int)$user->points_old; // en tabla PointsAssigned se graban los puntos que tenia hasta ese momento
-                    $user->points = 0;
-                } else {
-                    $user->points = (int)$user->points + (int)$user->points_old; // actualizamos la posicion "points" con los puntos enviados
-                }
+                $userPointsFromBdd = (int)$data['points_old'];
+                $userPointsToUpdate = (int)$data['points'];
+
+                $points = $this->getPointsToSave($userPointsFromBdd, $userPointsToUpdate, $user);
+
+                $user->points = $points['points_to_table_user'];
 
                 unset($user->points_old); // Elimino la posicion points_old para actualizar la fila
 
@@ -124,11 +122,7 @@ class UserController extends Controller
 
                 if ($userUpdated) {
 
-                    PointAssigned::create([
-                        'user_id'   => $data['id'],
-                        'quantity'  => isset($pointsToAssign) ? $pointsToAssign : (int)$data['points'],
-                        'author'    => Auth::user()->name,
-                    ]);
+                    $this->savePointsInTablePointsAssigned($user['id'], $points['points_to_table_point_assigneds']);
 
                 }
 
@@ -224,24 +218,18 @@ class UserController extends Controller
             DB::transaction(function () use($row) { //Si falla alguna ejecucion de la base de datos se retrotrae al punto original
                 $user = User::findOrFail($row[0]); // Cargamos el usuario con cada id del excel
 
-                // si la cantidad a descontar (en caso de que vengan valores negativos en el excel)
-                // es mayor a la que el cliente tiene
-                if ( (int)$row[3] < $user->points  ) { 
-                    $pointsToAssign = 0 - $user->points;
-                    $user->points = 0;
-                } else {
-                    $user->points = $user->points + (int)$row[3]; // actualizamos la posicion "points" sumando los puntos del excel
-                }
+                $userPoints = (int)$user->points;
+                $pointsFromExcel = (int)$row[3];
+
+                $points = $this->getPointsToSave($userPoints, $pointsFromExcel, $user);
+
+                $user->points = $points['points_to_table_user'];
 
                 $userUpdated = $user->update();
 
                 if ($userUpdated) {
 
-                    PointAssigned::create([
-                        'user_id'   => $user['id'],
-                        'quantity'  => isset($pointsToAssign) ? $pointsToAssign : $row[3],
-                        'author'    => Auth::user()->name,
-                    ]);
+                    $this->savePointsInTablePointsAssigned($user['id'], $points['points_to_table_point_assigneds']);
 
                 }
 
@@ -249,10 +237,46 @@ class UserController extends Controller
 
         }
 
-        return response()->json( ['file-template' => $file], 201);
-            
+        return response()->json( ['file-template' => $file], 201);   
 
     }
+
+    public function getPointsToSave($userPointsFromBdd, $userPointsToUpdate, $user) {
+
+        $pointsToAssign = $userPointsToUpdate;
+
+        if ($userPointsToUpdate < 0) { // comprobamos si se le quitan o suman puntos al usuario
+
+            $user->points = $userPointsFromBdd - abs($userPointsToUpdate);
+
+            if ( $user->points < 0 ) { // Si la resta anterior da menos de 0
+                $user->points = 0;  // se asigna el minimo de puntos posible para ese usuario (0)  
+                $pointsToAssign = -$userPointsFromBdd; //Se graba la operacion en tabla Points_assigned
+            } 
+
+        } else {
+
+            $user->points = $userPointsFromBdd + $userPointsToUpdate;
+
+        }
+
+        $points['points_to_table_user'] = $user->points;
+        $points['points_to_table_point_assigneds'] = $pointsToAssign;
+
+        return $points;
+
+    }
+
+    public function savePointsInTablePointsAssigned($userId, $points ) {
+
+        PointAssigned::create([
+            'user_id'   => $userId,
+            'quantity'  => $points,
+            'author'    => Auth::user()->name,
+        ]);
+
+    }
+
 
     
 }
