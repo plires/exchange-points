@@ -9,6 +9,11 @@
         <div class="content_modal">
 
           <div class="image">
+            <img 
+              src="{{ asset('img/user/productos/sin-stock.png') }}" 
+              v-if="product_availability == 0" 
+              class="sin_stock" 
+              :alt=" 'sin stock ' + product_name">
             <img class="img-fluid" :src="showImage(product_image)" :alt="product_name">
           </div>
 
@@ -18,7 +23,7 @@
             <h3><span v-cloak>@{{ product_price.toLocaleString('de-DE') }}</span> Monster Miles</h3>
             <p class="description" v-cloak>@{{ product_description }}</p>
 
-            <div class="operations_product">
+            <div v-if="product_availability != 0" class="operations_product">
               <p class="titulo_operaciones">SELECCIONAR</p>
               <div class="content_btn">
 
@@ -35,7 +40,7 @@
               </div>
             </div>
 
-            <div id="btnCanjeModal" class="canjear text-center">
+            <div v-if="product_availability != 0" id="btnCanjeModal" class="canjear text-center">
               <button 
                 type="button" id="btn_finalizar_pedido" 
                 class="btn btn-primary transition" 

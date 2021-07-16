@@ -26,11 +26,20 @@
 }
 
 .catalogo_canje .content_image_catalogo {
+	position: relative;
 	display: flex;
   justify-content: center;
   align-items: center;
 	background-color: #eaeaea;
 	padding: 10px;
+}
+
+.catalogo_canje .content_image_catalogo .sin_stock {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 143px;
+	height: 143px;
 }
 
 .catalogo_canje .content_data_producto {

@@ -68,7 +68,7 @@
 
                   <div class="form-group col-md-6">
                     <label for="availability">Stock *</label>
-                    <input required type="number" class="form-control" name="availability" id="availability" placeholder="Stock (*)" v-model="formProduct.availability" min="1" pattern="^[0-9]+">
+                    <input required type="number" class="form-control" name="availability" id="availability" placeholder="Stock (*)" v-model="formProduct.availability" min="0" pattern="^[0-9]+">
                   </div>
                 </div>
 

@@ -118,7 +118,7 @@ class ProductController extends Controller
                 $this->optimizeImage($product->image);
 
             } else {
-                $product->update( array_filter( $request->validated() ) );
+                $product->update( $request->validated() );
             }         
 
 

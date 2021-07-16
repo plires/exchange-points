@@ -64904,8 +64904,9 @@ var app = new Vue({
       return false;
     },
     sendProduct: function sendProduct() {
-      // let checked = this.checkFormProduct()
-      if (true) {
+      var checked = this.checkFormProduct();
+
+      if (checked) {
         this.saveProduct(this.formProduct);
       }
     },

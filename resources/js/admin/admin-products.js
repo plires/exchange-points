@@ -103,9 +103,9 @@ const app = new Vue({
 
     sendProduct() {
 
-      // let checked = this.checkFormProduct()
+      let checked = this.checkFormProduct()
 
-      if (true) { 
+      if (checked) { 
         this.saveProduct(this.formProduct)
       }
 

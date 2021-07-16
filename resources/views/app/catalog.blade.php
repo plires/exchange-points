@@ -76,6 +76,11 @@
 
 					<div @click="showModal(productFeatured.id)" class="shadow transition">
 						<div class="content_image">
+							<img 
+	    					src="{{ asset('img/user/productos/sin-stock.png') }}" 
+	    					v-if="productFeatured.availability == 0" 
+	    					class="sin_stock" 
+	    					:alt=" 'sin stock ' + productFeatured.name">
 							<img class="img-fluid" :src="showImage(productFeatured.image)" :alt="productFeatured.id">
 						</div>
 						<div class="content_title">
@@ -98,6 +103,11 @@
 		    	<div @click="showModal(product.id)" class="content_product_catalogo transition">
 
 		    		<div class="content_image_catalogo">
+	    				<img 
+	    					src="{{ asset('img/user/productos/sin-stock.png') }}" 
+	    					v-if="product.availability == 0" 
+	    					class="sin_stock" 
+	    					:alt=" 'sin stock ' + product.name">
 		      		<img class="img-fluid" :src="showImage(product.image)" :alt="product.name">
 		    		</div>
 

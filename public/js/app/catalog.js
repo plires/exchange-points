@@ -57802,6 +57802,7 @@ var app = new Vue({
     product: {},
     product_id: '',
     product_name: '',
+    product_availability: 0,
     product_description: '',
     product_price: '',
     product_image: '',
@@ -57904,6 +57905,7 @@ var app = new Vue({
       this.product = product[0];
       this.product_id = product[0].id;
       this.product_name = product[0].name;
+      this.product_availability = product[0].availability;
       this.product_description = product[0].description;
       this.product_price = product[0].price;
       this.product_image = product[0].image;
@@ -58028,7 +58030,8 @@ setTimeout(function () {
       breakpoint: 576,
       settings: {
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        arrows: false
       }
     } // You can unslick at a given breakpoint now by adding:
     // settings: "unslick"
