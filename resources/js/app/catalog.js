@@ -174,7 +174,7 @@ const app = new Vue({
                 
       }
 
-      return this.total_amount
+      return this.total_amount.toLocaleString('de-DE')
 
     },
 

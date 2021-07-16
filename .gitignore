@@ -5,6 +5,8 @@
 /phpintel/*
 .phpintel
 .phpintel/
+.phpintel/index
+.phpintel/*
 /storage/*.key
 /vendor
 .env

@@ -41,7 +41,7 @@
 
 		    		<div class="content_data_producto">
 		    			<h4>@{{ product.name }}</h4>
-		    			<h5><span>@{{ product.price }}</span> Monster Miles</h5>
+		    			<h5><span>@{{ product.price.toLocaleString('de-DE') }}</span> Monster Miles</h5>
 		    		</div>
 
 		    	</div>

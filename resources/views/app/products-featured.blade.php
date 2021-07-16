@@ -70,7 +70,7 @@
 						</div>
 						<div class="content_title">
 							<h5>@{{ product.name }}</h5>
-							<h6><span>@{{ product.price }}</span> Monster Miles</h6>
+							<h6><span>@{{ product.price.toLocaleString('de-DE') }}</span> Monster Miles</h6>
 						</div>
 					</div>
 				</div>

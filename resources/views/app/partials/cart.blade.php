@@ -23,7 +23,7 @@
     		<div class="datos">
     			<div>
 	    			<p class="nombre_prod">@{{ productCart.name }}</p>
-	    			<p class="price_prod">@{{ productCart.quantity }} X @{{ productCart.price }}</p>
+	    			<p class="price_prod">@{{ productCart.quantity }} X @{{ productCart.price.toLocaleString('de-DE') }}</p>
     			</div>
 
     			<div class="quantity">
@@ -48,7 +48,7 @@
 
   <!-- Total -->
   <div v-if="alert == ''" class="totales">
-    <h6 v-if="total != 0" class="mb-2">Puntos totales a canjear: $ @{{ total }}</h6>
+    <h6 v-if="total != 0" class="mb-2">Monster Miles totales a canjear: @{{ total }}</h6>
   </div>
 
   <button v-if="Object.keys(cart).length != 0" type="button" id="btn_finalizar_pedido" class="btn btn-primary transition" @click="showConfirmation()">Canjear</button>

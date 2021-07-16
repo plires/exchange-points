@@ -54955,7 +54955,7 @@ var app = new Vue({
         }, 100);
       }
 
-      return this.total_amount;
+      return this.total_amount.toLocaleString('de-DE');
     },
     count_items_cart: function count_items_cart() {
       this.counterItemCart = 0;
