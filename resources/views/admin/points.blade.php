@@ -45,10 +45,15 @@
 
               <tr v-for="user in paginated('users')" :key="user.id">
                 <td>
-                  <a data-toggle="modal" data-target="#modal-points" @click="fillInputsformPoints(user.id)" href="#">@{{user.name}}
+                  <a 
+                    data-toggle="modal" 
+                    data-target="#modal-points" 
+                    @click="fillInputsformPoints(user.id)" 
+                    href="#" 
+                    v-cloak>@{{user.name}}
                   </a>
                 </td>
-                <td class="text-center">@{{ user.points }}</td>
+                <td class="text-center" v-cloak>@{{ user.points }}</td>
                 <td class="content_btn_actions">
                   <button data-toggle="modal" data-target="#modal-points" @click="fillInputsformPoints(user.id)" type="button" class="btn btn-outline-warning btn-sm">Agregar / Quitar Puntos</button>
                 </td>

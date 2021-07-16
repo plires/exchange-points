@@ -17,13 +17,13 @@
 }
 
 .catalogo .slide_superior #slide_1 { 
-  content:url("/img/user/destacados/slide-1-destacados-mobile.jpg");
+  content:url("/img/user/catalogo/slide-1-mobile.jpg");
 }
 .catalogo .slide_superior #slide_2 { 
-  content:url("/img/user/destacados/slide-1-destacados-mobile.jpg");
+  content:url("/img/user/catalogo/slide-1-mobile.jpg");
 }
 .catalogo .slide_superior #slide_3 { 
-  content:url("/img/user/destacados/slide-1-destacados-mobile.jpg");
+  content:url("/img/user/catalogo/slide-1-mobile.jpg");
 }
 
 .catalogo .carousel-indicators li {
@@ -57,9 +57,15 @@
 }
 
 .catalogo .content_destacados {
+  cursor: pointer;
   display: flex!important;
   align-items: center!important;
   min-height: 465px;
+}
+
+.catalogo .content_destacados:hover {
+    text-decoration: none;
+    filter: contrast(80%) brightness(115%) !important;
 }
 
 .catalogo .content_destacados .content_image {
@@ -261,13 +267,13 @@
 
   /* Catalogo */
   .slide_superior #slide_1 { 
-    content:url("/img/user/destacados/slide-1-destacados.jpg")!important;
+    content:url("/img/user/catalogo/slide-1.jpg")!important;
   }
   .slide_superior #slide_2 { 
-    content:url("/img/user/destacados/slide-1-destacados.jpg")!important;
+    content:url("/img/user/catalogo/slide-1.jpg")!important;
   }
   .slide_superior #slide_3 { 
-    content:url("/img/user/destacados/slide-1-destacados.jpg")!important;
+    content:url("/img/user/catalogo/slide-1.jpg")!important;
   }
 
   .catalogo .content_destacados .content_title h5,
@@ -307,7 +313,6 @@
     text-align: left;
     margin-bottom: -15px!important;
     margin-top: 30px!important;
-    margin-left: 20px;
   }
 
   .catalogo .content_destacados .content_title h5,
@@ -360,10 +365,6 @@
   /* Catalogo */
   .catalogo nav {
     width: 30%;
-  }
-
-  .catalogo h1 {
-    margin-left: 40px;
   }
 
   .catalogo .content_destacados .content_title h5,

@@ -1,4 +1,5 @@
 require('./app')
+require('../../../node_modules/slick-carousel/slick/slick.js')
 require('../../../node_modules/admin-lte/plugins/jquery/jquery.min.js')
 
 window.Vue = require('../../../node_modules/vue/dist/vue.common.dev.js')
@@ -7,7 +8,7 @@ import Swal from '../../../node_modules/admin-lte/plugins/sweetalert2/sweetalert
 import VuePaginate from 'vue-paginate'
 Vue.use(VuePaginate)
 
-const app = new Vue({
+const app = new Vue({ 
   el: '#app',
   data: {
     // paginate: ['users'],
@@ -138,6 +139,7 @@ const app = new Vue({
         $('#btn_finalizar_pedido').addClass('hidden')
         $('#points_cart').addClass('color_alert')
         $('#menu_cart').addClass('color_alert')
+        $('#btnCanjeModal').addClass('hidden')
 
       } else {
 
@@ -148,6 +150,7 @@ const app = new Vue({
         $('#btn_finalizar_pedido').removeClass('hidden')
         $('#points_cart').removeClass('color_alert')
         $('#menu_cart').removeClass('color_alert')
+        $('#btnCanjeModal').removeClass('hidden')
       }
 
     },
@@ -200,6 +203,45 @@ const app = new Vue({
   },
 
 })
+
+setTimeout(function(){
+  $('.responsive').slick({
+    dots: true,
+    pauseOnFocus: false,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
+  });
+}, 500);
 
 
 

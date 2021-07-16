@@ -15,7 +15,7 @@
           <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">@{{ authUser.name }}</a>
+          <a href="#" class="d-block" v-cloak>@{{ authUser.name }}</a>
         </div>
         <a class="d-flex justify-content-cener align-items-center" 
           href="{{ route('logout') }}" 

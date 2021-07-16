@@ -2,6 +2,8 @@
   --primary-color: rgb(152,191,19);
 }
 
+[v-cloak] {display: none}
+
 .transition{
   -webkit-transition: all ease-in-out .3s; /* Safari */
   transition: all ease-in-out .3s;

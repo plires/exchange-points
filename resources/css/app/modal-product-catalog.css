@@ -59,7 +59,7 @@
   width: 100%;
   border-top: solid 1px var(--primary-color);
   border-bottom: solid 1px var(--primary-color);
-  height: 30px;
+  height: 35px;
 }
 
 #modalProduct .modal-body .alert_modal {
@@ -76,6 +76,9 @@
   justify-content: center;
   align-items: center;
   border-radius: 0;
+  padding: 0;
+  width: 35px;
+  height: 35px;
 }
 
 #modalProduct .modal-body .operations_product .btn:hover {
@@ -91,6 +94,12 @@
 #modalProduct .modal-body .data_product h3 span {
   color: var(--primary-color);
   font-weight: 700;
+}
+
+#modalProduct .canjear .btn-primary {
+  background-color: var(--primary-color);
+  border: solid 1px var(--primary-color);
+  margin-top: 30px;
 }
 
 /* MEDIA QUERIES */

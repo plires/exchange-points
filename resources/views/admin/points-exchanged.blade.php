@@ -35,7 +35,8 @@
                 <option 
                   :data-id = user.id
                   v-for="user in users" 
-                  :key = "user.id">
+                  :key = "user.id"
+                  v-cloak>
                   @{{ user.name }}
                 </option>
 
@@ -59,10 +60,10 @@
             <paginate :key="user_id" name="exchanges" :list="exchanges" :per="15" tag="tbody">
 
               <tr v-for="exchange in paginated('exchanges')" :key="exchange.id">
-                <td>@{{ getNameUser(exchange.user_id) }}</td>
-                <td class="text-center">@{{ exchange.points_quantity }}</td>
-                <td class="text-center">@{{ getDateFormated(exchange.created_at) }}</td>
-                <td class="text-center">@{{ getTimeFormated(exchange.created_at) }}</td>
+                <td v-cloak v-cloak>@{{ getNameUser(exchange.user_id) }}</td>
+                <td class="text-center" v-cloak>@{{ exchange.points_quantity }}</td>
+                <td class="text-center" v-cloak>@{{ getDateFormated(exchange.created_at) }}</td>
+                <td class="text-center" v-cloak>@{{ getTimeFormated(exchange.created_at) }}</td>
                 <td class="text-center">
                   <button 
                   type="button" 

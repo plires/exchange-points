@@ -10,8 +10,8 @@
     			<li>
 			      <div class="user mr-3">
 			      	<div class="text-right">
-			      		<p>@{{ authUser.name }}</p>
-			      		<p class="puntos">Puntos: @{{ authUser.points }}</p>
+			      		<p v-cloak>@{{ authUser.name }}</p>
+			      		<p class="puntos" v-cloak>Puntos: @{{ authUser.points }}</p>
 			      	</div>
 			      	<i @click="toogleMenuUser" id="menu_user" class="transition fas fa-chevron-down"></i>
 			      </div>

@@ -21,7 +21,8 @@
                 <option 
                   :data-id = user.id
                   v-for="user in users" 
-                  :key = "user.id">
+                  :key = "user.id"
+                  v-cloak>
                   @{{ user.name }}
                 </option>
 
@@ -46,11 +47,11 @@
             <paginate :key="user_id" name="transactions" :list="transactions" :per="15" tag="tbody">
 
               <tr v-for="transaction in paginated('transactions')" :key="transaction.id">
-                <td>@{{ getNameUser(transaction.user_id) }}</td>
-                <td class="text-center">@{{ transaction.quantity }}</td>
-                <td class="text-center">@{{ getDateFormated(transaction.created_at) }}</td>
-                <td class="text-center">@{{ getTimeFormated(transaction.created_at) }}</td>
-                <td class="text-center">@{{ transaction.author }}</td>
+                <td v-cloak>@{{ getNameUser(transaction.user_id) }}</td>
+                <td class="text-center" v-cloak>@{{ transaction.quantity }}</td>
+                <td class="text-center" v-cloak>@{{ getDateFormated(transaction.created_at) }}</td>
+                <td class="text-center" v-cloak>@{{ getTimeFormated(transaction.created_at) }}</td>
+                <td class="text-center" v-cloak>@{{ transaction.author }}</td>
                 <td class="text-center">
                   <button @click="deleteTransaction(transaction.id)" type="button" class="btn btn-outline-danger btn-sm">Eliminar</button>
                 </td>

@@ -55,7 +55,13 @@
 
               <tr v-for="category in paginated('categories')" :key="category.id">
                 <td>
-                  <a data-toggle="modal" data-target="#modal-category" @click="showFormCategoryEdit(category.id)" href="#">@{{category.name}}
+                  <a 
+                    data-toggle="modal" 
+                    data-target="#modal-category" 
+                    @click="showFormCategoryEdit(category.id)" 
+                    href="#" 
+                    v-cloak>
+                    @{{category.name}}
                   </a>
                 </td>
                 <td class="d-flex justify-content-end content_btn_actions">

@@ -54704,6 +54704,8 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
   --primary-color: rgb(128,190,55, 0.5);
 }
 
+[v-cloak] {display: none}
+
 ul {
 	margin: 0;
 }

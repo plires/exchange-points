@@ -14,9 +14,9 @@
 
           <div class="data_product">
             
-            <h2>@{{ product_name }}</h2>
-            <h3><span>@{{ product_price.toLocaleString('de-DE') }}</span> Monster Miles</h3>
-            <p class="description">@{{ product_description }}</p>
+            <h2 v-cloak>@{{ product_name }}</h2>
+            <h3><span v-cloak>@{{ product_price.toLocaleString('de-DE') }}</span> Monster Miles</h3>
+            <p class="description" v-cloak>@{{ product_description }}</p>
 
             <div class="operations_product">
               <p class="titulo_operaciones">SELECCIONAR</p>
@@ -24,18 +24,26 @@
 
                 <div v-if="cart[product.name]">
                   <button id="btnRemove" @click="removeProduct(product)" class="btn btn-primary">
-                    <i class="fas fa-cart-arrow-down"></i>
+                    -
                   </button>
-                  <span>@{{ cart[product.name].quantity }}</span>
+                  <span v-cloak>@{{ cart[product.name].quantity }}</span>
                 </div>
                 <button id="btnAdd" @click="addProduct(product)" class="btn btn-primary">
-                  <i class="fas fa-cart-plus"></i>
+                  +
                 </button>
 
               </div>
             </div>
 
-            <p class="alert_modal">@{{ alert }}</p>
+            <div id="btnCanjeModal" class="canjear text-center">
+              <button 
+                type="button" id="btn_finalizar_pedido" 
+                class="btn btn-primary transition" 
+                @click="showConfirmation()"><i class="fas fa-shopping-cart"></i> Canjear
+              </button>
+            </div>
+
+            <p class="alert_modal" v-cloak>@{{ alert }}</p>
 
           </div>
 

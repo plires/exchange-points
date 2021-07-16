@@ -59,11 +59,11 @@
             <paginate :key="nameProduct" name="products" :list="filteredProducts" :per="15" tag="tbody">
 
               <tr v-for="product in paginated('products')" :key="product.id">
-                <td>@{{product.sku}}</td>
-                <td><a @click="showFormEdit(product.id)" href="#">@{{product.name}}</a></td>
-                <td class="text-center">@{{product.price}}</td>
-                <td class="text-center">@{{product.availability}}</td>
-                <td class="text-center">@{{ getCategoryProduct(product.category_id) }}</td>
+                <td v-cloak>@{{product.sku}}</td>
+                <td><a @click="showFormEdit(product.id)" href="#" v-cloak>@{{product.name}}</a></td>
+                <td class="text-center" v-cloak>@{{product.price}}</td>
+                <td class="text-center" v-cloak>@{{product.availability}}</td>
+                <td class="text-center" v-cloak>@{{ getCategoryProduct(product.category_id) }}</td>
                 <td class="text-center">
                   <img :src="showImage(product.image)" :alt="product.name" width="50">
                 </td>

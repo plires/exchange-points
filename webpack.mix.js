@@ -22,7 +22,6 @@ mix.sass('resources/sass/app.scss', 'public/admin/css')
 	.js('resources/js/admin/import-template-excel.js', 'public/js/admin')
 	.postCss('resources/css/admin/app.css', 'public/css/admin')
 	.js('resources/js/app/app.js', 'public/js/app')
-	.js('resources/js/app/products-featured.js', 'public/js/app')
 	.js('resources/js/app/catalog.js', 'public/js/app')
 	.postCss('resources/css/app/app.css', 'public/css/app')
 

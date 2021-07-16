@@ -56,9 +56,9 @@
             <paginate :key="filteredUsers.length" name="users" :list="filteredUsers" :per="15" tag="tbody">
 
               <tr v-for="user in paginated('users')" :key="user.id">
-                <td><a @click="showFormUserEdit(user.id)" href="#">@{{user.name}}</a></td>
-                <td>@{{user.email}}</td>
-                <td class="text-center">@{{ getRoleUser(user.role_id) }}</td>
+                <td><a @click="showFormUserEdit(user.id)" href="#" v-cloak>@{{user.name}}</a></td>
+                <td v-cloak>@{{user.email}}</td>
+                <td class="text-center" v-cloak>@{{ getRoleUser(user.role_id) }}</td>
                 <td class="content_btn_actions">
                   <button @click="showFormUserEdit(user.id)" type="button" class="btn btn-outline-warning btn-sm">Editar</button>
                   <button @click="deleteUser(user.id)" type="button" class="btn btn-outline-danger btn-sm">Eliminar</button>
