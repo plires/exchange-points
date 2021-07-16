@@ -213,8 +213,12 @@ class UserController extends Controller
         // Importar Excel a una coleccion
         $rows = (new UsersImport)->toCollection($file);
 
+        if ($this->ifAnyRowOfTheExcelIsNull($rows)) { // si el archivo tiene filas vacias devolvemos error
+            return response()->json( ['error_import' => 'La plantilla subida no puede contener filas vacias'], 422);
+        }
+
         foreach ($rows[0] as $row) { // Recorrer el excel subido
-            
+
             DB::transaction(function () use($row) { //Si falla alguna ejecucion de la base de datos se retrotrae al punto original
                 $user = User::findOrFail($row[0]); // Cargamos el usuario con cada id del excel
 
@@ -274,6 +278,17 @@ class UserController extends Controller
             'quantity'  => $points,
             'author'    => Auth::user()->name,
         ]);
+
+    }
+
+    public function ifAnyRowOfTheExcelIsNull($rows) {
+
+        foreach ($rows[0] as $row) {
+
+            if ( $row[0] == NULL || $row[1] == NULL || $row[2] == NULL || $row[3] == NULL ) { 
+                return true;
+            }
+        }
 
     }
 

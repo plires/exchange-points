@@ -64185,6 +64185,8 @@ var app = new Vue({
         var msgError = "La descarga no pudo completarse.";
 
         _this.laravelErrorHandling(errorsLaravel.response.data, msgError);
+
+        _this.loading();
       });
     },
     createAlert: function createAlert(title, text, icon, btnTxt) {
@@ -64268,8 +64270,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       if (typeof errorsLaravel.error_import !== 'undefined') {
+        this.cleanErrors();
         this.errors.push(errorsLaravel.error_import);
-        this.loading();
       }
 
       if (typeof errorsLaravel.errors !== 'undefined') {

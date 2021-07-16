@@ -38,7 +38,7 @@
                       </div>
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" name="file-template" id="file-template" aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="file-template">Seleccionar Imágen</label>
+                        <label class="custom-file-label" for="file-template">Seleccionar Plantilla Excel</label>
                       </div>
                     </div>
                     
@@ -51,7 +51,7 @@
             <!-- /.card -->
 
             <div class="d-flex justify-content-end">
-              <button type="button" type="submit" @click.prevent="uploadTemplate" name="send" class="btn btn-primary">Subir Template</button>
+              <button type="button" type="submit" @click.prevent="uploadTemplate" name="send" class="btn btn-primary">Subir Excel</button>
             </div>
 
           </form>          

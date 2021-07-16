@@ -37,6 +37,7 @@ const app = new Vue({
           
           let msgError = "La descarga no pudo completarse."
           this.laravelErrorHandling(errorsLaravel.response.data, msgError)
+          this.loading()
 
         })
 

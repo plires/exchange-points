@@ -36,8 +36,8 @@ export default {
       }
 
       if (typeof errorsLaravel.error_import !== 'undefined') {
+        this.cleanErrors()
         this.errors.push(errorsLaravel.error_import)
-        this.loading()
       }
 
       if (typeof errorsLaravel.errors !== 'undefined') {

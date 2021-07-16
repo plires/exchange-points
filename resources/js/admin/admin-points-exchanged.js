@@ -203,6 +203,7 @@ const app = new Vue({
 
             let msgError = "La operación no pudo ser eliminada."
             this.laravelErrorHandling(errorsLaravel.response.data, msgError)
+            this.loading()
 
           })
 
