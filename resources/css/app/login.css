@@ -81,6 +81,20 @@ body {
   color: var(--primary-color);
   font-size: 0.85rem;
 }
+
+.login li {
+  list-style: none!important;
+}
+
+.login .btn-link:hover {
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+.btn:focus,
+.btn:focus-visible {
+  box-shadow: none!important;
+}
 /* Login end */
 
 

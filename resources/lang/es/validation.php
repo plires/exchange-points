@@ -173,5 +173,7 @@ return [
         'sku'                   => 'SKU',
         'category'              => 'categoría',
         'user_id'               => 'usuario',
+        'lastname'              => 'apellido',
+        'document'              => 'documento',
     ],
 ];
