@@ -64817,11 +64817,11 @@ var app = new Vue({
 
               case 3:
                 response = _context.sent;
-                _this.users = response.data.sort().sort(function (a, b) {
-                  return b.id - a.id;
+                _this.users = response.data.filter(function (user) {
+                  return user.role_id == 2;
                 });
-                _this.usersNews = response.data.sort().sort(function (a, b) {
-                  return b.id - a.id;
+                _this.usersNews = response.data.filter(function (user) {
+                  return user.role_id == 2;
                 });
 
                 _this.loading();

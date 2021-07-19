@@ -28,7 +28,7 @@ const app = new Vue({
   	async getUsers() {
       this.loading()
       let response = await axios.get('/admin/get_users')
-      this.users = response.data.sort().sort((a, b) => b.id - a.id)
+      this.users = response.data.filter( (user) => user.role_id == 2 )
       this.loading()
   	},
 

@@ -46,18 +46,23 @@
 
               <tr v-for="user in paginated('users')" :key="user.id">
                 <td>
-                  <a 
+
+                  <a v-if="user.role_id !=1"
                     data-toggle="modal" 
                     data-target="#modal-points" 
                     @click="fillInputsformPoints(user.id)" 
                     href="#" 
                     v-cloak>@{{user.lastname}}
                   </a>
+
+                  <span v-else
+                    v-cloak>@{{user.lastname}}
+                  </span>
                 </td>
                 <td class="text-center" v-cloak>@{{ user.document }}</td>
                 <td class="text-center" v-cloak>@{{ user.points }}</td>
                 <td class="content_btn_actions">
-                  <button data-toggle="modal" data-target="#modal-points" @click="fillInputsformPoints(user.id)" type="button" class="btn btn-outline-warning btn-sm">Agregar / Quitar Puntos</button>
+                  <button v-if="user.role_id !=1" data-toggle="modal" data-target="#modal-points" @click="fillInputsformPoints(user.id)" type="button" class="btn btn-outline-warning btn-sm">Agregar / Quitar Puntos</button>
                 </td>
               </tr>
 

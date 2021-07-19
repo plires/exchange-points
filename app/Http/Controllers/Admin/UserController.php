@@ -176,7 +176,8 @@ class UserController extends Controller
 
     public function getUsers()
     {   
-        return User::where('id', '!=', Auth::user()->id)->get();
+        // return User::where('id', '!=', Auth::user()->id)->get();
+        return User::all();
     }
 
     public function getUserAuth()
