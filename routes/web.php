@@ -5,6 +5,7 @@ use App\Exports\UsersExport;
 use App\Imports\UsersImport;
 use Illuminate\Support\Facades\Route;
 use \Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Controllers\App\WallpaperController;
 use App\Http\Controllers\App\RegisterPendingController;
 use App\Http\Controllers\Admin\ExchangeDetailController;
 use App\Http\Controllers\App\ProductsFeaturedController;
@@ -37,8 +38,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 	Route::get('get_exchanges_details', 'Admin\ExchangeDetailController@getExchangesDetails')->name('get-exchanges-details');
 });
 
-// Route::get('/', 'ProductsFeaturedController@index')->name('home');
 Route::get('/', 'App\ProductsFeaturedController@catalog')->name('catalog');
+Route::get('/wallpapers', 'App\WallpaperController@wallpapers')->name('wallpapers');
 Route::get('/products-featured', 'App\ProductsFeaturedController@productFeatured')->name('product-featured');
 Route::get('/exchange/get_user_auth', 'App\ProductsFeaturedController@getUserAuth')->name('get-user-auth');
 Route::get('/exchange/get_products', 'App\ProductsFeaturedController@getProducts')->name('get-products');

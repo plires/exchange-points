@@ -5,6 +5,14 @@
 				<i class="far fa-list-alt mr-2"></i>Catálogo</a>
 		</li>
 		<li>
+			<a class="transition" href="./wallpapers">
+				<i class="fas fa-cloud-download-alt mr-2"></i>Wallpapers</a>
+		</li>
+		<li>
+			<a target="_blank" rel="noopener noreferrer" class="transition" href="https://www.monsterenergy.com/">
+				<i class="fab fa-chrome mr-2"></i>Visita nuestro sitio</a>
+		</li>
+		<li>
 			<a class="transition" 
 			  href="{{ route('logout') }}" 
 			  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"

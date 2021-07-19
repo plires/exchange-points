@@ -34,11 +34,11 @@ class ProductsFeaturedController extends Controller
 
     public function getUserAuth()
     {
-	    	return Auth::user();
+    	return Auth::user();
     }
 
     public function getProducts()
     {
-	    	return Product::where('is_active', 1)->get();
+	   return Product::where('is_active', 1)->get();
     }
 }

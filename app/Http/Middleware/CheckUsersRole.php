@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class CheckUsersRole
 {
@@ -15,9 +16,13 @@ class CheckUsersRole
      */
     public function handle($request, Closure $next)
     {
+        if (Auth::user()) {
 
-        if (auth()->user()->role_id === 1) {
-            return $next($request);
+            $user = Auth::user();
+
+            if ($user->role_id === 1) {
+                return $next($request);
+            }
         }
 
         return redirect('/login');
