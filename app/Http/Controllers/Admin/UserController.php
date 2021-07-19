@@ -59,6 +59,10 @@ class UserController extends Controller
 
             $user->password = Hash::make( $request->validated()['password'] );
 
+            if ($user->role_id == 1) {
+                $user->confirmed = true;
+            }
+
             $user->save();
 
             return response()->json( ['user_created' => $user], 201);
@@ -135,6 +139,10 @@ class UserController extends Controller
         } else { // si viene de la vista de usuarios
 
             $user = $user->fill( $request->validated() );
+
+            if ($user->role_id == 1) {
+                $user->confirmed = true;
+            }
 
             $user->password = Hash::make( $request->validated()['password'] );
 
@@ -288,6 +296,26 @@ class UserController extends Controller
             if ( $row[0] == NULL || $row[1] == NULL || $row[2] == NULL || $row[3] == NULL ) { 
                 return true;
             }
+        }
+
+    }
+
+    public function changeUserConfirmed($id) {
+
+        $user  = User::find($id);
+
+        if ($user->confirmed) {
+            $user->confirmed = false;
+        } else {
+            $user->confirmed = true;
+        }
+
+        $updated = $user->update();
+
+        if ($updated) {
+            return response()->json( ['user_confirmed_updated' => $user], 201);
+        } else {
+            return response()->json( ['other_errors' => 'Servidor momentaneamente inaccesible. Intente mas tarde por favor.'], 500);
         }
 
     }

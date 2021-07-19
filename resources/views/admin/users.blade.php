@@ -46,9 +46,10 @@
           <table class="table table-hover text-nowrap">
             <thead>
               <tr>
-                <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Email</th>
                 <th class="text-center">Tipo</th>
+                <th class="text-center">Habilitado</th>
                 <th class="text-center">Acciones</th>
               </tr>
             </thead>
@@ -56,9 +57,21 @@
             <paginate :key="filteredUsers.length" name="users" :list="filteredUsers" :per="15" tag="tbody">
 
               <tr v-for="user in paginated('users')" :key="user.id">
-                <td><a @click="showFormUserEdit(user.id)" href="#" v-cloak>@{{user.name}}</a></td>
+                <td><a @click="showFormUserEdit(user.id)" href="#" v-cloak>@{{user.lastname}}</a></td>
                 <td v-cloak>@{{user.email}}</td>
                 <td class="text-center" v-cloak>@{{ getRoleUser(user.role_id) }}</td>
+                <td class="text-center" v-cloak>
+                  <div v-if="user.role_id !=1" class="custom-control custom-switch">
+                    <input 
+                      type="checkbox" 
+                      class="custom-control-input" 
+                      :checked="user.confirmed"
+                      :id="user.id"
+                      @click="changeUserConfirmed(user.id, user.confirmed)"
+                      >
+                    <label class="custom-control-label" :for="user.id"></label>
+                  </div>                  
+                </td>
                 <td class="content_btn_actions">
                   <button @click="showFormUserEdit(user.id)" type="button" class="btn btn-outline-warning btn-sm">Editar</button>
                   <button @click="deleteUser(user.id)" type="button" class="btn btn-outline-danger btn-sm">Eliminar</button>

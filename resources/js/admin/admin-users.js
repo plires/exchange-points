@@ -205,6 +205,7 @@ const app = new Vue({
 
             let msgError = "El usuario no pudo ser eliminado."
             this.laravelErrorHandling(errorsLaravel.response.data, msgError)
+            this.loading()
 
           })
 
@@ -290,6 +291,33 @@ const app = new Vue({
 
     }, 
 
+    changeUserConfirmed(userId, userConfirmed) {
+
+      axios.put('/admin/users/' + userId + '/cambiar_confirmed', {
+        id: userId,
+        confirmed: userConfirmed,
+      }).then(response => {
+
+        this.getUsers()
+        
+        this.createAlert(
+          'Éxito', 
+          'Excelente!, el usuario ' + response.data.user_confirmed_updated.name + ' Cambio su estado', 
+          'success', 
+          'Cerrar'
+        )
+
+      })
+      .catch(errorsLaravel => {
+
+        let msgError = errorsLaravel.response.data
+        this.laravelErrorHandling(errorsLaravel.response.data, msgError)
+        this.loading()
+        
+      })
+
+    }
+
   },
 
   created() {
@@ -302,7 +330,7 @@ const app = new Vue({
   computed: {
 
     filteredUsers() {
-      return this.users.filter( (user) => user.name.toLowerCase().includes(this.nameUser.toLowerCase()) )
+      return this.users.filter( (user) => user.lastname.toLowerCase().includes(this.nameUser.toLowerCase()) )
     }
 
   }

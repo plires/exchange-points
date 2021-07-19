@@ -14,13 +14,15 @@ class UsersTableSeeder extends Seeder
     {
         
         factory(User::class)->create([
-            'name' => 'Pablo Lires',
-            'email' => 'pablolires@gmail.com',
-            'role_id' => 1,
-            'points' => 0,
-            'email_verified_at' => now(),
-            'password' => bcrypt('1234'), // password
-            'remember_token' => Str::random(10),
+            'name'                  => 'Pablo',
+            'lastname'              => 'Lires',
+            'email'                 => 'pablolires@gmail.com',
+            'role_id'               => 1,
+            'points'                => 0,
+            'confirmed'             => true,
+            'email_verified_at'     => now(),
+            'password'              => bcrypt('1234'), // password
+            'remember_token'        => Str::random(10),
         ]);
 
         factory(User::class, 199)->create();

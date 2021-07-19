@@ -52,20 +52,26 @@ class LoginController extends Controller
     public function authenticated($request, $user) {
         $role = $user->role->name; 
 
-        switch ($role) {
-          case 'Administrador':
-             return redirect('/admin/users');
-             break;
-          case 'Usuario':
-             return redirect('/');
-             break; 
+        if ($user->confirmed) { // Si el usuario esta aprobado por el administrador
+            
+            switch ($role) {
+              case 'Administrador':
+                 return redirect('/admin/users');
+                 break;
+              case 'Usuario':
+                 return redirect('/');
+                 break; 
 
-          default:
-             return redirect('/'); 
-             break;
+              default:
+                 return redirect('/'); 
+                 break;
+            }
+
         }
+        
+        $this->performLogout($request); // Provocamos el logout
+        return redirect()->route('login', ['user_confirmed' => false]); //Redirigimos con la variable
 
-      return $next($request);
     }
 
 }

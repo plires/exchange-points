@@ -65009,6 +65009,8 @@ var app = new Vue({
             var msgError = "El usuario no pudo ser eliminado.";
 
             _this4.laravelErrorHandling(errorsLaravel.response.data, msgError);
+
+            _this4.loading();
           });
         }
       });
@@ -65078,6 +65080,24 @@ var app = new Vue({
         password: '',
         password_confirmation: ''
       };
+    },
+    changeUserConfirmed: function changeUserConfirmed(userId, userConfirmed) {
+      var _this5 = this;
+
+      axios.put('/admin/users/' + userId + '/cambiar_confirmed', {
+        id: userId,
+        confirmed: userConfirmed
+      }).then(function (response) {
+        _this5.getUsers();
+
+        _this5.createAlert('Éxito', 'Excelente!, el usuario ' + response.data.user_confirmed_updated.name + ' Cambio su estado', 'success', 'Cerrar');
+      })["catch"](function (errorsLaravel) {
+        var msgError = errorsLaravel.response.data;
+
+        _this5.laravelErrorHandling(errorsLaravel.response.data, msgError);
+
+        _this5.loading();
+      });
     }
   },
   created: function created() {
@@ -65088,10 +65108,10 @@ var app = new Vue({
   },
   computed: {
     filteredUsers: function filteredUsers() {
-      var _this5 = this;
+      var _this6 = this;
 
       return this.users.filter(function (user) {
-        return user.name.toLowerCase().includes(_this5.nameUser.toLowerCase());
+        return user.lastname.toLowerCase().includes(_this6.nameUser.toLowerCase());
       });
     }
   }

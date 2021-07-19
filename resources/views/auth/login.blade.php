@@ -16,6 +16,14 @@
             <div class="col-sm-12 col-md-8 col-lg-6 formulario">
                 <h1>LOGIN</h1>
 
+                @isset ($_GET['user_confirmed'])
+
+                    @if($_GET['user_confirmed'] == 0)
+                        <p class="user_confirmed">El usuario no ha sido habilitado aún por el administrador</p>
+                    @endif
+
+                @endisset
+
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
@@ -83,6 +91,11 @@
                                 <a class="btn btn-link transition" href="{{ route('password.request') }}">
                                     Olvidaste tu password?
                                 </a>
+                            @endif
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">Registrate</a>
+                                </li>
                             @endif
                         </div>
 

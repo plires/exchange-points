@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('lastname');
             $table->string('email')->unique();
             $table->date('birthday')->nullable();
             $table->string('phone')->nullable();
@@ -27,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('postal_code')->nullable();
             $table->bigInteger('points')->unsigned()->default(0);
             $table->string('image')->nullable();
+            $table->boolean('confirmed')->default(false);
 
             //FK
             $table->bigInteger('role_id')->unsigned()->default(2);

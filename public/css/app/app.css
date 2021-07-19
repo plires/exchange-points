@@ -10221,6 +10221,14 @@ body {
   height: 100%;
 }
 
+.invalid-feedback,
+.login .user_confirmed {
+    font-size: 80%;
+    color: #dc3545;
+    background: white;
+    padding: 3px 10px;
+}
+
 .login .row {
   display: flex;
   justify-content: center;
