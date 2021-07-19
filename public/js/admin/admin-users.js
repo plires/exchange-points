@@ -64809,6 +64809,7 @@ var app = new Vue({
     roles: [],
     formUser: {
       name: '',
+      lastname: '',
       role_id: 2,
       email: '',
       points: '',
@@ -64903,19 +64904,23 @@ var app = new Vue({
       this.cleanErrors();
 
       if (!this.entryPass) {
-        if (this.formUser.name && this.validateEmail(this.formUser.email) && $.isNumeric(this.formUser.role_id)) {
+        if (this.formUser.name && this.formUser.lastname && this.validateEmail(this.formUser.email) && $.isNumeric(this.formUser.role_id)) {
           this.formUser.password = '';
           this.formUser.password_confirmation = '';
           return true;
         }
       } else {
-        if (this.formUser.name && this.validateEmail(this.formUser.email) && $.isNumeric(this.formUser.role_id) && this.formUser.password && this.formUser.password_confirmation && this.formUser.password === this.formUser.password_confirmation) {
+        if (this.formUser.name && this.formUser.lastname && this.validateEmail(this.formUser.email) && $.isNumeric(this.formUser.role_id) && this.formUser.password && this.formUser.password_confirmation && this.formUser.password === this.formUser.password_confirmation) {
           return true;
         }
       }
 
       if (!this.formUser.name) {
         this.errors.push('El nombre es obligatorio.');
+      }
+
+      if (!this.formUser.lastname) {
+        this.errors.push('El apellido es obligatorio.');
       }
 
       if (!this.validateEmail(this.formUser.email)) {
@@ -65039,6 +65044,7 @@ var app = new Vue({
       this.formUser = {
         id: user[0].id,
         name: user[0].name,
+        lastname: user[0].lastname,
         role_id: user[0].role_id,
         email: user[0].email,
         points: user[0].points,

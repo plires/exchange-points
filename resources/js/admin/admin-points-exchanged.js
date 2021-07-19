@@ -67,7 +67,7 @@ const app = new Vue({
 
     getNameUser(user_id) {
       let user = this.users.filter( (user) => user.id == user_id )
-      return user[0].name 
+      return user[0].lastname 
     },
 
     getNameProduct(product_id) {
@@ -214,7 +214,7 @@ const app = new Vue({
 
     checkFormExchange: function () {
 
-      let name =  this.userObject.name
+      let name =  this.userObject.lastname
       let points =  this.userObject.points
       let products =  this.productsCart
 

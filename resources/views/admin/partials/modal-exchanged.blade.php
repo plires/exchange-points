@@ -26,7 +26,7 @@
 
                 <div class="form-row mb-5">
                   <div class="form-group col-md-8">
-                    <label>Usuario</label>
+                    <label>Apellido</label>
                     <select id="selectSearchByNewUser" class="form-control select2 select2bs4" style="width: 100%;">
                       <option></option>
 
@@ -34,7 +34,7 @@
                         v-for="userNew in usersNews" 
                         :data-id = userNew.id
                         :key = "userNew.id">
-                        @{{ userNew.name }}
+                        @{{ userNew.lastname }}
                       </option>
 
                     </select>
@@ -87,7 +87,7 @@
                   </ul>
 
                   <div class="w-100 d-flex justify-content-end align-items-center mt-5">
-                    <p class="total">Total del Canje: $ @{{ subtotal }}</p>
+                    <p class="total">Total del Canje: @{{ subtotal }}</p>
                   </div>
 
                 </div>

@@ -197,7 +197,7 @@ class UserController extends Controller
     public function exportTemplate()
     {
 
-        $users = User::select( 'id', 'name', 'email', 'points')
+        $users = User::select( 'id', 'lastname', 'email', 'points')
             ->whereRole_id(2)
             ->get();
 

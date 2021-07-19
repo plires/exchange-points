@@ -19,7 +19,7 @@
 
           <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
-              <input v-model="nameUser" type="text" name="table_search" class="form-control float-right" placeholder="Search">
+              <input v-model="lastNameUser" type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
               <div class="input-group-append">
                 <button type="submit" class="btn btn-default">
@@ -35,7 +35,7 @@
           <table class="table table-hover text-nowrap">
             <thead>
               <tr>
-                <th>Nombre</th>
+                <th>Apellido</th>
                 <th class="text-center">Puntos</th>
                 <th class="text-right">Acciones</th>
               </tr>
@@ -50,7 +50,7 @@
                     data-target="#modal-points" 
                     @click="fillInputsformPoints(user.id)" 
                     href="#" 
-                    v-cloak>@{{user.name}}
+                    v-cloak>@{{user.lastname}}
                   </a>
                 </td>
                 <td class="text-center" v-cloak>@{{ user.points }}</td>

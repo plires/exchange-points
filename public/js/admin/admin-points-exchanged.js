@@ -64928,7 +64928,7 @@ var app = new Vue({
       var user = this.users.filter(function (user) {
         return user.id == user_id;
       });
-      return user[0].name;
+      return user[0].lastname;
     },
     getNameProduct: function getNameProduct(product_id) {
       var product = this.products.filter(function (product) {
@@ -65061,7 +65061,7 @@ var app = new Vue({
       });
     },
     checkFormExchange: function checkFormExchange() {
-      var name = this.userObject.name;
+      var name = this.userObject.lastname;
       var points = this.userObject.points;
       var products = this.productsCart;
 

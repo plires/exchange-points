@@ -23,7 +23,7 @@
                   v-for="user in users" 
                   :key = "user.id"
                   v-cloak>
-                  @{{ user.name }}
+                  @{{ user.lastname }}
                 </option>
 
               </select>
@@ -35,7 +35,7 @@
           <table class="table table-hover text-nowrap">
             <thead>
               <tr>
-                <th>Usuario</th>
+                <th>Apellido</th>
                 <th class="text-center">Cantidad Otorgada</th>
                 <th class="text-center">Fecha</th>
                 <th class="text-center">Hora</th>

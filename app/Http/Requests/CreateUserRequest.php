@@ -37,6 +37,7 @@ class CreateUserRequest extends FormRequest
 
             return [
                 'name'              => ['required', 'string', 'max:255'],
+                'lastname'          => ['required', 'string', 'max:255'],
                 'role_id'           => ['required', 'numeric'],
                 'email'             => [
                     'required',
@@ -69,7 +70,9 @@ class CreateUserRequest extends FormRequest
     {
         return [
             'name.required'         => 'Ingresá un nombre', 
-            'name.max'              => 'El campo nombre no puede tener mas de 255 caracteres', 
+            'name.max'              => 'El campo nombre no puede tener mas de 255 caracteres',
+            'lastname.required'     => 'Ingresá un apellido', 
+            'lastname.max'          => 'El campo apellido no puede tener mas de 255 caracteres', 
             'role_id.required'      => 'Ingresá un rol de usuario', 
             'role_id.numeric'       => 'Ingresá un rol de usuario válido',
             'email.required'        => 'Ingresá un email', 

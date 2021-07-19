@@ -64784,10 +64784,10 @@ var app = new Vue({
   data: {
     users: [],
     // pointsUsers: [],
-    nameUser: '',
+    lastNameUser: '',
     formPoints: {
       id: '',
-      name: '',
+      lastname: '',
       email: '',
       phone: '',
       points_old: '',
@@ -64914,7 +64914,7 @@ var app = new Vue({
 
         _this3.getUsers();
 
-        _this3.createAlert('Éxito', 'Excelente! el usuario ' + response.data.user_points_updated.name + ', tiene ahora ' + response.data.user_points_updated.points + ' puntos!', 'success', 'Cerrar');
+        _this3.createAlert('Éxito', 'Excelente! el usuario ' + response.data.user_points_updated.lastname + ', tiene ahora ' + response.data.user_points_updated.points + ' puntos!', 'success', 'Cerrar');
 
         _this3.resetPointsForm();
 
@@ -64938,7 +64938,7 @@ var app = new Vue({
       });
       this.formPoints = {
         id: userPoints[0].id,
-        name: userPoints[0].name,
+        lastname: userPoints[0].lastname,
         email: userPoints[0].email,
         points_old: userPoints[0].points,
         points_bdd: userPoints[0].points
@@ -64962,7 +64962,7 @@ var app = new Vue({
       var _this4 = this;
 
       return this.users.filter(function (user) {
-        return user.name.toLowerCase().includes(_this4.nameUser.toLowerCase());
+        return user.lastname.toLowerCase().includes(_this4.lastNameUser.toLowerCase());
       });
     }
   }

@@ -26,19 +26,19 @@
 
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="name">Nombre *</label>
-                    <input disabled type="text" class="form-control" id="name" id="name" v-model="formPoints.name">
+                    <label for="lastname">Apellido *</label>
+                    <input disabled type="text" class="form-control" name="lastname" id="lastname" v-model="formPoints.lastname">
                   </div>
                   <div class="form-group col-md-6">
                     <label for="email">Email *</label>
-                    <input disabled type="text" class="form-control" id="email" id="email" v-model="formPoints.email">
+                    <input disabled type="text" class="form-control" name="email" id="email" v-model="formPoints.email">
                   </div>                  
                 </div>
 
                 <div class="form-row">
                   <div class="form-group col-md-12">
                     <label for="points_old">Puntos Actuales</label>
-                    <input disabled type="text" class="form-control" id="points_old" name="points_old" v-model="formPoints.points_old">
+                    <input disabled type="text" class="form-control" name="points_old" id="points_old" v-model="formPoints.points_old">
                   </div>
                 </div>
 

@@ -25,15 +25,23 @@
               <div class="card-body">
 
                 <div class="form-row">
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-3">
                     <label for="name">Nombre *</label>
-                    <input required type="text" class="form-control" id="name" id="name" placeholder="Nombre (*)" v-model="formUser.name">
+                    <input required type="text" class="form-control" id="name" name="name" placeholder="Nombre (*)" v-model="formUser.name">
                     <div class="invalid-feedback">
                       Ingresá un nombre.
                     </div>
                   </div>
 
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-4">
+                    <label for="lastname">Apellido *</label>
+                    <input required type="text" class="form-control" id="lastname" name="lastname" placeholder="Apellido (*)" v-model="formUser.lastname">
+                    <div class="invalid-feedback">
+                      Ingresá un nombre.
+                    </div>
+                  </div>
+
+                  <div class="form-group col-md-5">
                     <label for="email">Email *</label>
                     <input required type="email" class="form-control" id="email" name="email" placeholder="Email (*)" v-model="formUser.email">
                     <div class="invalid-feedback">

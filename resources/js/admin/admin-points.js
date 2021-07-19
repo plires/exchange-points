@@ -15,10 +15,10 @@ const app = new Vue({
   data: {
     users: [],
     // pointsUsers: [],
-    nameUser: '',
+    lastNameUser: '',
     formPoints: {
       id:'',
-      name:'',
+      lastname:'',
       email:'',
       phone:'',
       points_old: '',
@@ -114,7 +114,7 @@ const app = new Vue({
         
         this.createAlert(
           'Éxito', 
-          'Excelente! el usuario ' + response.data.user_points_updated.name + ', tiene ahora ' + response.data.user_points_updated.points + ' puntos!', 
+          'Excelente! el usuario ' + response.data.user_points_updated.lastname + ', tiene ahora ' + response.data.user_points_updated.points + ' puntos!', 
           'success', 
           'Cerrar'
         )
@@ -147,7 +147,7 @@ const app = new Vue({
 
       this.formPoints = {
         id: userPoints[0].id,
-        name: userPoints[0].name,
+        lastname: userPoints[0].lastname,
         email: userPoints[0].email,
         points_old: userPoints[0].points,
         points_bdd: userPoints[0].points
@@ -174,7 +174,7 @@ const app = new Vue({
   computed: {
 
     filteredUsers() {
-      return this.users.filter( (user) => user.name.toLowerCase().includes(this.nameUser.toLowerCase()) )
+      return this.users.filter( (user) => user.lastname.toLowerCase().includes(this.lastNameUser.toLowerCase()) )
     }
 
   }
