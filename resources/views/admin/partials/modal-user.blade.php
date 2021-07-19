@@ -25,7 +25,7 @@
               <div class="card-body">
 
                 <div class="form-row">
-                  <div class="form-group col-md-3">
+                  <div class="form-group col-md-6">
                     <label for="name">Nombre *</label>
                     <input required type="text" class="form-control" id="name" name="name" placeholder="Nombre (*)" v-model="formUser.name">
                     <div class="invalid-feedback">
@@ -33,7 +33,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-6">
                     <label for="lastname">Apellido *</label>
                     <input required type="text" class="form-control" id="lastname" name="lastname" placeholder="Apellido (*)" v-model="formUser.lastname">
                     <div class="invalid-feedback">
@@ -41,12 +41,18 @@
                     </div>
                   </div>
 
-                  <div class="form-group col-md-5">
+                </div>
+
+                <div class="form-row">
+
+                  <div class="form-group col-md-6">
+                    <label for="document">Documento *</label>
+                    <input required type="text" class="form-control" id="document" name="document" placeholder="Documento Identidad (*)" v-model="formUser.document">
+                  </div>
+
+                  <div class="form-group col-md-6">
                     <label for="email">Email *</label>
                     <input required type="email" class="form-control" id="email" name="email" placeholder="Email (*)" v-model="formUser.email">
-                    <div class="invalid-feedback">
-                      Ingresá un email.
-                    </div>
                   </div>
                 </div>
 
@@ -107,9 +113,6 @@
                         @{{ rol.name }}
                     </option>
                   </select>
-                  <div class="invalid-feedback">
-                    Ingresá el rol del nuevo usuario.
-                  </div>
                 </div>
 
                 <div v-if="modeUserEdit" class="form-group col-md-6">

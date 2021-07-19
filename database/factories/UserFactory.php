@@ -18,9 +18,11 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+
     return [
         'name'                  => $faker->firstName,
         'lastname'              => $faker->lastName,
+        'document'              => $faker->numberBetween($min = 20000000, $max = 30000000),
         'email'                 => $faker->unique()->safeEmail,
         'birthday'              => $faker->date($format = 'Y-m-d', $max = 'now'),
         'phone'                 => $faker->phoneNumber,

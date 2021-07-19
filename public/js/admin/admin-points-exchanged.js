@@ -64930,6 +64930,12 @@ var app = new Vue({
       });
       return user[0].lastname;
     },
+    getDocumentUser: function getDocumentUser(user_id) {
+      var user = this.users.filter(function (user) {
+        return user.id == user_id;
+      });
+      return user[0].document;
+    },
     getNameProduct: function getNameProduct(product_id) {
       var product = this.products.filter(function (product) {
         return product.id == product_id;

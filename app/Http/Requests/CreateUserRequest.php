@@ -38,6 +38,7 @@ class CreateUserRequest extends FormRequest
             return [
                 'name'              => ['required', 'string', 'max:255'],
                 'lastname'          => ['required', 'string', 'max:255'],
+                'document'          => ['required', 'string', 'max:20'],
                 'role_id'           => ['required', 'numeric'],
                 'email'             => [
                     'required',
@@ -72,7 +73,9 @@ class CreateUserRequest extends FormRequest
             'name.required'         => 'Ingresá un nombre', 
             'name.max'              => 'El campo nombre no puede tener mas de 255 caracteres',
             'lastname.required'     => 'Ingresá un apellido', 
-            'lastname.max'          => 'El campo apellido no puede tener mas de 255 caracteres', 
+            'lastname.max'          => 'El campo apellido no puede tener mas de 255 caracteres',
+            'document.required'     => 'Ingresá un documento de identidad', 
+            'document.max'          => 'El campo documento de identidad no puede tener mas de 20 caracteres', 
             'role_id.required'      => 'Ingresá un rol de usuario', 
             'role_id.numeric'       => 'Ingresá un rol de usuario válido',
             'email.required'        => 'Ingresá un email', 

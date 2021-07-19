@@ -50,6 +50,7 @@
             <thead>
               <tr>
                 <th>Apellido</th>
+                <th class="text-center">Documento</th>
                 <th class="text-center">Puntos Canjeados</th>
                 <th class="text-center">Fecha</th>
                 <th class="text-center">Hora</th>
@@ -61,6 +62,7 @@
 
               <tr v-for="exchange in paginated('exchanges')" :key="exchange.id">
                 <td v-cloak v-cloak>@{{ getNameUser(exchange.user_id) }}</td>
+                <td class="text-center" v-cloak>@{{ getDocumentUser(exchange.user_id) }}</td>
                 <td class="text-center" v-cloak>@{{ exchange.points_quantity }}</td>
                 <td class="text-center" v-cloak>@{{ getDateFormated(exchange.created_at) }}</td>
                 <td class="text-center" v-cloak>@{{ getTimeFormated(exchange.created_at) }}</td>

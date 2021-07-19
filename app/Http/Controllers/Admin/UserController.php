@@ -197,7 +197,7 @@ class UserController extends Controller
     public function exportTemplate()
     {
 
-        $users = User::select( 'id', 'lastname', 'email', 'points')
+        $users = User::select( 'id', 'lastname', 'document', 'email', 'points')
             ->whereRole_id(2)
             ->get();
 
@@ -231,7 +231,7 @@ class UserController extends Controller
                 $user = User::findOrFail($row[0]); // Cargamos el usuario con cada id del excel
 
                 $userPoints = (int)$user->points;
-                $pointsFromExcel = (int)$row[3];
+                $pointsFromExcel = (int)$row[4];
 
                 $points = $this->getPointsToSave($userPoints, $pointsFromExcel, $user);
 
@@ -293,7 +293,7 @@ class UserController extends Controller
 
         foreach ($rows[0] as $row) {
 
-            if ( $row[0] == NULL || $row[1] == NULL || $row[2] == NULL || $row[3] == NULL ) { 
+            if ( $row[0] == NULL || $row[1] == NULL || $row[2] == NULL || $row[3] == NULL || $row[4] == NULL ) { 
                 return true;
             }
         }

@@ -37,6 +37,13 @@
 
                 <div class="form-row">
                   <div class="form-group col-md-12">
+                    <label for="document">Documento Identidad *</label>
+                    <input disabled type="text" class="form-control" name="document" id="document" v-model="formPoints.document">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-12">
                     <label for="points_old">Puntos Actuales</label>
                     <input disabled type="text" class="form-control" name="points_old" id="points_old" v-model="formPoints.points_old">
                   </div>

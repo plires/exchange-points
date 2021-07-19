@@ -36,6 +36,7 @@
             <thead>
               <tr>
                 <th>Apellido</th>
+                <th class="text-center">Documento</th>
                 <th class="text-center">Puntos</th>
                 <th class="text-right">Acciones</th>
               </tr>
@@ -53,6 +54,7 @@
                     v-cloak>@{{user.lastname}}
                   </a>
                 </td>
+                <td class="text-center" v-cloak>@{{ user.document }}</td>
                 <td class="text-center" v-cloak>@{{ user.points }}</td>
                 <td class="content_btn_actions">
                   <button data-toggle="modal" data-target="#modal-points" @click="fillInputsformPoints(user.id)" type="button" class="btn btn-outline-warning btn-sm">Agregar / Quitar Puntos</button>

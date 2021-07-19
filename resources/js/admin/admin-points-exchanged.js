@@ -70,6 +70,11 @@ const app = new Vue({
       return user[0].lastname 
     },
 
+    getDocumentUser(user_id) {
+      let user = this.users.filter( (user) => user.id == user_id )
+      return user[0].document 
+    },
+
     getNameProduct(product_id) {
       let product = this.products.filter( (product) => product.id == product_id )
       return product[0].name 

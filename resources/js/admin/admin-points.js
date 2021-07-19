@@ -19,6 +19,7 @@ const app = new Vue({
     formPoints: {
       id:'',
       lastname:'',
+      document:'',
       email:'',
       phone:'',
       points_old: '',
@@ -148,6 +149,7 @@ const app = new Vue({
       this.formPoints = {
         id: userPoints[0].id,
         lastname: userPoints[0].lastname,
+        document: userPoints[0].document,
         email: userPoints[0].email,
         points_old: userPoints[0].points,
         points_bdd: userPoints[0].points
