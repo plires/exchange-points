@@ -44,7 +44,8 @@
               <button 
                 type="button" id="btn_finalizar_pedido" 
                 class="btn btn-primary transition" 
-                @click="showConfirmation()"><i class="fas fa-shopping-cart"></i> Canjear
+                data-toggle="modal" 
+                data-target="#modalconfirmation"><i class="fas fa-shopping-cart"></i> Canjear
               </button>
             </div>
 

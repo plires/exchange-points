@@ -57964,7 +57964,7 @@ var app = new Vue({
         $('#btnCanjeModal').removeClass('hidden');
       }
     },
-    showConfirmation: function showConfirmation() {
+    confirmation: function confirmation() {
       console.log(this.cart);
     }
   },

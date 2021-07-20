@@ -10407,7 +10407,10 @@ body {
   width: 80%;
   height: 100vh;
   background: white;
+  overflow-y:scroll;
+  overflow-x:hidden;
   padding: 15px;
+  padding-bottom: 100px;
 }
 
 .catalogo #cart h3 {
@@ -11213,6 +11216,84 @@ body {
     width: 500px;
     max-width: 500px;
   }
+
+}
+
+@media (min-width: 1400px) {
+
+}
+
+/* Modal Confirmation */
+
+#modalconfirmation .product_confirmation {
+}
+
+#modalconfirmation .product_confirmation img {
+  max-width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 15px;
+}
+
+#modalconfirmation table td,
+#modalconfirmation table th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#modalconfirmation table th {
+  background-color: var(--primary-color);
+  border: none;
+}
+
+#modalconfirmation .modal-body {
+  padding-bottom: 0!important;
+}
+
+#modalconfirmation .modal-footer {
+  border-top: none;
+  margin-top: 30px;
+}
+
+#modalconfirmation table .totales td {
+  padding-top: 30px;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+#modalconfirmation .btn-primary {
+  background-color: var(--primary-color);
+  border: solid 1px var(--primary-color);
+}
+
+#modalconfirmation .btn-primary:hover {
+  color: var(--primary-color);
+  background-color: white;
+  border: solid 1px var(--primary-color);
+}
+
+#modalconfirmation table td:first-child,
+#modalconfirmation table th:first-child {
+  text-align: left;
+}
+
+/* Modal Confirmation end */
+
+/* MEDIA QUERIES */
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
 
 }
 

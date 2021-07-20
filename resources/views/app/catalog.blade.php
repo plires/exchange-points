@@ -18,6 +18,9 @@
 		<!-- Modal Product -->
 		@include('app.partials.modal-product')
 
+		<!-- Modal Confirmation -->
+		@include('app.partials.modal-confirmation')
+
 		<!-- Slide Superior -->
 		<section class="slide_superior container-fluid primer_contenido">
 			<div class="row">

@@ -157,7 +157,7 @@ const app = new Vue({
 
     },
 
-    showConfirmation() {
+    confirmation() {
       console.log(this.cart)
     }
 

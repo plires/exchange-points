@@ -6,7 +6,10 @@
   width: 80%;
   height: 100vh;
   background: white;
+  overflow-y:scroll;
+  overflow-x:hidden;
   padding: 15px;
+  padding-bottom: 100px;
 }
 
 .catalogo #cart h3 {
