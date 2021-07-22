@@ -1,12 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
-/.phpintel/*
-/phpintel/*
-.phpintel
-.phpintel/
-.phpintel/index
-.phpintel/*
+/.phpintel
 /storage/*.key
 /vendor
 .env

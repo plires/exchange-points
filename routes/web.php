@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\Mail\MessageToUser;
 use App\Exports\UsersExport;
 use App\Imports\UsersImport;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,8 @@ Route::get('/registro-pendiente', 'App\RegisterPendingController@userPendingVeri
 
 Route::post('/user-points-exchanged', 'App\ExchangeController@store')->name('user-points-exchange');
 
+Route::post('/messages', 'App\MessagesController@store')->name('messages');
+
 Auth::routes();
 
 Route::get('/test', function () {
@@ -61,7 +64,7 @@ Route::get('/test', function () {
   //     'points'    => 3000, 
   // );
 
-  // Mail::send('emails.new-exchange-manual', $data, function($message) use ($to_name, $to_email) {
+  // Mail::queue('emails.new-exchange-manual', $data, function($message) use ($to_name, $to_email) {
   // $message->to($to_email, $to_name)
   // ->subject('Laravel Test Mail');
   // $message->from('pruebas@librecomunicacion.net','Test Mail');

@@ -6,7 +6,9 @@ use App\User;
 use App\Product;
 use App\Exchange;
 use App\ExchangeDetail;
+use App\Mail\MessageToUser;
 use Illuminate\Http\Request;
+use App\Mail\MessageToClient;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -121,6 +123,13 @@ class ExchangeController extends Controller
 
       }
 
+      foreach ($exchangeDetail as $key => $detail) {
+        $product = Product::findOrFail($detail['product_id']);
+        $productTemplateEmail[$key]['name']       = $product->name;
+        $productTemplateEmail[$key]['quantity']   = $detail->quantity;
+        $productTemplateEmail[$key]['price']      = number_format($detail->price,0, ',', '.');
+      }
+
       try {
 
           DB::transaction(function () use($exchange, $exchangeDetail, $productToUpdate, $pointsUserToUpdate) { 
@@ -138,6 +147,9 @@ class ExchangeController extends Controller
               $pointsUserToUpdate->update();
 
           });
+
+          // Mail::to('plires@depisos.com')->queue(new MessageToUser);
+          Mail::to($pointsUserToUpdate->email)->queue(new MessageToClient($exchange, $pointsUserToUpdate, $productTemplateEmail));
 
           // Enviar email
           // $to_name = 'Carlos Castro';
