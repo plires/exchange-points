@@ -65105,7 +65105,7 @@ var app = new Vue({
           formData.append('products[]', JSON.stringify(this.productsCart[key]));
         }
 
-        axios.post('/admin/points-exchanged/', formData).then(function (response) {
+        axios.post('/admin/user-points-exchanged/', formData).then(function (response) {
           $('#modal-exchanged').modal("hide");
 
           _this6.getUsers();

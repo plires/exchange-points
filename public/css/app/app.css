@@ -10557,7 +10557,6 @@ body {
      object-fit: cover;
 }
 
-
 /* MEDIA QUERIES */
 @media (min-width: 576px) {
 
@@ -11243,7 +11242,6 @@ body {
 }
 
 #modalconfirmation table th {
-  background-color: var(--primary-color);
   border: none;
 }
 

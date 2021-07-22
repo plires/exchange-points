@@ -58,6 +58,7 @@
     class="btn btn-primary transition" 
     data-toggle="modal" 
     data-target="#modalconfirmation"
+    @click="hiddenModalProduct"
     ><i class="fas fa-shopping-cart"></i> Canjear
   </button>
 

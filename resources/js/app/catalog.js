@@ -36,7 +36,8 @@ const app = new Vue({
       this.loading()
       let response = await axios.get('exchange/get_user_auth')
       this.authUser = response.data
-      localStorage.setItem('authUser', JSON.stringify(response.data));
+      localStorage.removeItem('authUser')
+      localStorage.setItem('authUser', JSON.stringify(response.data))
       this.loading()
     },
 
@@ -110,7 +111,7 @@ const app = new Vue({
       }
 
       setTimeout(function(){ app.availablePoints() }, 100)
-      localStorage.setItem('cart', JSON.stringify(this.cart));
+      localStorage.setItem('cart', JSON.stringify(this.cart))
 
       return 1
 
@@ -126,7 +127,7 @@ const app = new Vue({
       }
 
       setTimeout(function(){ app.availablePoints() }, 100)
-      localStorage.setItem('cart', JSON.stringify(this.cart));
+      localStorage.setItem('cart', JSON.stringify(this.cart))
 
     },
 
@@ -157,8 +158,79 @@ const app = new Vue({
 
     },
 
+    hiddenModalProduct() {
+      $('#modalProduct').modal('hide')
+    },
+
+    createAlert(title, text, icon, btnTxt) {
+      Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        confirmButtonText: btnTxt
+      })
+    },
+
     confirmation() {
-      console.log(this.cart)
+      
+      var formData = new FormData()
+
+      formData.append('user_id', this.authUser.id)
+
+      formData.append('total', this.total.replace('.', ''))
+
+      for ( var key in this.cart ) {
+        formData.append('products[]', JSON.stringify(this.cart[key]))
+      }
+
+      this.loading()
+      axios.post('/user-points-exchanged/', formData)
+
+      .then(response => {
+
+        $('#modalconfirmation').modal("hide")
+
+        this.createAlert(
+          'Éxito', 
+          response.data.exchanged_created, 
+          'success', 
+          'Cerrar'
+        )
+
+        localStorage.removeItem('cart')
+        localStorage.removeItem('authUser')
+        this.cart = {}
+
+        this.getAuthUser()
+        this.getProducts()
+
+        this.loading()
+
+      })
+      .catch(errorsLaravel => {
+
+        if (typeof errorsLaravel.response.data.errors !== 'undefined') {
+
+          this.errors = [].concat.apply([], Object.values(errorsLaravel.response.data.errors));
+          
+          let msgError = ''
+
+          this.errors.forEach(error => 
+            msgError += '<li>' + error + '</li><br>'
+          );
+
+          Swal.fire({
+            title: 'Error',
+            html: '<ul style="text-align: left;">' + msgError + '</ul>',
+            icon: 'error',
+            confirmButtonText: 'Cerrar'
+          })
+          
+          this.loading()
+        }
+        
+      })
+
     }
 
   },
@@ -199,7 +271,6 @@ const app = new Vue({
 
   mounted() {
     if(localStorage.cart) this.cart = JSON.parse(localStorage.getItem('cart'))
-    if(localStorage.authUser) this.authUser = JSON.parse(localStorage.getItem('authUser'))
     this.getAuthUser()
     this.getProducts()
   },

@@ -42,10 +42,13 @@
 
             <div v-if="product_availability != 0" id="btnCanjeModal" class="canjear text-center">
               <button 
+                v-if="Object.keys(cart).length != 0"
                 type="button" id="btn_finalizar_pedido" 
                 class="btn btn-primary transition" 
                 data-toggle="modal" 
-                data-target="#modalconfirmation"><i class="fas fa-shopping-cart"></i> Canjear
+                data-target="#modalconfirmation"
+                @click="hiddenModalProduct"
+                ><i class="fas fa-shopping-cart"></i> Canjear
               </button>
             </div>
 

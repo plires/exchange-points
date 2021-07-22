@@ -57827,11 +57827,12 @@ var app = new Vue({
               case 3:
                 response = _context.sent;
                 _this.authUser = response.data;
+                localStorage.removeItem('authUser');
                 localStorage.setItem('authUser', JSON.stringify(response.data));
 
                 _this.loading();
 
-              case 7:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -57964,8 +57965,62 @@ var app = new Vue({
         $('#btnCanjeModal').removeClass('hidden');
       }
     },
+    hiddenModalProduct: function hiddenModalProduct() {
+      $('#modalProduct').modal('hide');
+    },
+    createAlert: function createAlert(title, text, icon, btnTxt) {
+      _node_modules_admin_lte_plugins_sweetalert2_sweetalert2_all_js__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        confirmButtonText: btnTxt
+      });
+    },
     confirmation: function confirmation() {
-      console.log(this.cart);
+      var _this3 = this;
+
+      var formData = new FormData();
+      formData.append('user_id', this.authUser.id);
+      formData.append('total', this.total.replace('.', ''));
+
+      for (var key in this.cart) {
+        formData.append('products[]', JSON.stringify(this.cart[key]));
+      }
+
+      this.loading();
+      axios.post('/user-points-exchanged/', formData).then(function (response) {
+        $('#modalconfirmation').modal("hide");
+
+        _this3.createAlert('Éxito', response.data.exchanged_created, 'success', 'Cerrar');
+
+        localStorage.removeItem('cart');
+        localStorage.removeItem('authUser');
+        _this3.cart = {};
+
+        _this3.getAuthUser();
+
+        _this3.getProducts();
+
+        _this3.loading();
+      })["catch"](function (errorsLaravel) {
+        if (typeof errorsLaravel.response.data.errors !== 'undefined') {
+          _this3.errors = [].concat.apply([], Object.values(errorsLaravel.response.data.errors));
+          var msgError = '';
+
+          _this3.errors.forEach(function (error) {
+            return msgError += '<li>' + error + '</li><br>';
+          });
+
+          _node_modules_admin_lte_plugins_sweetalert2_sweetalert2_all_js__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+            title: 'Error',
+            html: '<ul style="text-align: left;">' + msgError + '</ul>',
+            icon: 'error',
+            confirmButtonText: 'Cerrar'
+          });
+
+          _this3.loading();
+        }
+      });
     }
   },
   computed: {
@@ -57999,7 +58054,6 @@ var app = new Vue({
   },
   mounted: function mounted() {
     if (localStorage.cart) this.cart = JSON.parse(localStorage.getItem('cart'));
-    if (localStorage.authUser) this.authUser = JSON.parse(localStorage.getItem('authUser'));
     this.getAuthUser();
     this.getProducts();
   }

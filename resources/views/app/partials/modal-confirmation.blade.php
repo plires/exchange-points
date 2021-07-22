@@ -9,12 +9,12 @@
 
             <div class="table-responsive">
               <table class="table table-hover">
-                <thead class="thead-dark">
+                <thead>
                   <tr>
                     <th>Producto</th>
                     <th class="text-left">Nombre</th>
-                    <th>Monster Miles</th>
                     <th>Cantidad</th>
+                    <th>Monster Miles</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -24,15 +24,15 @@
                       <img class="img-fluid" :src="showImage(productConfirmation.image)" :alt="productConfirmation.name">
                     </td>
                     <td v-cloak class="text-left">@{{ productConfirmation.name }}</td>
-                    <td v-cloak>@{{ productConfirmation.price.toLocaleString('de-DE') }}</td>
                     <td v-cloak>@{{ productConfirmation.quantity }}</td>
+                    <td v-cloak>@{{ productConfirmation.price.toLocaleString('de-DE') }}</td>
                   </tr>
 
                   <tr class="totales">
                     <td>TOTALES</td>
                     <td>&nbsp;</td>
-                    <td v-cloak>@{{ total }}</td>
                     <td v-cloak>@{{ count_items_cart }}</td>
+                    <td v-cloak>@{{ total }}</td>
                   </tr>
 
                 </tbody>

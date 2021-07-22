@@ -46,16 +46,33 @@ Route::get('/exchange/get_products', 'App\ProductsFeaturedController@getProducts
 
 Route::get('/registro-pendiente', 'App\RegisterPendingController@userPendingVerification')->name('register-pending');
 
+Route::post('/user-points-exchanged', 'App\ExchangeController@store')->name('user-points-exchange');
+
 Auth::routes();
 
-// Route::get('/test', function () {
+Route::get('/test', function () {
 
-// 	return (new UsersExport)->download('ussser.xlsx');
+	// Enviar email
+  // $to_name = 'Pablo De Pisos';
+  // $to_email = 'plires@depisos.com';
+  
+  // $data = array(
+  //     'name'      => 'Carlos', 
+  //     'points'    => 3000, 
+  // );
 
-// 	Excel::import(new UsersImport, 'users.xlsx');
-// 	return redirect('/')->with('success', 'All good!');
-// 	return User::withTrashed()->find(2)->restore();
-// 	return Auth::user();
-// 	return User::onlyTrashed()->find(4)->restore();
+  // Mail::send('emails.new-exchange-manual', $data, function($message) use ($to_name, $to_email) {
+  // $message->to($to_email, $to_name)
+  // ->subject('Laravel Test Mail');
+  // $message->from('pruebas@librecomunicacion.net','Test Mail');
+  // });
 
-// });
+	// return (new UsersExport)->download('ussser.xlsx');
+
+	// Excel::import(new UsersImport, 'users.xlsx');
+	// return redirect('/')->with('success', 'All good!');
+	// return User::withTrashed()->find(2)->restore();
+	// return Auth::user();
+	// return User::onlyTrashed()->find(4)->restore();
+
+});
