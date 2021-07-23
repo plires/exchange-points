@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class optimizeProductImage
+class optimizeProductImage implements ShouldQueue
 {
   /**
    * Create the event listener.
@@ -28,6 +28,7 @@ class optimizeProductImage
    */
   public function handle(ProductSaved $event)
   {
+
     $image = Image::make(Storage::get($event->product->image))
     ->resize(400, null, function ($constraint) {
       $constraint->aspectRatio();
@@ -35,5 +36,6 @@ class optimizeProductImage
     ->encode();
 
     Storage::put($event->product->image, (string) $image);
+    
   }
 }
