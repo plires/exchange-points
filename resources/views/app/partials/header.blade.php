@@ -19,7 +19,7 @@
 			      <div class="transition" id="edit_user">
 			      	<ul>
 			      		<li>
-			      			<a class="transition" href="#">Editar mis datos</a>
+			      			<a @click="showFormUserEdit(authUser.id)" class="transition" href="#">Editar mis datos</a>
 			      			<i class="fas fa-user-edit transition"></i>
 			      		</li>
 			      	</ul>

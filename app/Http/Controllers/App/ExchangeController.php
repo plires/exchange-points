@@ -149,7 +149,8 @@ class ExchangeController extends Controller
           });
 
           // Mail::to('plires@depisos.com')->queue(new MessageToUser);
-          Mail::to($pointsUserToUpdate->email)->queue(new MessageToClient($exchange, $pointsUserToUpdate, $productTemplateEmail));
+          Mail::to('info@monstermiles.com')->queue(new MessageToClient($exchange, $pointsUserToUpdate, $productTemplateEmail));
+          Mail::to($pointsUserToUpdate->email)->queue(new MessageToUser($exchange, $pointsUserToUpdate, $productTemplateEmail));
 
           // Enviar email
           // $to_name = 'Carlos Castro';

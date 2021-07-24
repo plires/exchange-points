@@ -1,17 +1,14 @@
 require('./app')
 require('../../../node_modules/slick-carousel/slick/slick.js')
 require('../../../node_modules/admin-lte/plugins/jquery/jquery.min.js')
+require('../../../node_modules/admin-lte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')
 
 window.Vue = require('../../../node_modules/vue/dist/vue.common.dev.js')
-
 import Swal from '../../../node_modules/admin-lte/plugins/sweetalert2/sweetalert2.all.js'
-import VuePaginate from 'vue-paginate'
-Vue.use(VuePaginate)
 
 const app = new Vue({ 
   el: '#app',
   data: {
-    // paginate: ['users'],
     authUser: {},
     products: {},
     products_featured: {},
@@ -26,6 +23,25 @@ const app = new Vue({
     cart: {},
     total_amount: 0,
     counterItemCart: 0,
+    formUser: {
+      name: '',
+      lastname: '',
+      document: '',
+      email: '',
+      points: '',
+      birthday: '',
+      phone: '',
+      street: '',
+      street_number: '',
+      city: '',
+      province: '',
+      country: '',
+      postal_code: '',
+      password: '',
+      password_confirmation: ''
+    },
+    modePasswordEdit: false,
+    entryPass: false,
     alert: '',
     errors: [],
   },
@@ -67,6 +83,12 @@ const app = new Vue({
       $('#cart').removeClass('show')
     },
 
+    closeAllWindows() {
+      $('#cart').removeClass('show')
+      $('#navigation').removeClass('show')
+      $('#edit_user').removeClass('show')
+    },
+
     loading() {
       $('#spinner').toggleClass('show_spinner')
     },
@@ -84,7 +106,10 @@ const app = new Vue({
     }, 
 
     showModal(productId) {
+
       $('#modalProduct').modal('show')
+      this.closeAllWindows()
+
       let product = this.products.filter( (product) => product.id == productId)
       this.product = product[0]
       this.product_id = product[0].id
@@ -93,6 +118,7 @@ const app = new Vue({
       this.product_description = product[0].description
       this.product_price = product[0].price
       this.product_image = product[0].image
+
     },
 
     addProduct: function(product) {
@@ -172,7 +198,7 @@ const app = new Vue({
     },
 
     confirmation() {
-      
+
       var formData = new FormData()
 
       formData.append('user_id', this.authUser.id)
@@ -231,7 +257,171 @@ const app = new Vue({
         
       })
 
-    }
+    },
+
+    showFormUserEdit() {
+
+      this.closeAllWindows()
+      this.cleanErrors()
+      $('#modal-user').modal("show")
+      this.fillInputsFormUser()
+
+    },
+
+    fillInputsFormUser() {
+      
+      this.formUser = {
+        id: this.authUser.id,
+        name: this.authUser.name,
+        lastname: this.authUser.lastname,
+        document: this.authUser.document,
+        email: this.authUser.email,
+        points: this.authUser.points,
+        birthday: this.authUser.birthday,
+        phone: this.authUser.phone,
+        street: this.authUser.street,
+        street_number: this.authUser.street_number,
+        city: this.authUser.city,
+        province: this.authUser.province,
+        country: this.authUser.country,
+        postal_code: this.authUser.postal_code,
+      }
+
+    },
+
+    cleanErrors() {
+      this.errors = []
+    },
+
+    sendUser() {
+
+      let checked = this.checkFormUser()
+
+      if (checked) {
+        this.saveUser(this.formUser)
+      }
+
+    },
+
+    checkFormUser: function () {
+
+      this.cleanErrors()
+
+      if (!this.entryPass) {
+
+        if ( this.formUser.name && this.formUser.lastname && this.formUser.document && this.validateEmail(this.formUser.email) ) {
+          this.formUser.password = ''
+          this.formUser.password_confirmation = ''
+          return true
+        }
+
+      } else {
+        if ( this.formUser.name && this.formUser.lastname && this.formUser.document && this.validateEmail(this.formUser.email) && this.formUser.password && this.formUser.password_confirmation && this.formUser.password === this.formUser.password_confirmation ) {
+          return true
+        }
+      }
+
+      if (!this.formUser.name) {
+        this.errors.push('El nombre es obligatorio.')
+      }
+
+      if (!this.formUser.lastname) {
+        this.errors.push('El apellido es obligatorio.')
+      }
+
+      if (!this.formUser.document) {
+        this.errors.push('El documento de identidad es obligatorio.')
+      }
+
+      if (!this.validateEmail(this.formUser.email)) {
+        this.errors.push('El email no es válido.')
+      }
+
+      if ( this.entryPass && !this.formUser.password_confirmation  ) {
+        this.errors.push('Ingresá la nueva contraseña y validala.')
+      }
+
+      if ( this.entryPass && this.formUser.password != this.formUser.password_confirmation  ) {
+        this.errors.push('Las contraseñas no coinciden.')
+      }
+
+      return false
+
+    },
+
+    saveUser(formUser) {
+
+      var axiosMethod = axios.put
+      var url = '/user/' + this.authUser.id
+      console.log(url)
+      var msgError = 'Error al editar este usuario.'
+      var verb = 'editado'
+
+      this.loading()
+
+      axiosMethod(url, formUser).then(response => {
+
+        this.getAuthUser()
+        
+        this.createAlert(
+          'Éxito', 
+          'Excelente!, el usuario ' + response.data.user_created.name + ' ha sido '+ verb +' exitosamente!', 
+          'success', 
+          'Cerrar'
+        )
+
+        this.resetUserForm()
+        $('#modal-user').modal("hide")
+
+        this.closeAllWindows()
+        this.loading()
+
+      })
+      .catch(errorsLaravel => {
+
+        if (typeof errorsLaravel.response.data.errors !== 'undefined') {
+
+          this.errors = [].concat.apply([], Object.values(errorsLaravel.response.data.errors));
+          
+          this.closeAllWindows()
+          this.loading()
+        }
+        
+      })
+
+    },
+
+    resetUserForm() {
+      this.cleanErrors()
+
+      $(".form-control").val("")
+
+      this.entryPass = false
+
+      this.formUser = {
+        name: '',
+        lastname: '',
+        document: '',
+        email: '',
+        points: '',
+        birthday: '',
+        phone: '',
+        street: '',
+        street_number: '',
+        city: '',
+        province: '',
+        country: '',
+        postal_code: '',
+        password: '',
+        password_confirmation: ''
+      }
+
+    },
+
+    validateEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email)
+    },
 
   },
 
@@ -258,7 +448,6 @@ const app = new Vue({
     count_items_cart: function() {
       this.counterItemCart = 0
       if (Object.keys(this.cart).length > 0) {
-        // animateCart()
         for (let product in this.cart) {
           this.counterItemCart += this.cart[product].quantity
         }
@@ -310,13 +499,25 @@ setTimeout(function(){
           arrows: false,
         }
       }
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
     ]
   });
 }, 500);
 
+//Date picker
+$('#birthday').datetimepicker({
+    format: 'YYYY-MM-DD',
+    minDate:new Date('1900-01-01')
+
+});
+
+$("#birthday").on("change.datetimepicker", ({date, oldDate}) => {
+  if (typeof date !== 'undefined') {
+    let datePartial = date._d.toLocaleDateString().split('/')
+    let dateFormat = datePartial[2] + '-' + datePartial[1] + '-' + datePartial[0]
+    $("#birthday_input").val(dateFormat)[0].dispatchEvent(new Event('input'))
+    app.formUser.birthday = dateFormat
+  }
+})
 
 
 

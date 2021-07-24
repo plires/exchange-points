@@ -3,6 +3,7 @@
 @import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 @import "../../../node_modules/slick-carousel/slick/slick.css";
 @import "../../../node_modules/slick-carousel/slick/slick-theme.css";
+@import "../../../node_modules/admin-lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css";
 
 @import "comunes.css";
 @import "login.css";
@@ -11,4 +12,5 @@
 @import "products-featured.css";
 @import "modal-product-catalog.css";
 @import "modal-confirmation.css";
+@import "modal-user.css";
 @import "catalog.css";

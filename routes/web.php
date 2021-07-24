@@ -49,7 +49,7 @@ Route::get('/registro-pendiente', 'App\RegisterPendingController@userPendingVeri
 
 Route::post('/user-points-exchanged', 'App\ExchangeController@store')->name('user-points-exchange');
 
-Route::post('/messages', 'App\MessagesController@store')->name('messages');
+Route::put('/user/{user}', 'App\UserController@update')->name('user-edit');
 
 Auth::routes();
 

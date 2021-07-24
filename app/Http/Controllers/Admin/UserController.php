@@ -107,18 +107,18 @@ class UserController extends Controller
 
         if ( isset($request->validated()['points_old']) || isset($request->validated()['points_old']) != 0 ) { // Si viene de la vista "puntos"
 
-            $data = $request->validated();
+        $data = $request->validated();
 
-            DB::transaction(function () use($data, $user) {
+        DB::transaction(function () use($data, $user) {
 
-                $user = $user->fill( $data );
+            $user = $user->fill( $data );
 
-                $userPointsFromBdd = (int)$data['points_old'];
-                $userPointsToUpdate = (int)$data['points'];
+            $userPointsFromBdd = (int)$data['points_old'];
+            $userPointsToUpdate = (int)$data['points'];
 
-                $points = $this->getPointsToSave($userPointsFromBdd, $userPointsToUpdate, $user);
+            $points = $this->getPointsToSave($userPointsFromBdd, $userPointsToUpdate, $user);
 
-                $user->points = $points['points_to_table_user'];
+            $user->points = $points['points_to_table_user'];
 
                 unset($user->points_old); // Elimino la posicion points_old para actualizar la fila
 
@@ -131,10 +131,8 @@ class UserController extends Controller
                 }
 
             });
-            
-            return response()->json( ['user_points_updated' => $user], 201);
-
-
+        
+        return response()->json( ['user_points_updated' => $user], 201);
 
         } else { // si viene de la vista de usuarios
 
@@ -144,14 +142,18 @@ class UserController extends Controller
                 $user->confirmed = true;
             }
 
-            $user->password = Hash::make( $request->validated()['password'] );
+            if ($user->password == null) {
+                unset($user->password); 
+            } else {
+                $user->password = Hash::make( $request->validated()['password'] );
+            }
 
             $user->save();
 
             return response()->json( ['user_created' => $user], 201);
 
         }
-            
+        
     }
 
     /**
@@ -199,8 +201,8 @@ class UserController extends Controller
     {
 
         $users = User::select( 'id', 'lastname', 'document', 'email', 'points')
-            ->whereRole_id(2)
-            ->get();
+        ->whereRole_id(2)
+        ->get();
 
         return (new UsersExport($users))->download('user.xlsx');
         

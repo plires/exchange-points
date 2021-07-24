@@ -18,6 +18,9 @@
 		<!-- Modal Product -->
 		@include('app.partials.modal-product')
 
+		<!-- Modal User -->
+		@include('app.partials.modal-user')
+
 		<!-- Modal Confirmation -->
 		@include('app.partials.modal-confirmation')
 
@@ -132,5 +135,7 @@
 <!-- /.row -->
 
 @section('js')
+	<script src="{{ asset('js/moment.min.js') }}"></script>
+  <script src="{{ asset('js/es.js') }}"></script>
   <script src="{{ asset('js/app/catalog.js') }}"></script>
 @endsection

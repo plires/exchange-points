@@ -1,0 +1,32 @@
+
+#modal-user .modal-header,
+#modal-user .btn-primary {
+  background-color: var(--primary-color)!important;
+  color: white;
+}
+
+#modal-user .btn-primary {
+  border: 1px solid var(--primary-color);
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1400px) {
+
+}
+
