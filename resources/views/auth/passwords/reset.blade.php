@@ -56,6 +56,20 @@
                             </button>
                         </div>
                     </div>
+
+                    <div class="col-md-12 text-center">
+                        @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="btn btn-link transition" href="{{ route('login') }}">Login</a>
+                            </li>
+                        @endif
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="btn btn-link transition" href="{{ route('register') }}">Registrate</a>
+                            </li>
+                        @endif
+                    </div>
+                        
                 </form>
 
             </div>
