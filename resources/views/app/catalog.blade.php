@@ -129,6 +129,9 @@
 	  </section>
 		<!-- Galeria Productos end -->
 
+		<!-- Footer -->
+		@include('app.partials.footer')
+
 	</section>
 
 @endsection
