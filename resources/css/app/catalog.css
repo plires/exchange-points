@@ -7,6 +7,10 @@
   content:url("/img/user/catalogo/slide-1-mobile.jpg");
 }
 
+.catalogo_canje .slide_superior #slide_2 { 
+  content:url("/img/user/catalogo/slide-2-mobile.jpg");
+}
+
 .catalogo_canje .content_product_catalogo {
 	max-width: 345px;
 	margin: auto;
@@ -87,6 +91,10 @@
   /* Catalogo Canje */
   .catalogo_canje .slide_superior #slide_1 { 
     content:url("/img/user/catalogo/slide-1.jpg")!important;
+  }
+
+  .catalogo_canje .slide_superior #slide_2 { 
+    content:url("/img/user/catalogo/slide-2.jpg")!important;
   }
 
   .catalogo_canje .content_image_catalogo img {

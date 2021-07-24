@@ -33,7 +33,6 @@
 					  <ol class="carousel-indicators">
 					    <li data-target="#slide_destacados" data-slide-to="0" class="active"></li>
 					    <li data-target="#slide_destacados" data-slide-to="1"></li>
-					    <li data-target="#slide_destacados" data-slide-to="2"></li>
 					  </ol>
 					  <div class="carousel-inner">
 					    <div class="carousel-item active">
@@ -41,9 +40,6 @@
 					    </div>
 					    <div class="carousel-item">
 					      <img id="slide_2" src="#" class="d-block w-100" alt="slide 2">
-					    </div>
-					    <div class="carousel-item">
-					      <img id="slide_3" src="#" class="d-block w-100" alt="slide 3">
 					    </div>
 					  </div>
 					  <a class="carousel-control-prev" href="#slide_destacados" role="button" data-slide="prev">
