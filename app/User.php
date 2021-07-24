@@ -8,6 +8,7 @@ use App\Exchange;
 use App\PointAssigned;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\ResetPasswordNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -50,6 +51,11 @@ class User extends Authenticatable
     //User->pointsAssigned
     public function pointsAssigned(){
         return $this->hasMany(PointAssigned::class);
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
     }
     
 }
