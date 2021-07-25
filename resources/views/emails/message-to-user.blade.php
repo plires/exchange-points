@@ -484,9 +484,9 @@
               <td style="background-color: #FFFFFF; padding: 20px 30px;">
                   <table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
                       <tr>
-                          <td class="fallback-font" style="padding: 10px; font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 24px; font-weight: 400; text-align: center; background-color: #85bf00; color: #FFFFFF;">PROD.</td>
+                          <td class="fallback-font" style="padding: 10px; font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 24px; font-weight: 400; text-align: left; background-color: #85bf00; color: #FFFFFF;">PROD.</td>
                           <td class="fallback-font" style="padding: 10px; font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 24px; font-weight: 400; text-align: center; background-color: #85bf00; color: #FFFFFF;">CANT.</td>
-                          <td class="fallback-font" style="padding: 10px; font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 24px; font-weight: 400; text-align: center; background-color: #85bf00; color: #FFFFFF;">PUNTOS</td>
+                          <td class="fallback-font" style="padding: 10px; font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 24px; font-weight: 400; text-align: right; background-color: #85bf00; color: #FFFFFF;">PUNTOS</td>
                       </tr>
 
                       @foreach($products as $key => $product)
