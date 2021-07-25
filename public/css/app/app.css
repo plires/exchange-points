@@ -11637,4 +11637,59 @@ footer .copy {
 
 }
 
+.titulo_wallpaper h1 {
+  font-size: 2rem;
+}
+
+.wallpaper_desktop h2,
+.wallpaper_mobile h2 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.wallpaper_desktop .col-md-6,
+.wallpaper_mobile .col-6 {
+  margin-bottom: 30px;
+}
+
+.wallpaper_desktop .col-md-6 img,
+.wallpaper_mobile .col-6 img {
+  margin-bottom: 15px;
+  filter: grayscale(1);
+}
+
+.wallpaper_desktop .col-md-6 img:hover,
+.wallpaper_mobile .col-6 img:hover
+{
+  filter: grayscale(0);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.wallpaper_desktop .col-md-6 a,
+.wallpaper_mobile .col-6 a {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1400px) {
+
+}
+
 

@@ -41,6 +41,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::get('/', 'App\ProductsFeaturedController@catalog')->name('catalog');
 Route::get('/wallpapers', 'App\WallpaperController@wallpapers')->name('wallpapers');
+Route::get('/download-wallpaper/{file}', 'App\WallpaperController@downloadWallpaper')->name('download-wallpaper');
 Route::get('/products-featured', 'App\ProductsFeaturedController@productFeatured')->name('product-featured');
 Route::get('/exchange/get_user_auth', 'App\ProductsFeaturedController@getUserAuth')->name('get-user-auth');
 Route::get('/exchange/get_products', 'App\ProductsFeaturedController@getProducts')->name('get-products');
@@ -50,6 +51,7 @@ Route::get('/registro-pendiente', 'App\RegisterPendingController@userPendingVeri
 Route::post('/user-points-exchanged', 'App\ExchangeController@store')->name('user-points-exchange');
 
 Route::put('/user/{user}', 'App\UserController@update')->name('user-edit');
+
 
 Auth::routes();
 

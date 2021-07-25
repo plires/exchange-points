@@ -27,10 +27,8 @@
 
 	    		</li>
 
-	    		@if(Request::path() == '/')
-					  <!-- Cart Menu -->
-    				@include('app.partials.cart-menu')
-					@endif
+				  <!-- Cart Menu -->
+  				@include('app.partials.cart-menu')
 
 	    	</ul>
 	    </div>

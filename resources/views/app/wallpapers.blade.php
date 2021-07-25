@@ -10,50 +10,22 @@
 		@include('app.partials.nav')
 
 		<!-- Cart -->
-		{{-- @include('app.partials.cart') --}}
+		@include('app.partials.cart')
 
 		<!-- Header -->
 		@include('app.partials.header')
 
+		<!-- Modal User -->
+		@include('app.partials.modal-user')
+
+		<!-- Modal Confirmation -->
+		@include('app.partials.modal-confirmation')
+
 		<!-- Slide Superior -->
-		<section class="slide_superior container-fluid primer_contenido">
-			<div class="row">
-				<div class="col-md-12 p-0">
-
-					<div id="slide_destacados" class="carousel slide" data-ride="carousel">
-					  <ol class="carousel-indicators">
-					    <li data-target="#slide_destacados" data-slide-to="0" class="active"></li>
-					    <li data-target="#slide_destacados" data-slide-to="1"></li>
-					    <li data-target="#slide_destacados" data-slide-to="2"></li>
-					  </ol>
-					  <div class="carousel-inner">
-					    <div class="carousel-item active">
-					      <img id="slide_1" src="#" class="d-block w-100" alt="slide 1">
-					    </div>
-					    <div class="carousel-item">
-					      <img id="slide_2" src="#" class="d-block w-100" alt="slide 2">
-					    </div>
-					    <div class="carousel-item">
-					      <img id="slide_3" src="#" class="d-block w-100" alt="slide 3">
-					    </div>
-					  </div>
-					  <a class="carousel-control-prev" href="#slide_destacados" role="button" data-slide="prev">
-					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					    <span class="sr-only">Previous</span>
-					  </a>
-					  <a class="carousel-control-next" href="#slide_destacados" role="button" data-slide="next">
-					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-					    <span class="sr-only">Next</span>
-					  </a>
-					</div>
-
-				</div>
-			</div>
-		</section>
-		<!-- Slide Superior end -->
+		@include('app.partials.slide-superior')
 
 		<!-- Titulo -->
-		<section class="container">
+		<section class="container titulo_wallpaper">
 		  <div class="row">
 		    <div class="col-md-12">
 		      <h1>WALLPAPERS</h1>
@@ -62,17 +34,105 @@
 	  </section>
 		<!-- Titulo end -->
 		
-		<!-- Wallpapers -->
-		<section class="container">
+		<!-- Wallpapers Desktop -->
+		<section class="wallpaper_desktop container mt-5">
+
+			<div class="row">
+				<div class="col-12">
+					<h2>Desktop</h2>
+				</div>
+			</div>
+
 		  <div class="row">
-		    <div class="col-12">
 
-		    	Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit voluptate, vitae dolor sint suscipit amet, aspernatur nam architecto cum sunt, molestiae! Quas et minus, ullam, accusantium exercitationem cumque nemo pariatur.
-
+		    <div class="col-md-6 text-center">
+		    	<a href="{{ '/download-wallpaper/wallpaper-desktop-1' }}" class="transition">
+	    			<img class="img-fluid transition" src="{{ asset('img/user/wallpapers/wallpaper-desktop-1.jpg') }}" alt="wallpaper desktop 1">
+	    		</a>
+	    		<a href="{{ '/download-wallpaper/wallpaper-desktop-1' }}" class="btn btn-primary transition">Descargar</a>
 		    </div>
+
+		    <div class="col-md-6 text-center">
+		    	<a href="{{ '/download-wallpaper/wallpaper-desktop-2' }}" class="transition">
+	    			<img class="img-fluid transition" src="{{ asset('img/user/wallpapers/wallpaper-desktop-2.jpg') }}" alt="wallpaper desktop 2">
+	    		</a>
+	    		<a href="{{ '/download-wallpaper/wallpaper-desktop-2' }}" class="btn btn-primary transition">Descargar</a>
+		    </div>
+
+		    <div class="col-md-6 text-center">
+		    	<a href="{{ '/download-wallpaper/wallpaper-desktop-3' }}" class="transition">
+	    			<img class="img-fluid transition" src="{{ asset('img/user/wallpapers/wallpaper-desktop-3.jpg') }}" alt="wallpaper desktop 3">
+	    		</a>
+	    		<a href="{{ '/download-wallpaper/wallpaper-desktop-3' }}" class="btn btn-primary transition">Descargar</a>
+		    </div>
+
+		    <div class="col-md-6 text-center">
+		    	<a href="{{ '/download-wallpaper/wallpaper-desktop-4' }}" class="transition">
+	    			<img class="img-fluid transition" src="{{ asset('img/user/wallpapers/wallpaper-desktop-4.jpg') }}" alt="wallpaper desktop 4">
+	    		</a>
+	    		<a href="{{ '/download-wallpaper/wallpaper-desktop-4' }}" class="btn btn-primary transition">Descargar</a>
+		    </div>
+
+			</div>
+	  </section>
+		<!-- Wallpapers Desktop end -->
+
+		<!-- Wallpapers Mobile -->
+		<section class="wallpaper_mobile container mt-5">
+
+			<div class="row">
+				<div class="col-12">
+					<h2>Mobile</h2>
+				</div>
+			</div>
+
+		  <div class="row">
+
+		  	<div class="col-6 col-md-4 text-center">
+		    	<a href="{{ '/download-wallpaper/wallpaper-mobile-1' }}" class="transition">
+	    			<img class="img-fluid transition" src="{{ asset('img/user/wallpapers/wallpaper-mobile-1.jpg') }}" alt="wallpaper mobile 1">
+	    		</a>
+	    		<a href="{{ '/download-wallpaper/wallpaper-mobile-1' }}" class="btn btn-primary transition">Descargar</a>
+		    </div>
+
+		    <div class="col-6 col-md-4 text-center">
+		    	<a href="{{ '/download-wallpaper/wallpaper-mobile-2' }}" class="transition">
+	    			<img class="img-fluid transition" src="{{ asset('img/user/wallpapers/wallpaper-mobile-2.jpg') }}" alt="wallpaper mobile 2">
+	    		</a>
+	    		<a href="{{ '/download-wallpaper/wallpaper-mobile-2' }}" class="btn btn-primary transition">Descargar</a>
+		    </div>
+
+		    <div class="col-6 col-md-4 text-center">
+		    	<a href="{{ '/download-wallpaper/wallpaper-mobile-3' }}" class="transition">
+	    			<img class="img-fluid transition" src="{{ asset('img/user/wallpapers/wallpaper-mobile-3.jpg') }}" alt="wallpaper mobile 3">
+	    		</a>
+	    		<a href="{{ '/download-wallpaper/wallpaper-mobile-3' }}" class="btn btn-primary transition">Descargar</a>
+		    </div>
+
+		    <div class="col-6 col-md-4 text-center">
+		    	<a href="{{ '/download-wallpaper/wallpaper-mobile-4' }}" class="transition">
+	    			<img class="img-fluid transition" src="{{ asset('img/user/wallpapers/wallpaper-mobile-4.jpg') }}" alt="wallpaper mobile 4">
+	    		</a>
+	    		<a href="{{ '/download-wallpaper/wallpaper-mobile-4' }}" class="btn btn-primary transition">Descargar</a>
+		    </div>
+
+		    <div class="col-6 col-md-4 text-center">
+		    	<a href="{{ '/download-wallpaper/wallpaper-mobile-5' }}" class="transition">
+	    			<img class="img-fluid transition" src="{{ asset('img/user/wallpapers/wallpaper-mobile-5.jpg') }}" alt="wallpaper mobile 5">
+	    		</a>
+	    		<a href="{{ '/download-wallpaper/wallpaper-mobile-5' }}" class="btn btn-primary transition">Descargar</a>
+		    </div>
+
+		    <div class="col-6 col-md-4 text-center">
+		    	<a href="{{ '/download-wallpaper/wallpaper-mobile-6' }}" class="transition">
+	    			<img class="img-fluid transition" src="{{ asset('img/user/wallpapers/wallpaper-mobile-6.jpg') }}" alt="wallpaper mobile 6">
+	    		</a>
+	    		<a href="{{ '/download-wallpaper/wallpaper-mobile-6' }}" class="btn btn-primary transition">Descargar</a>
+		    </div>
+
 		  </div>
 	  </section>
-		<!-- Wallpapers end -->
+		<!-- Wallpapers Mobile end -->
 
 	</section>
 
@@ -80,5 +140,7 @@
 <!-- /.row -->
 
 @section('js')
-  <script src="{{ asset('js/app/catalog.js') }}"></script>
+	<script src="{{ asset('js/moment.min.js') }}"></script>
+  <script src="{{ asset('js/es.js') }}"></script>
+  <script src="{{ asset('js/app/wallpaper.js') }}"></script>
 @endsection

@@ -11,5 +11,6 @@
     "/js/admin/export-template-excel.js": "/js/admin/export-template-excel.js",
     "/js/admin/import-template-excel.js": "/js/admin/import-template-excel.js",
     "/js/app/app.js": "/js/app/app.js",
-    "/js/app/catalog.js": "/js/app/catalog.js"
+    "/js/app/catalog.js": "/js/app/catalog.js",
+    "/js/app/wallpaper.js": "/js/app/wallpaper.js"
 }
