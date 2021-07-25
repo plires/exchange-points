@@ -57407,51 +57407,72 @@ var app = new Vue({
         confirmButtonText: btnTxt
       });
     },
-    confirmation: function confirmation() {
-      var _this3 = this;
+    checkFormExchange: function checkFormExchange() {
+      this.cleanErrors();
 
-      var formData = new FormData();
-      formData.append('user_id', this.authUser.id);
-      formData.append('total', this.total.replace('.', ''));
-
-      for (var key in this.cart) {
-        formData.append('products[]', JSON.stringify(this.cart[key]));
+      if (this.cart.length != 0) {
+        return true;
       }
 
-      this.loading();
-      axios.post('/user-points-exchanged/', formData).then(function (response) {
-        $('#modalconfirmation').modal("hide");
+      if (this.cart.length != 0 && this.authUser.length != 0) {
+        this.errors.push('Agregá artículos al carrito de compra.');
+      }
 
-        _this3.createAlert('Éxito', response.data.exchanged_created, 'success', 'Cerrar');
+      if (this.cart.length != 0 && this.authUser.length != 0) {
+        this.errors.push('No existe un usuario logueado en la plataforma. Actualice esta página y volve a intentarlo.');
+      }
 
-        localStorage.removeItem('cart');
-        localStorage.removeItem('authUser');
-        _this3.cart = {};
+      return false;
+    },
+    sendExchanged: function sendExchanged() {
+      var _this3 = this;
 
-        _this3.getAuthUser();
+      var checked = this.checkFormExchange();
 
-        _this3.getProducts();
+      if (checked) {
+        var formData = new FormData();
+        formData.append('user_id', this.authUser.id);
+        formData.append('total', this.total.replace('.', ''));
 
-        _this3.loading();
-      })["catch"](function (errorsLaravel) {
-        if (typeof errorsLaravel.response.data.errors !== 'undefined') {
-          _this3.errors = [].concat.apply([], Object.values(errorsLaravel.response.data.errors));
-          var msgError = '';
+        for (var key in this.cart) {
+          formData.append('products[]', JSON.stringify(this.cart[key]));
+        }
 
-          _this3.errors.forEach(function (error) {
-            return msgError += '<li>' + error + '</li><br>';
-          });
+        this.loading();
+        axios.post('/user-points-exchanged/', formData).then(function (response) {
+          $('#modalconfirmation').modal("hide");
 
-          _node_modules_admin_lte_plugins_sweetalert2_sweetalert2_all_js__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
-            title: 'Error',
-            html: '<ul style="text-align: left;">' + msgError + '</ul>',
-            icon: 'error',
-            confirmButtonText: 'Cerrar'
-          });
+          _this3.createAlert('Éxito', response.data.exchanged_created, 'success', 'Cerrar');
+
+          localStorage.removeItem('cart');
+          localStorage.removeItem('authUser');
+          _this3.cart = {};
+
+          _this3.getAuthUser();
+
+          _this3.getProducts();
 
           _this3.loading();
-        }
-      });
+        })["catch"](function (errorsLaravel) {
+          if (typeof errorsLaravel.response.data.errors !== 'undefined') {
+            _this3.errors = [].concat.apply([], Object.values(errorsLaravel.response.data.errors));
+            var msgError = '';
+
+            _this3.errors.forEach(function (error) {
+              return msgError += '<li>' + error + '</li><br>';
+            });
+
+            _node_modules_admin_lte_plugins_sweetalert2_sweetalert2_all_js__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+              title: 'Error',
+              html: '<ul style="text-align: left;">' + msgError + '</ul>',
+              icon: 'error',
+              confirmButtonText: 'Cerrar'
+            });
+
+            _this3.loading();
+          }
+        });
+      }
     },
     showFormUserEdit: function showFormUserEdit() {
       this.closeAllWindows();

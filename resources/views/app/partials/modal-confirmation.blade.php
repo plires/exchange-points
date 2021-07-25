@@ -46,7 +46,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button @click="confirmation()" type="button" class="btn btn-primary">Confirmar</button>
+        <button @click="sendExchanged()" type="button" class="btn btn-primary">Confirmar</button>
       </div>
 
     </div>

@@ -197,65 +197,91 @@ const app = new Vue({
       })
     },
 
-    confirmation() {
+    checkFormExchange: function () {
 
-      var formData = new FormData()
+      this.cleanErrors()
 
-      formData.append('user_id', this.authUser.id)
-
-      formData.append('total', this.total.replace('.', ''))
-
-      for ( var key in this.cart ) {
-        formData.append('products[]', JSON.stringify(this.cart[key]))
+      if ( this.cart.length != 0 ) {
+        return true
       }
 
-      this.loading()
-      axios.post('/user-points-exchanged/', formData)
+      if ( this.cart.length != 0 && this.authUser.length != 0 ) {
+        this.errors.push('Agregá artículos al carrito de compra.')
+      }
 
-      .then(response => {
+      if ( this.cart.length != 0 && this.authUser.length != 0 ) {
+        this.errors.push('No existe un usuario logueado en la plataforma. Actualice esta página y volve a intentarlo.')
+      }
 
-        $('#modalconfirmation').modal("hide")
+      return false
 
-        this.createAlert(
-          'Éxito', 
-          response.data.exchanged_created, 
-          'success', 
-          'Cerrar'
-        )
+    },
 
-        localStorage.removeItem('cart')
-        localStorage.removeItem('authUser')
-        this.cart = {}
+    sendExchanged() {
 
-        this.getAuthUser()
-        this.getProducts()
+      let checked = this.checkFormExchange()  
+
+      if (checked) {
+
+        var formData = new FormData()
+
+        formData.append('user_id', this.authUser.id)
+
+        formData.append('total', this.total.replace('.', ''))
+
+        for ( var key in this.cart ) {
+          formData.append('products[]', JSON.stringify(this.cart[key]))
+        }
 
         this.loading()
+        axios.post('/user-points-exchanged/', formData)
 
-      })
-      .catch(errorsLaravel => {
+        .then(response => {
 
-        if (typeof errorsLaravel.response.data.errors !== 'undefined') {
+          $('#modalconfirmation').modal("hide")
 
-          this.errors = [].concat.apply([], Object.values(errorsLaravel.response.data.errors));
-          
-          let msgError = ''
+          this.createAlert(
+            'Éxito', 
+            response.data.exchanged_created, 
+            'success', 
+            'Cerrar'
+          )
 
-          this.errors.forEach(error => 
-            msgError += '<li>' + error + '</li><br>'
-          );
+          localStorage.removeItem('cart')
+          localStorage.removeItem('authUser')
+          this.cart = {}
 
-          Swal.fire({
-            title: 'Error',
-            html: '<ul style="text-align: left;">' + msgError + '</ul>',
-            icon: 'error',
-            confirmButtonText: 'Cerrar'
-          })
-          
+          this.getAuthUser()
+          this.getProducts()
+
           this.loading()
-        }
-        
-      })
+
+        })
+        .catch(errorsLaravel => {
+
+          if (typeof errorsLaravel.response.data.errors !== 'undefined') {
+
+            this.errors = [].concat.apply([], Object.values(errorsLaravel.response.data.errors));
+            
+            let msgError = ''
+
+            this.errors.forEach(error => 
+              msgError += '<li>' + error + '</li><br>'
+            );
+
+            Swal.fire({
+              title: 'Error',
+              html: '<ul style="text-align: left;">' + msgError + '</ul>',
+              icon: 'error',
+              confirmButtonText: 'Cerrar'
+            })
+            
+            this.loading()
+          }
+          
+        })
+
+      }
 
     },
 
