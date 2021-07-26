@@ -148,26 +148,8 @@ class ExchangeController extends Controller
 
           });
 
-          // Mail::to('plires@depisos.com')->queue(new MessageToUser);
           Mail::to('info@monstermiles.com')->queue(new MessageToClient($exchange, $pointsUserToUpdate, $productTemplateEmail));
           Mail::to($pointsUserToUpdate->email)->queue(new MessageToUser($exchange, $pointsUserToUpdate, $productTemplateEmail));
-
-          // Enviar email
-          // $to_name = 'Carlos Castro';
-          // $to_email = 'carlos.castro.1975.2@gmail.com';
-          
-          // $data = array(
-          //     'name'      => $pointsUserToUpdate->name, 
-          //     'points'    => $pointsUserToUpdate->points, 
-          // );
-
-          // Mail::send('emails.new-exchange-manual', $data, function($message) use ($to_name, $to_email) {
-          // $message->to($to_email, $to_name)
-          // ->subject('Laravel Test Mail');
-          // $message->from('pepe@algo.com','Test Mail');
-          // });
-
-          // Mail::to('pablo@librecomunicacion.net')->queue(new NewExchangeManual($pointsUserToUpdate));
 
           return response()->json( ['exchanged_created' => 'Felicitaciones '. $pointsUserToUpdate->name .', el canje se realizó exitosamente, recibirás detalles de la operación a tu casilla de email. No olvides revisar la bandeja de SPAM ;) '], 201);  
 

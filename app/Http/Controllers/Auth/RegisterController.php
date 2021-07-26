@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\Events\UserRegistered;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
@@ -89,7 +90,10 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        event(new Registered($user = $this->create($request->all())));
+        event(new Registered($user = $this->create( $request->all() ) ) );
+        
+        // Enviar Mail al administrador y usuario
+        UserRegistered::dispatch($user);
 
         // $this->guard()->login($user); // Anulamos el inicio automatico
 
