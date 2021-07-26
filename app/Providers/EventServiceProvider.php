@@ -2,12 +2,8 @@
 
 namespace App\Providers;
 
-use App\Events\ProductSaved;
-use App\Events\UserRegistered;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
-use App\Listeners\optimizeProductImage;
-use App\Listeners\sendEmailNewUserRegistered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -27,6 +23,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         \App\Events\UserRegistered::class => [
             \App\Listeners\sendEmailNewUserRegistered::class,
+        ],
+        \App\Events\UserConfirmed::class => [
+            \App\Listeners\sendEmailUserConfirmed::class,
         ],
     ];
 

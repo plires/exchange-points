@@ -7,6 +7,7 @@ use App\PointAssigned;
 use App\Exports\UsersExport;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
+use App\Events\UserConfirmed;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -305,7 +306,7 @@ class UserController extends Controller
 
     public function changeUserConfirmed($id) {
 
-        $user  = User::find($id);
+        $user  = User::findOrFail($id);
 
         if ($user->confirmed) {
             $user->confirmed = false;
@@ -316,6 +317,12 @@ class UserController extends Controller
         $updated = $user->update();
 
         if ($updated) {
+
+            if ($user->confirmed) {
+                // Enviar Mail al usuario avisando que ya esta habilitado
+                UserConfirmed::dispatch($user);
+            }
+
             return response()->json( ['user_confirmed_updated' => $user], 201);
         } else {
             return response()->json( ['other_errors' => 'Servidor momentaneamente inaccesible. Intente mas tarde por favor.'], 500);
