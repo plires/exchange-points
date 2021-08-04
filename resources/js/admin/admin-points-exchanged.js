@@ -260,7 +260,7 @@ const app = new Vue({
           formData.append('products[]', JSON.stringify(this.productsCart[key]));
         }
 
-        axios.post('/admin/user-points-exchanged/', formData)
+        axios.post('/admin/points-exchanged/', formData)
 
         .then(response => {
 
