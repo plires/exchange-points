@@ -35,7 +35,8 @@
 
         {{-- Usuarios --}}
         <li class="nav-item">
-          <a href="{{ route('admin.users.index') }}" class="nav-link">
+          <a href="{{ route('admin.users.index') }}" 
+            class="nav-link @if (\Request::is('admin/users')) active  @endif">
             <i class="fas fa-user-friends mr-1"></i>
             USUARIOS
           </a>
@@ -44,25 +45,32 @@
 
         {{-- Puntos --}}
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="#" 
+            class="nav-link 
+            @if ( \Request::is('admin/points') || 
+            \Request::is('admin/show_export_template') || 
+            \Request::is('admin/show_import_template') ) active  @endif">
             <i class="fas fa-list-ul mr-1"></i>
             PUNTOS
           </a>
           <ul class="nav nav-treeview" style="display: none;">
             <li class="nav-item">
-              <a href="{{ route('admin.points.index') }}" class="nav-link">
+              <a href="{{ route('admin.points.index') }}" 
+                class="nav-link  @if (\Request::is('admin/points')) active  @endif">
                 <i class="fas fa-eye mr-1"></i>
                 <p>Visualización</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('admin.show-export-template') }}" class="nav-link">
+              <a href="{{ route('admin.show-export-template') }}" 
+                class="nav-link @if (\Request::is('admin/show_export_template')) active  @endif">
                 <i class="fas fa-file-download mr-1"></i>
                 <p>Exportación Masiva</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('admin.show-import-template') }}" class="nav-link">
+              <a href="{{ route('admin.show-import-template') }}" 
+                class="nav-link @if (\Request::is('admin/show_import_template')) active  @endif">
                 <i class="fas fa-upload mr-1"></i>
                 <p>Importacion Masiva</p>
               </a>
@@ -73,7 +81,8 @@
 
         {{-- Puntos Asignados --}}
         <li class="nav-item">
-          <a href="{{ route('admin.points-assigned.index') }}" class="nav-link">
+          <a href="{{ route('admin.points-assigned.index') }}" 
+            class="nav-link @if (\Request::is('admin/points-assigned')) active  @endif">
             <i class="fas fa-cart-plus mr-1"></i>
             PUNTOS ASIGNADOS
           </a>
@@ -82,7 +91,8 @@
 
         {{-- Visualizacion de Canjes --}}
         <li class="nav-item">
-          <a href="{{ route('admin.points-exchanged.index') }}" class="nav-link">
+          <a href="{{ route('admin.points-exchanged.index') }}" 
+            class="nav-link @if (\Request::is('admin/points-exchanged')) active  @endif">
             <i class="fas fa-exchange-alt mr-1"></i>
             CANJES REALIZADOS
           </a>
@@ -91,7 +101,8 @@
 
         {{-- Productos --}}
         <li class="nav-item">
-          <a href="{{ route('admin.products.index') }}" class="nav-link">
+          <a href="{{ route('admin.products.index') }}" 
+            class="nav-link @if (\Request::is('admin/products')) active  @endif">
             <i class="fas fa-dolly-flatbed mr-1"></i>
             PRODUCTOS
           </a>
@@ -100,7 +111,8 @@
 
         {{-- Categorias --}}
         <li class="nav-item">
-          <a href="{{ route('admin.categories.index') }}" class="nav-link">
+          <a href="{{ route('admin.categories.index') }}" 
+            class="nav-link @if (\Request::is('admin/categories')) active  @endif">
             <i class="fas fa-boxes mr-1"></i>
             CATEGORÍAS
           </a>
