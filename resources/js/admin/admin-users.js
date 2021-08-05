@@ -14,7 +14,7 @@ const app = new Vue({
 
   data: {
     users: [],
-    nameUser: '',
+    lastNameUser: '',
     roles: [],
     formUser: {
       name: '',
@@ -344,7 +344,7 @@ const app = new Vue({
   computed: {
 
     filteredUsers() {
-      return this.users.filter( (user) => user.lastname.toLowerCase().includes(this.nameUser.toLowerCase()) )
+      return this.users.filter( (user) => user.lastname.toLowerCase().includes(this.lastNameUser.toLowerCase()) )
     }
 
   }

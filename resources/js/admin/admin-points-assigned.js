@@ -40,8 +40,10 @@ const app = new Vue({
     },
 
     getNameUser(user_id) {
-      let user = this.users.filter( (user) => user.id == user_id )
-      return user[0].lastname
+      var user = this.users.filter( (user) => user.id == user_id )
+      if (user.length != 0) {
+        return user[0].lastname 
+      }
     },
 
     createAlert(title, text, icon, btnTxt) {

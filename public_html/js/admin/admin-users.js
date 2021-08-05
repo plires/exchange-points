@@ -64805,7 +64805,7 @@ var app = new Vue({
   el: '#app',
   data: {
     users: [],
-    nameUser: '',
+    lastNameUser: '',
     roles: [],
     formUser: {
       name: '',
@@ -65125,7 +65125,7 @@ var app = new Vue({
       var _this6 = this;
 
       return this.users.filter(function (user) {
-        return user.lastname.toLowerCase().includes(_this6.nameUser.toLowerCase());
+        return user.lastname.toLowerCase().includes(_this6.lastNameUser.toLowerCase());
       });
     }
   }

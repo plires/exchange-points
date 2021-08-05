@@ -64783,7 +64783,6 @@ var app = new Vue({
   el: '#app',
   data: {
     users: [],
-    // pointsUsers: [],
     lastNameUser: '',
     formPoints: {
       id: '',

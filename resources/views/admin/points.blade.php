@@ -42,7 +42,7 @@
               </tr>
             </thead>
 
-            <paginate :key="nameUser" name="users" :list="filteredUsers" :per="15" tag="tbody">
+            <paginate :key="lastNameUser" name="users" :list="filteredUsers" :per="15" tag="tbody">
 
               <tr v-for="user in paginated('users')" :key="user.id">
                 <td>

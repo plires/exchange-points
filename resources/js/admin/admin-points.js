@@ -14,7 +14,6 @@ const app = new Vue({
 
   data: {
     users: [],
-    // pointsUsers: [],
     lastNameUser: '',
     formPoints: {
       id:'',

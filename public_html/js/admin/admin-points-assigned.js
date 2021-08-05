@@ -64854,7 +64854,10 @@ var app = new Vue({
       var user = this.users.filter(function (user) {
         return user.id == user_id;
       });
-      return user[0].lastname;
+
+      if (user.length != 0) {
+        return user[0].lastname;
+      }
     },
     createAlert: function createAlert(title, text, icon, btnTxt) {
       _node_modules_admin_lte_plugins_sweetalert2_sweetalert2_all_js__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
