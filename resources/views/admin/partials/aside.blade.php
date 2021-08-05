@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a target="_blank" rel="noopener noreferrer" href="/" class="brand-link">
-    <img src="{{ asset('img/admin/logo-admin.png') }}" alt="logo monster miles" style="opacity: .8">
+    <img v-cloak src="{{ asset('img/admin/logo-admin.png') }}" alt="logo monster miles" style="opacity: .8">
     <span class="brand-text font-weight-light">Monster Miles</span>
   </a>
 
@@ -11,11 +11,9 @@
     <div class="user-panel mt-3 pb-3 mb-3 d-flex flex-column justify-content-center">
 
       <div class="d-flex justify-content-cener">
-        <div class="image">
-          <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-        </div>
+        
         <div class="info">
-          <a href="#" class="d-block" v-cloak>@{{ authUser.name }}</a>
+          <p class="d-block" v-cloak>@{{ authUser.name }}</p>
         </div>
         <a class="d-flex justify-content-cener align-items-center" 
           href="{{ route('logout') }}" 

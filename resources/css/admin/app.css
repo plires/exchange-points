@@ -18,6 +18,11 @@ ul {
 }
 
 /* ADMIN */
+[class*="sidebar-dark-"] .sidebar p {
+    color: #c2c7d0;
+    margin-bottom: 0;
+}
+
 .content_btn_actions {
   display: flex;
   justify-content: center;
