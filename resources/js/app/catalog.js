@@ -219,6 +219,8 @@ const app = new Vue({
 
     sendExchanged() {
 
+      $('#btn_confirmar_canje').prop('disabled', true)
+
       let checked = this.checkFormExchange()  
 
       if (checked) {
@@ -282,6 +284,8 @@ const app = new Vue({
         })
 
       }
+
+      $('#btn_confirmar_canje').prop('disabled', false)
 
     },
 

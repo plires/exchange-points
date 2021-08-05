@@ -57427,6 +57427,7 @@ var app = new Vue({
     sendExchanged: function sendExchanged() {
       var _this3 = this;
 
+      $('#btn_confirmar_canje').prop('disabled', true);
       var checked = this.checkFormExchange();
 
       if (checked) {
@@ -57473,6 +57474,8 @@ var app = new Vue({
           }
         });
       }
+
+      $('#btn_confirmar_canje').prop('disabled', false);
     },
     showFormUserEdit: function showFormUserEdit() {
       this.closeAllWindows();
