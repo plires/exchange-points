@@ -65100,6 +65100,8 @@ var app = new Vue({
     sendExchanged: function sendExchanged() {
       var _this6 = this;
 
+      var btn = $('#btn_send_exchanged');
+      btn.prop('disabled', true);
       var checked = this.checkFormExchange();
 
       if (checked) {
@@ -65111,6 +65113,7 @@ var app = new Vue({
           formData.append('products[]', JSON.stringify(this.productsCart[key]));
         }
 
+        this.loading();
         axios.post('/admin/points-exchanged/', formData).then(function (response) {
           $('#modal-exchanged').modal("hide");
 
@@ -65123,10 +65126,18 @@ var app = new Vue({
           _this6.getProducts();
 
           _this6.createAlert('Éxito', response.data.exchanged_created, 'success', 'Cerrar');
+
+          btn.prop('disabled', false);
+
+          _this6.loading();
         })["catch"](function (errorsLaravel) {
           var msgError = "La operación no pudo completarse.";
 
           _this6.laravelErrorHandling(errorsLaravel.response.data, msgError);
+
+          btn.prop('disabled', false);
+
+          _this6.loading();
         });
       }
     },

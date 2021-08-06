@@ -144,8 +144,8 @@
 
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button v-if="!modeUserEdit" type="button" type="submit" @click.prevent="sendUser" name="send" class="btn btn-primary">Agregar</button>
-          <button v-else type="button" type="submit" @click.prevent="sendUser" name="send" class="btn btn-warning">Guardar Cambios</button>
+          <button id="btn_user_add" v-if="!modeUserEdit" type="button" type="submit" @click.prevent="sendUser" name="send" class="btn btn-primary">Agregar</button>
+          <button id="btn_user_edit" v-else type="button" type="submit" @click.prevent="sendUser" name="send" class="btn btn-warning">Guardar Cambios</button>
         </div>
       </form>
 

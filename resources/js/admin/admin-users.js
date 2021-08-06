@@ -139,11 +139,17 @@ const app = new Vue({
     saveUser(formUser) {
 
       if (this.modeUserEdit) {
+        var btn =  $('#btn_user_edit')
+        btn.prop('disabled', true)
+
         var axiosMethod = axios.put
         var url = '/admin/users/'+ formUser.id
         var msgError = 'Error al editar este usuario.'
         var verb = 'editado'
       } else {
+        var btn =  $('#btn_user_add')
+        btn.prop('disabled', true)
+
         var axiosMethod = axios.post
         var url = '/admin/users'
         var msgError = 'Error al crear este usuario.'
@@ -164,6 +170,7 @@ const app = new Vue({
         )
 
         this.resetUserForm()
+        btn.prop('disabled', false)
         $('#modal-user').modal("hide")
 
         this.loading()
@@ -173,6 +180,8 @@ const app = new Vue({
 
         let msgError = errorsLaravel.response.data
       	this.laravelErrorHandling(errorsLaravel.response.data, msgError)
+
+        btn.prop('disabled', false)
         this.loading()
         
       })

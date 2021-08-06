@@ -20,6 +20,9 @@ const app = new Vue({
 
     uploadTemplate() {
 
+      var btn =  $('#btn_upload_excel')
+      btn.prop('disabled', true)
+
       const form = document.querySelector('#importForm')
       var formData = new FormData(form);
 
@@ -42,6 +45,7 @@ const app = new Vue({
             'success'
           )
 
+          btn.prop('disabled', false)
           this.loading()
 
         })
@@ -49,6 +53,7 @@ const app = new Vue({
 
           let msgError = "La operación de asignación de puntos no pudo ser completada. Verificá e intentá nuevamente"
           this.laravelErrorHandling(errorsLaravel.response.data, msgError)
+          btn.prop('disabled', false)
           this.loading()
 
         })

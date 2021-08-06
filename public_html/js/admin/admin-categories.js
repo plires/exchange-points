@@ -64834,11 +64834,15 @@ var app = new Vue({
       var _this2 = this;
 
       if (this.modeCategoryEdit) {
+        var btn = $('#btn_edit_category');
+        btn.prop('disabled', true);
         var axiosMethod = axios.put;
         var url = '/admin/categories/' + formCategory.id;
         var msgError = "Error al editar esta categoría.";
         var verb = 'editada';
       } else {
+        var btn = $('#btn_add_category');
+        btn.prop('disabled', true);
         var axiosMethod = axios.post;
         var url = '/admin/categories';
         var _msgError = "Error al crear esta categoría.";
@@ -64856,12 +64860,15 @@ var app = new Vue({
         _this2.resetCategoryForm();
 
         $('#modal-category').modal("hide");
+        btn.prop('disabled', false);
 
         _this2.loading();
       })["catch"](function (errorsLaravel) {
         var msgError = errorsLaravel.response.data;
 
         _this2.laravelErrorHandling(errorsLaravel.response.data, msgError);
+
+        btn.prop('disabled', false);
 
         _this2.loading();
       });

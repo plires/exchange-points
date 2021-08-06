@@ -64263,6 +64263,8 @@ var app = new Vue({
     uploadTemplate: function uploadTemplate() {
       var _this = this;
 
+      var btn = $('#btn_upload_excel');
+      btn.prop('disabled', true);
       var form = document.querySelector('#importForm');
       var formData = new FormData(form);
       var file = document.querySelector('#file-template');
@@ -64275,12 +64277,15 @@ var app = new Vue({
       axios.post('/admin/import_template/', formData).then(function (response) {
         _this.errors = [];
         _node_modules_admin_lte_plugins_sweetalert2_sweetalert2_all_js__WEBPACK_IMPORTED_MODULE_0___default.a.fire('Plantilla cargada!', 'Los puntos de los usuarios fueron modificados exitosamente', 'success');
+        btn.prop('disabled', false);
 
         _this.loading();
       })["catch"](function (errorsLaravel) {
         var msgError = "La operación de asignación de puntos no pudo ser completada. Verificá e intentá nuevamente";
 
         _this.laravelErrorHandling(errorsLaravel.response.data, msgError);
+
+        btn.prop('disabled', false);
 
         _this.loading();
       });

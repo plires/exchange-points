@@ -92,6 +92,9 @@ const app = new Vue({
 
     savePoints(formPoints) {
 
+      var btn =  $('#btn_edit_puntos')
+      btn.prop('disabled', true)
+
       const form = document.querySelector('#pointsForm')
       var formData = new FormData(form);
 
@@ -120,7 +123,7 @@ const app = new Vue({
         )
 
         this.resetPointsForm()
-
+        btn.prop('disabled', false)
         this.loading()
 
       })
@@ -128,7 +131,8 @@ const app = new Vue({
 
         let msgError = "La operación no pudo completarse.."
       	this.laravelErrorHandling(errorsLaravel.response.data, msgError)
-        loading()
+        btn.prop('disabled', false)
+        this.loading()
         
       })
 

@@ -43,8 +43,8 @@
 
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button v-if="!modeCategoryEdit" type="button" type="submit" @click.prevent="sendCategory" name="send" class="btn btn-primary">Agregar</button>
-          <button v-else type="button" type="submit" @click.prevent="sendCategory" name="send" class="btn btn-warning">Guardar Cambios</button>
+          <button id="btn_add_category" v-if="!modeCategoryEdit" type="button" type="submit" @click.prevent="sendCategory" name="send" class="btn btn-primary">Agregar</button>
+          <button id="btn_edit_category" v-else type="button" type="submit" @click.prevent="sendCategory" name="send" class="btn btn-warning">Guardar Cambios</button>
         </div>
       </form>
 

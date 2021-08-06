@@ -51,7 +51,7 @@
             <!-- /.card -->
 
             <div class="d-flex justify-content-end">
-              <button type="button" type="submit" @click.prevent="uploadTemplate" name="send" class="btn btn-primary">Subir Excel</button>
+              <button id="btn_upload_excel" type="button" type="submit" @click.prevent="uploadTemplate" name="send" class="btn btn-primary">Subir Excel</button>
             </div>
 
           </form>          

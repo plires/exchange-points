@@ -67,11 +67,17 @@ const app = new Vue({
     saveCategory(formCategory) {
 
       if (this.modeCategoryEdit) {
+        var btn =  $('#btn_edit_category')
+        btn.prop('disabled', true)
+
         var axiosMethod = axios.put
         var url = '/admin/categories/'+ formCategory.id
         let msgError = "Error al editar esta categoría."
         var verb = 'editada'
       } else {
+        var btn =  $('#btn_add_category')
+        btn.prop('disabled', true)
+
         var axiosMethod = axios.post
         var url = '/admin/categories'
         let msgError = "Error al crear esta categoría."
@@ -95,6 +101,7 @@ const app = new Vue({
         this.resetCategoryForm()
         $('#modal-category').modal("hide")
 
+        btn.prop('disabled', false)
         this.loading()
 
       })
@@ -102,6 +109,7 @@ const app = new Vue({
 
         let msgError = errorsLaravel.response.data
         this.laravelErrorHandling(errorsLaravel.response.data, msgError)
+        btn.prop('disabled', false)
         this.loading()
         
       })

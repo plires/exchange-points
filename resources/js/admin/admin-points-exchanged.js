@@ -251,6 +251,9 @@ const app = new Vue({
 
     sendExchanged() {
 
+      var btn =  $('#btn_send_exchanged')
+      btn.prop('disabled', true)
+
       let checked = this.checkFormExchange()  
 
       if (checked) { 
@@ -263,6 +266,8 @@ const app = new Vue({
         for ( var key in this.productsCart ) {
           formData.append('products[]', JSON.stringify(this.productsCart[key]));
         }
+
+        this.loading()
 
         axios.post('/admin/points-exchanged/', formData)
 
@@ -281,11 +286,16 @@ const app = new Vue({
             'Cerrar'
           )
 
+          btn.prop('disabled', false)
+          this.loading()
+
         })
         .catch(errorsLaravel => {
 
           let msgError = "La operación no pudo completarse."
           this.laravelErrorHandling(errorsLaravel.response.data, msgError)
+          btn.prop('disabled', false)
+          this.loading()
           
         })
 

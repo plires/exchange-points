@@ -68,7 +68,7 @@
 
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="button" type="submit" @click.prevent="sendPoints" name="send" class="btn btn-warning">Guardar Puntos</button>
+          <button id="btn_edit_puntos" type="button" type="submit" @click.prevent="sendPoints" name="send" class="btn btn-warning">Guardar Puntos</button>
         </div>
       </form>
 

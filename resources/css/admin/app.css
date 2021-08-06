@@ -48,6 +48,12 @@ a:hover {
   border-color: var(--color-monster);
 }
 
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: grey;
+    border-color: grey;
+}
+
 .btn-primary:hover {
   color: #fff;
   background-color: var(--primary-color);

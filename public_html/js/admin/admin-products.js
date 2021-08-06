@@ -64929,12 +64929,16 @@ var app = new Vue({
       }
 
       if (this.modeProductEdit) {
+        var btn = $('#btn_edit_product');
+        btn.prop('disabled', true);
         var axiosMethod = axios.post;
         formData.append('_method', 'PUT');
         var url = '/admin/products/' + formProduct.id;
         var verb = 'editado';
         var msgError = "Error al editar este producto.";
       } else {
+        var btn = $('#btn_add_product');
+        btn.prop('disabled', true);
         formData.append('_method', 'POST');
         var axiosMethod = axios.post;
         var url = '/admin/products/';
@@ -64959,12 +64963,15 @@ var app = new Vue({
         _this3.resetProductForm();
 
         $('#modal-product').modal("hide");
+        btn.prop('disabled', false);
 
         _this3.loading();
       })["catch"](function (errorsLaravel) {
         var msgError = errorsLaravel.response.data;
 
         _this3.laravelErrorHandling(errorsLaravel.response.data, msgError);
+
+        btn.prop('disabled', false);
 
         _this3.loading();
       });

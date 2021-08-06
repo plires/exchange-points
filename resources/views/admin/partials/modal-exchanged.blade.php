@@ -101,7 +101,7 @@
 
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="button" type="submit" @click.prevent="sendExchanged" name="send" class="btn btn-primary">Guardar Canje</button>
+          <button id="btn_send_exchanged" type="button" type="submit" @click.prevent="sendExchanged" name="send" class="btn btn-primary">Guardar Canje</button>
         </div>
       </form>
 

@@ -64961,11 +64961,15 @@ var app = new Vue({
       var _this3 = this;
 
       if (this.modeUserEdit) {
+        var btn = $('#btn_user_edit');
+        btn.prop('disabled', true);
         var axiosMethod = axios.put;
         var url = '/admin/users/' + formUser.id;
         var msgError = 'Error al editar este usuario.';
         var verb = 'editado';
       } else {
+        var btn = $('#btn_user_add');
+        btn.prop('disabled', true);
         var axiosMethod = axios.post;
         var url = '/admin/users';
         var msgError = 'Error al crear este usuario.';
@@ -64980,6 +64984,7 @@ var app = new Vue({
 
         _this3.resetUserForm();
 
+        btn.prop('disabled', false);
         $('#modal-user').modal("hide");
 
         _this3.loading();
@@ -64987,6 +64992,8 @@ var app = new Vue({
         var msgError = errorsLaravel.response.data;
 
         _this3.laravelErrorHandling(errorsLaravel.response.data, msgError);
+
+        btn.prop('disabled', false);
 
         _this3.loading();
       });

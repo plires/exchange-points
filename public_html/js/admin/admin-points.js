@@ -64896,6 +64896,8 @@ var app = new Vue({
     savePoints: function savePoints(formPoints) {
       var _this3 = this;
 
+      var btn = $('#btn_edit_puntos');
+      btn.prop('disabled', true);
       var form = document.querySelector('#pointsForm');
       var formData = new FormData(form);
 
@@ -64918,13 +64920,17 @@ var app = new Vue({
 
         _this3.resetPointsForm();
 
+        btn.prop('disabled', false);
+
         _this3.loading();
       })["catch"](function (errorsLaravel) {
         var msgError = "La operación no pudo completarse..";
 
         _this3.laravelErrorHandling(errorsLaravel.response.data, msgError);
 
-        loading();
+        btn.prop('disabled', false);
+
+        _this3.loading();
       });
     },
     resetPointsForm: function resetPointsForm() {

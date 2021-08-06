@@ -54,7 +54,7 @@
             <paginate :key="nameCategory" name="categories" :list="filteredCategories" :per="15" tag="tbody">
 
               <tr v-for="category in paginated('categories')" :key="category.id">
-                <td>
+                <td v-if="category.name != 'Sin Categoría'">
                   <a 
                     data-toggle="modal" 
                     data-target="#modal-category" 
@@ -64,7 +64,7 @@
                     @{{category.name}}
                   </a>
                 </td>
-                <td class="d-flex justify-content-end content_btn_actions">
+                <td v-if="category.name != 'Sin Categoría'" class="d-flex justify-content-end content_btn_actions">
                   <button @click="showFormCategoryEdit(category.id)" type="button" class="btn btn-outline-warning btn-sm">Editar</button>
                   <button @click="deleteCategory(category.id)" type="button" class="btn btn-outline-danger btn-sm">Eliminar</button>
                 </td>

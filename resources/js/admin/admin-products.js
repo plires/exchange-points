@@ -130,12 +130,18 @@ const app = new Vue({
       } 
 
       if (this.modeProductEdit) {
+        var btn =  $('#btn_edit_product')
+        btn.prop('disabled', true)
+
         var axiosMethod = axios.post
         formData.append('_method', 'PUT')
         var url = '/admin/products/'+ formProduct.id
         var verb = 'editado'
         let msgError = "Error al editar este producto."
       } else {
+        var btn =  $('#btn_add_product')
+        btn.prop('disabled', true)
+
         formData.append('_method', 'POST')
         var axiosMethod = axios.post
         var url = '/admin/products/'
@@ -166,6 +172,7 @@ const app = new Vue({
         this.resetProductForm()
         $('#modal-product').modal("hide")
 
+        btn.prop('disabled', false)
         this.loading()
 
       })
@@ -173,6 +180,7 @@ const app = new Vue({
 
         let msgError = errorsLaravel.response.data
       	this.laravelErrorHandling(errorsLaravel.response.data, msgError)
+        btn.prop('disabled', false)
         this.loading()
         
       })
