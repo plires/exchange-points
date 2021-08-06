@@ -28,6 +28,6 @@ class sendEmailUserConfirmed
      */
     public function handle(UserConfirmed $event)
     {
-        Mail::to('info@monstermiles.com')->queue(new NewUserConfirmedMessageToUser($event->user));
+        Mail::to($event->user->email)->queue(new NewUserConfirmedMessageToUser($event->user));
     }
 }

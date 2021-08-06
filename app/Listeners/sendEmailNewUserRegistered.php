@@ -29,7 +29,7 @@ class sendEmailNewUserRegistered
      */
     public function handle(UserRegistered $event)
     {
-      Mail::to('info@monstermiles.com')->queue(new NewUserRegisteredMessageToClient($event->user));
+      Mail::to(env('MAIL_FROM_ADDRESS'))->queue(new NewUserRegisteredMessageToClient($event->user));
       Mail::to($event->user->email)->queue(new NewUserRegisteredMessageToUser($event->user));
     }
 }
