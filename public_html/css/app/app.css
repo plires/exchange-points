@@ -10139,7 +10139,6 @@ button:focus-visible {
 }
 .content_lds-facebook {
 	position: absolute;
-	z-index: 99;
 	display: none;
 	width: 100%;
 	height: 100vh;
@@ -10147,6 +10146,7 @@ button:focus-visible {
 	align-items: center;
 }
 .lds-facebook {
+	z-index: 99999;
   display: flex;
   justify-content: center;
   position: relative;
