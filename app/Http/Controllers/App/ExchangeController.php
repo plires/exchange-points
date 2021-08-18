@@ -148,7 +148,7 @@ class ExchangeController extends Controller
 
           });
 
-          Mail::to('info@monstermiles.com')->queue(new MessageToClient($exchange, $pointsUserToUpdate, $productTemplateEmail));
+          Mail::to(env('MAIL_FROM_ADDRESS'))->queue(new MessageToClient($exchange, $pointsUserToUpdate, $productTemplateEmail));
           Mail::to($pointsUserToUpdate->email)->queue(new MessageToUser($exchange, $pointsUserToUpdate, $productTemplateEmail));
 
           return response()->json( ['exchanged_created' => 'Felicitaciones '. $pointsUserToUpdate->name .', el canje se realizó exitosamente, recibirás detalles de la operación a tu casilla de email. No olvides revisar la bandeja de SPAM ;) '], 201);  

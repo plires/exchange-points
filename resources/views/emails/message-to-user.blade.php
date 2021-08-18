@@ -418,17 +418,17 @@
         <!-- Tabla con imagen de fondo al 100% del ancho del mail -->
         <table cellpadding="0" cellspacing="0" border="0" width="100%">
             <tr>
-                <td background="https://librecomunicacion.net/clientes/monster/fondo.jpg" bgcolor="#000000" valign="middle">
+                <td background="https://monsterenergymiles.com/img/emails/fondo.jpg" bgcolor="#000000" valign="middle">
                     <!--[if gte mso 9]>
                     <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent:1000;">
-                    <v:fill type="tile" src="https://librecomunicacion.net/clientes/monster/fondo.jpg" color="#000000" />
+                    <v:fill type="tile" src="https://monsterenergymiles.com/img/emails/fondo.jpg" color="#000000" />
                     <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
                     <![endif]-->
                     <div>
                         <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="margin: auto;" class="email-container">
                             <tr style="line-height: 0;">
                                 <td style="text-align: center; line-height: 0;" class="center-on-narrow">
-                                    <img src="https://librecomunicacion.net/clientes/monster/logo.png" width="500" height="" alt="header transparente" border="0" style="width: 100%; max-width: 500px; height: auto; ">
+                                    <img src="https://monsterenergymiles.com/img/emails/logo.png" width="500" height="" alt="header transparente" border="0" style="width: 100%; max-width: 500px; height: auto; ">
                                 </td>
                             </tr>
                         </table>
@@ -472,7 +472,7 @@
                   </p>
 
                   <p class="fallback-font" style="margin: 0 0 10px; font-family: 'Montserrat', sans-serif; font-size: 16px; line-height: 26px; color: #575756; text-align: center; font-weight: 400;">
-                      A continuación podras ver el detalle de la operación. Si existe alguna diferencia con lo que elegiste por favor envia un mail a <a style="color: #85bf00;" href="mailto:info@monstermiles.com">info@monstermiles.com</a>
+                      A continuación podras ver el detalle de la operación. Si existe alguna diferencia con lo que elegiste por favor envia un mail a <a style="color: #85bf00;" href="mailto:info@monsterenergymiles.com">info@monsterenergymiles.com</a>
                   </p>
 
               </td>
@@ -526,7 +526,7 @@
           <!-- IMG : BEGIN -->
           <tr>
               <td style="text-align: center">
-                  <img src="https://librecomunicacion.net/clientes/monster/productos.jpg" width="600" height="" alt="productos monster miles" border="0" style="width: 100%; max-width: 600px; height: auto; background: #ffffff; margin: auto; display: block; margin-bottom: 0;" class="g-img">
+                  <img src="https://monsterenergymiles.com/img/emails/productos.jpg" width="600" height="" alt="productos monster miles" border="0" style="width: 100%; max-width: 600px; height: auto; background: #ffffff; margin: auto; display: block; margin-bottom: 0;" class="g-img">
               </td>
           </tr>
           <!-- IMG : END -->

@@ -418,17 +418,17 @@
         <!-- Tabla con imagen de fondo al 100% del ancho del mail -->
         <table cellpadding="0" cellspacing="0" border="0" width="100%">
             <tr>
-                <td background="https://librecomunicacion.net/clientes/monster/fondo.jpg" bgcolor="#000000" valign="middle">
+                <td background="https://monsterenergymiles.com/img/emails/fondo.jpg" bgcolor="#000000" valign="middle">
                     <!--[if gte mso 9]>
                     <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent:1000;">
-                    <v:fill type="tile" src="https://librecomunicacion.net/clientes/monster/fondo.jpg" color="#000000" />
+                    <v:fill type="tile" src="https://monsterenergymiles.com/img/emails/fondo.jpg" color="#000000" />
                     <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
                     <![endif]-->
                     <div>
                         <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="margin: auto;" class="email-container">
                             <tr style="line-height: 0;">
                                 <td style="text-align: center; line-height: 0;" class="center-on-narrow">
-                                    <img src="https://librecomunicacion.net/clientes/monster/logo.png" width="500" height="" alt="header transparente" border="0" style="width: 100%; max-width: 500px; height: auto; ">
+                                    <img src="https://monsterenergymiles.com/img/emails/logo.png" width="500" height="" alt="header transparente" border="0" style="width: 100%; max-width: 500px; height: auto; ">
                                 </td>
                             </tr>
                         </table>
