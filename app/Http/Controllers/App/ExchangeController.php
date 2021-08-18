@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\App;
 
+use Config;
 use App\User;
 use App\Product;
 use App\Exchange;
@@ -14,7 +15,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\Routing\Loader\Configurator\env;
 
 class ExchangeController extends Controller
 {
@@ -149,7 +149,7 @@ class ExchangeController extends Controller
 
           });
 
-          Mail::to(env('MAIL_FROM_ADDRESS'))->queue(new MessageToClient($exchange, $pointsUserToUpdate, $productTemplateEmail));
+          Mail::to(config('data_app.destinatario_tienda'))->queue(new MessageToClient($exchange, $pointsUserToUpdate, $productTemplateEmail));
           Mail::to($pointsUserToUpdate->email)->queue(new MessageToUser($exchange, $pointsUserToUpdate, $productTemplateEmail));
 
           return response()->json( ['exchanged_created' => 'Felicitaciones '. $pointsUserToUpdate->name .', el canje se realizó exitosamente, recibirás detalles de la operación a tu casilla de email. No olvides revisar la bandeja de SPAM ;) '], 201);  

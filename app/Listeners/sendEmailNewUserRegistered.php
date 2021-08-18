@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use Config;
 use App\Events\UserRegistered;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
@@ -29,7 +30,7 @@ class sendEmailNewUserRegistered
      */
     public function handle(UserRegistered $event)
     {
-      Mail::to(env('MAIL_FROM_ADDRESS'))->queue(new NewUserRegisteredMessageToClient($event->user));
+      Mail::to(config('data_app.destinatario_tienda'))->queue(new NewUserRegisteredMessageToClient($event->user));
       Mail::to($event->user->email)->queue(new NewUserRegisteredMessageToUser($event->user));
     }
 }
