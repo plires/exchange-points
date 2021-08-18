@@ -496,7 +496,7 @@
 
                               &nbsp;&nbsp;
 
-                              <a target="_blank" rel="noopener" href="https://twitter.com/MonsterEnergy " style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #FFFFFF;font-weight: normal;text-decoration: none;"><img data-file-id="374635" height="20" src="https://monsterenergymiles.com/img/emails/twitter.png" style="border: 0px;width: 20px;height: 20px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" width="20"></a>
+                              <a target="_blank" rel="noopener" href="https://twitter.com/MonsterEnergy" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #FFFFFF;font-weight: normal;text-decoration: none;"><img data-file-id="374635" height="20" src="https://monsterenergymiles.com/img/emails/twitter.png" style="border: 0px;width: 20px;height: 20px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" width="20"></a>
 
                               &nbsp;&nbsp;
 
