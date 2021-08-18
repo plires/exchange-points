@@ -542,7 +542,7 @@
                   <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: auto;">
                       <tr>
                           <td class="button-td button-td-primary" style="border-radius: 4px; background: #85bf00;">
-                              <a class="fallback-font button-a button-a-primary" target="_blank" rel="noopener" href="#" style="background: #85bf00; border: 1px solid #85bf00; font-family: 'Montserrat', sans-serif; font-size: 18px; line-height: 28px; font-weight: 700; text-decoration: none; padding: 13px 17px; color: #FFFFFF; display: block; border-radius: 4px;">CANJEAR
+                              <a class="fallback-font button-a button-a-primary" target="_blank" rel="noopener" href="https://monsterenergymiles.com/" style="background: #85bf00; border: 1px solid #85bf00; font-family: 'Montserrat', sans-serif; font-size: 18px; line-height: 28px; font-weight: 700; text-decoration: none; padding: 13px 17px; color: #FFFFFF; display: block; border-radius: 4px;">CANJEAR
                               </a>
                           </td>
                       </tr>
@@ -559,15 +559,15 @@
                       <tr>
                           <td style="padding: 20px; text-align: center;">
 
-                              <a target="_blank" href="#" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #FFFFFF;font-weight: normal;text-decoration: none;"><img data-file-id="374627" height="20" src="https://gallery.mailchimp.com/0b2bb5a0f281db7cdf23e47a3/images/e68ccd8b-8c21-4d8e-acae-a0b21432a3cf.png" style="border: 0px;width: 20px;height: 20px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" width="20"></a>
+                              <a target="_blank" rel="noopener" href="https://www.instagram.com/monsterenergy" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #FFFFFF;font-weight: normal;text-decoration: none;"><img data-file-id="374627" height="20" src="https://monsterenergymiles.com/img/emails/instagram.png" style="border: 0px;width: 20px;height: 20px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" width="20"></a>
 
                               &nbsp;&nbsp;
 
-                              <a target="_blank" href="#" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #FFFFFF;font-weight: normal;text-decoration: none;"><img data-file-id="374635" height="20" src="https://gallery.mailchimp.com/0b2bb5a0f281db7cdf23e47a3/images/34ecbe94-68b6-4612-9779-fd4cac0889b1.png" style="border: 0px;width: 20px;height: 20px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" width="20"></a>
+                              <a target="_blank" rel="noopener" href="https://twitter.com/MonsterEnergy " style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #FFFFFF;font-weight: normal;text-decoration: none;"><img data-file-id="374635" height="20" src="https://monsterenergymiles.com/img/emails/twitter.png" style="border: 0px;width: 20px;height: 20px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" width="20"></a>
 
                               &nbsp;&nbsp;
 
-                              <a target="_blank" href="#" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #FFFFFF;font-weight: normal;text-decoration: none;"><img data-file-id="374631" height="20" src="https://gallery.mailchimp.com/0b2bb5a0f281db7cdf23e47a3/images/8bc56989-11be-4375-87c5-17dcc1bcd33b.png" style="border: 0px;width: 20px;height: 20px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" width="20"></a>
+                              <a target="_blank" rel="noopener" href="https://www.youtube.com/monsterenergy" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #FFFFFF;font-weight: normal;text-decoration: none;"><img data-file-id="374631" height="20" src="https://monsterenergymiles.com/img/emails/youtube.png" style="border: 0px;width: 20px;height: 20px;margin: 0px;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" width="20"></a>
                           </td>
 
                       </tr>
