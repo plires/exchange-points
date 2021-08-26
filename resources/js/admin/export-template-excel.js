@@ -2,7 +2,7 @@ require('./bootstrap')
 require('../../../node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.js')
 require('../../../node_modules/admin-lte/dist/js/adminlte.js')
 
-window.Vue = require('../../../node_modules/vue/dist/vue.common.dev.js')
+window.Vue = require('../../../node_modules/vue/dist/vue.min.js')
 import Swal from '../../../node_modules/admin-lte/plugins/sweetalert2/sweetalert2.all.js'
 import Func from './functions.js'
 

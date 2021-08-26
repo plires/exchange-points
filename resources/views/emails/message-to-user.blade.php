@@ -468,11 +468,11 @@
                   </h2>
 
                   <p class="fallback-font" style="margin: 0 0 10px; font-family: 'Montserrat', sans-serif; font-size: 16px; line-height: 26px; color: #575756; text-align: center; font-weight: 400;">
-                      Excelente elección de productos, esperamos que lo disfrutes y que pronto vuelvas a canjear muchos más.
+                      Excelente elección de productos! Enseguida nos estaremos comunicando con vos para coordinar la entrega.
                   </p>
 
                   <p class="fallback-font" style="margin: 0 0 10px; font-family: 'Montserrat', sans-serif; font-size: 16px; line-height: 26px; color: #575756; text-align: center; font-weight: 400;">
-                      A continuación podras ver el detalle de la operación. Si existe alguna diferencia con lo que elegiste por favor envia un mail a <a style="color: #85bf00;" href="mailto:info@monsterenergymiles.com">info@monsterenergymiles.com</a>
+                      A continuación podras ver el detalle de la operación. Por consultas o más información envíanos un mail a <a style="color: #85bf00;" href="mailto:info@monsterenergymiles.com">info@monsterenergymiles.com</a>
                   </p>
 
               </td>

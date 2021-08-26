@@ -3,7 +3,7 @@ require('../../../node_modules/slick-carousel/slick/slick.js')
 require('../../../node_modules/admin-lte/plugins/jquery/jquery.min.js')
 require('../../../node_modules/admin-lte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')
 
-window.Vue = require('../../../node_modules/vue/dist/vue.common.dev.js')
+window.Vue = require('../../../node_modules/vue/dist/vue.min.js')
 import Swal from '../../../node_modules/admin-lte/plugins/sweetalert2/sweetalert2.all.js'
 
 const app = new Vue({ 
